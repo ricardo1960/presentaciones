@@ -1,0 +1,335 @@
+\documentclass[8pt]{beamer}
+%\usetheme{CambridgeUS}
+\logo{\includegraphics[scale=0.10]{../imagenes/logoa}}
+\usepackage[spanish]{babel}
+%\usecolortheme{seahorse}
+%\usepackage{beamerthemeblackboard}
+%\usepackage{graphics}
+%\usecolortheme[RGB={6,138,200}]{structure}
+%\usepackage[orientation=landscape, size=custom,
+ % width=16, height=9, scale=0.5]{beamerposter}
+%\usepackage[utf8]{inputenc}
+\usetheme{metropolis}
+\metroset{titleformat=smallcaps,block=fill}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{tikz} 
+\usetikzlibrary{matrix}
+\usetikzlibrary{calendar,decorations.markings} 
+\usetikzlibrary{shapes,positioning}
+
+\usepackage{tkz-tab,tkz-euclide,tkz-fct}
+\usetkzobj{all}  
+\usepackage{tcolorbox} 
+%\usepackage{enumitem} 
+\usepackage{tasks} 
+\usepackage{asymptote}  
+\usepackage{cancel}
+\newcommand{\sen}{\mathop{\rm sen}\nolimits}
+
+\newcommand{\tg}{\mathop{\rm tg}\nolimits}
+\newcommand{\arcsen}{\mathop{\rm arcsen}\nolimits}
+\newcommand{\arctg}{\mathop{\rm arctg}\nolimits}
+\newcommand{\g}{{}^\circ}     
+        
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\limite}[2]{\displaystyle \lim_{x \rightarrow #1}{#2}}
+\renewcommand{\vector}[1]{\overrightarrow{#1}}
+
+\newtcbox{\resultado}[1][center]{#1,colback=red!5!white,
+colframe=red!75!black}
+
+\newtcbox{\resaltado}[1][center]{#1,colback=blue!5!white,
+colframe=blue!75!black}
+\definecolor{titleColor}{rgb}{0.0, 0.42, 0.24}
+
+\title{Continuidad}
+\author{Ricardo Mateos}
+\institute[UHEI-IVED]{Departamento de Matemáticas \\ UHEI - IVED}
+\date{Matemáticas II}
+\begin{document}
+%\ECFJD
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\begin{frame}{Continuidad}
+\begin{exampleblock}{Ejemplo}
+Observandola gráfica de la función decir si estas funciones son continuas en el punto $x=a$ y porque:
+\end{exampleblock}
+\pause
+ \begin{tasks}[label=\alph*)](2)
+\task 
+
+\begin{tikzpicture}[scale=0.2]
+\tkzInit[xmax=6,xmin=-4,ymax=5,ymin=-4]
+\tkzDrawXY
+\tkzFct[color=blue,domain=-3:5]{x-1}
+\tkzDefPoint(2,0){B}
+\tkzDefPoint(2,1){A}
+\tkzDrawSegment[dotted](A,B)
+\tkzLabelSegment[below,pos=0](B,A){$a$}
+\tkzDrawPoint[size=10,fill=white](A)
+\end{tikzpicture}
+
+\pause
+No es continua porque no existe la función en el punto $x=a$
+\pause
+\task
+
+\begin{tikzpicture}[scale=0.2]
+\tkzInit[xmax=6,xmin=-4,ymax=5,ymin=-4]
+\tkzDrawXY
+\tkzFct[color=blue,domain=-3:2]{x-1}
+\tkzFct[color=blue,domain=2:5]{x/2+2}
+\tkzDefPoint(2,0){B}
+\tkzDefPoint(2,1){A}
+\tkzDefPoints{2/3/C,4/3/D}
+\tkzDrawSegment[dotted](A,B)
+\tkzLabelSegment[below,pos=0](B,A){$a$}
+\tkzDrawPoint[size=10,fill=white](A)
+\tkzDrawPoint[size=10,fill=blue](C)
+\end{tikzpicture}
+
+\pause
+No es continua porque no existe el límite en el punto $x=a$
+\pause
+\task 
+
+\begin{tikzpicture}[scale=0.2]
+\tkzInit[xmax=6,xmin=-4,ymax=5,ymin=-4]
+\tkzDrawXY
+\tkzFct[color=blue,domain=-3:5]{x-1}
+\tkzDefPoint(2,0){B}
+\tkzDefPoint(2,1){A}
+\tkzDefPoint(2,3){C}
+\tkzDrawSegment[dotted](A,C)
+\tkzDrawSegment[dotted](A,B)
+\tkzLabelSegment[below,pos=0](B,A){$a$}
+\tkzDrawPoint[size=10,fill=white](A)
+\tkzDrawPoint[size=10,fill=blue](C)
+\end{tikzpicture}
+
+\pause
+No es continua porque el valor la función en el punto $x=a$ es distinto que el límite.
+\pause
+\task
+
+\begin{tikzpicture}[scale=0.2]
+\tkzInit[xmax=6,xmin=-4,ymax=5,ymin=-4]
+\tkzDrawXY
+\tkzFct[color=blue,domain=-3:1.9]{1/(x-2)}
+\tkzFct[color=blue,domain=2.1:5]{1/(x-2)}
+\tkzDefPoint(2,0){B}
+\tkzDefPoint(2,1){A}
+\tkzDefPoint(2,3){C}
+\tkzVLine[dotted]{2}
+\tkzDrawSegment[dotted](A,B)
+\tkzLabelPoint[below,blue](B){$a$}
+\end{tikzpicture}
+
+\pause
+No es continua porque no existe el límite de la  función en el punto $x=a$
+\end{tasks}
+
+\end{frame}
+
+\begin{frame}[t]{Definión de continuidad}
+\begin{alertblock}{Condiciones de continuidad}
+Una función $f(x)$ es continua en un punto $x=a$ si se cumple:
+\pause
+\begin{enumerate}[<+-| alert@+>]
+\item Existe $f(a)$
+\item Existe $\displaystyle  \lim_{x \rightarrow a} f(x)$
+\item $\displaystyle  \lim_{x \rightarrow a} f(x)=f(a)$
+\end{enumerate}
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[t]{Continuidad}
+\begin{exampleblock}{Ejemplo}
+Comprobar si la función $f(x)=\dfrac{x-1}{x^2-1}$ es continua en los puntos:
+\begin{tasks}[label=\alph*)](3)
+\task $x=-1$
+\task $x=0$
+\task $x=1$
+\end{tasks}
+\end{exampleblock}
+\begin{tasks}[label=\alph*)](1)
+\task Hallamos $f(-1)=\dfrac{-2}{0}$. 
+
+En este punto la función no existe, por lo tanto, es discontinua.
+
+\task Hallamos $f(0)=\dfrac{-1}{-1}=1$.
+
+Hallamos el límite: $\limite{0}{\dfrac{x^2-1}{x-1}}=1 $ 
+
+En este punto la función es continua.
+
+\task Hallamos $f(1)=\dfrac{0}{0}$. 
+
+En este punto la función no existe, por lo tanto, es discontinua.
+\end{tasks}
+\end{frame}
+
+\begin{frame}[t]{Continuidad}
+\begin{exampleblock}{Ejemplo}
+Comprobar si la función $f(x)=\begin{cases} x+2 & x \leq 0 \\ 2x+3 & 0 < x <2 \\ x^2+2x-1 & x \geq 2 \end{cases} $, es continua en los puntos:
+\begin{tasks}[label=\alph*)](2)
+\task $x=0$
+\task $x=2$
+\end{tasks}
+\end{exampleblock}
+
+
+\end{frame}
+
+\begin{frame}[t]{Continuidad en un intervalo}
+\begin{alertblock}{Continuidad en un intervalo}
+\begin{itemize}
+\item Una función $f$ es continua en un intervalo abierto $(a,b)$ si es continua en cada uno de los puntos del intervalo.
+\item Una función $f$ es continua en un intervalo cerrado $[a,b]$ si y solo si:
+\begin{itemize}
+\item $f$ es continua en el intervalo abierto $(a,b)$
+\item $\limite{a^+}{f(x)}=f(a)$
+\item $\limite{b^-}{f(x)}=f(b)$
+\end{itemize}
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[t]{Propiedades de las funciones continuas}
+\begin{alertblock}{Propiedades de las funciones continuas}
+\begin{itemize}
+\item La función constante, $f(x)=k$, es continua en todo su dominio.
+\item La función identidad, $f(x)=x$, es continua en todo su dominio.
+\item Si $f$ y $g$ son dos funciones continuas en el punto $x_0$, entonces:
+\begin{itemize}
+\item La función suma $f+g$ es continua en el punto $x_0$
+\item La función producto por una constante $k\cdot f$ es continua en el punto $x_0$
+\item La función producto $f \cdot g$ es continua en el punto $x_0$
+\item La función cociente $\dfrac{f}{g}$ es continua en el punto $x_0$
+\item La función compuesta $f \circ g$ es continua en el punto $x_0$
+\item La función suma $f^g$ es continua en el punto $x_0$, siempre que $f(x_0)>0$
+\end{itemize}
+\end{itemize}
+\end{alertblock}
+\begin{alertblock}{Continuidad de las funciones elementales}
+\begin{itemize}
+\item Las funciones polinómicas $f(x)=a_nx^n+\cdots +a_1x+a_0$ es continua en todo su dominio.
+\item Las funciones racionales $f(x)=\dfrac{P(x)}{Q(x)}$ son continuas en todo su dominio.
+\item Las funciones irracionales $f(x)=\sqrt[n]{R(x)}$ son continuas en todo su dominio.
+\item Las funciones exponenciales $f(x)=a^x$ y logarítmica $f(x)=\log_ax$ son continuas en todo su dominio.
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[t]{Tipos de  discontinuidad}
+\begin{alertblock}{Tipos de discontinuidad}
+\pause
+\textbf{Discontinuidad evitable:}
+
+\pause
+Este tipo de discontinuidad se produce cuando existe el límite de la función en el punto, pero:
+\begin{itemize}[<+-| alert@+>]
+\item No existe la función en el punto.
+\item Existe la función en el punto pero su valor no es el mismo que el límite.
+\end{itemize}
+
+\pause
+\textbf{Discontinuidad inevitable de salto finito:}
+
+\pause
+Ser produce cuando no existe el límite de la función en el punto porque los límites laterales no coinciden aunque ambos son finitos.
+
+\pause
+\textbf{Discontinuidad inevitable de salto infinito:}
+
+\pause
+Esta discontinuidad se produce cuando uno o los dos límites laterales son infinito.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[t]{Continuidad}
+\begin{exampleblock}{Ejemplo}
+Hallar los puntos de discontinuidad y decir de que tipo son de las siguientes funciones:
+\begin{tasks}[label=\alph*)](1)
+\task $f(x)=\dfrac{x^2-4}{x^2+x-6}$
+\task $g(x)=\begin{cases} x^2+1 & x \leq 0 \\ 2x+1 & 0< x < 2 \\ x^2+2 & x \geq 2 \end{cases}$
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Continuidad}
+\begin{exampleblock}{Ejemplo}
+Hallar los valores de $a$ y $b$ para que la función sea continua para todo valor $x \in \R$
+\[ f(x)= \begin{cases} x^3-x^2 & x \leq 1 \\ ax+2 &  1< x \leq 3 \\  \dfrac{b}{x} & x > 3 \end{cases} \]
+\end{exampleblock}
+
+
+\end{frame}
+
+\begin{frame}[t]{Discontinuidades}
+\begin{exampleblock}{Ejemplo}
+Halla el valor que ha de tener $k$ para que la función $f(x)=\dfrac{2x^2+4kx+10}{x-1}$ tenga una discontinuidad evitable en $x_0=1$.
+
+Para este valor de $k$, define una función continua en $\R$ y que coincida con $f$ en todo su dominio.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Continuidad de una función}
+\begin{exampleblock}{Ejemplo}
+La profundidad de la capa de arena en una playa se verá afectada por la construcción de un dique. En una zona de la playa, esa profundidad vendrá dada por la siguiente función: 
+\[ P(t)= \begin{cases} 2+ \sqrt{t} & \text{si} \quad 0 \leq t \leq 1 \\ \dfrac{8t-2}{2t} & \text{si} \quad x> 1 \end{cases} \]
+$P$ es la profundidad en metros y $t$ el tiempo en años desde el inicio de la construcción. Si la profundidad llegara a superar los 4 metros, se debería elevar la altura del paseo marítimo.
+\begin{tasks}[label=\alph*)](1)
+\task ¿Es continua esta función? ¿Es siempre creciente? Justificar la respuesta.
+\task ¿Cuál será la profundidad de la capa de arena al pasar 2 años desde el inicio de la construcción?
+\task ¿Será necesario elevar la altura del paseo con el paso del tiempo, por causa de la profundidad de la arena? Justificar la respuesta.
+
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}[t]{Teoremas relativos a la continuidad}
+\textbf{Teorema de conservación del signo}
+Si una función $f$ es continua en un punto $x_0$ y $f(x_0) \neq 0$, entonces existe un entorno de $x_0$, en el que la función tiene el mismo signo que $f(x_0)$.
+
+\pause
+\textbf{Teorema de Bolzano}
+Si una función es continua en un intervalo cerrado $[a,b]$ y en los extremos de éste toma valores de distinto signo, entonces existe al menos un punto $c\in(a,b)$ tal que $f(c)=0$.
+
+\pause
+\textbf{Teorema de los valores intermedios}
+Su una función $f$ es continua en un intervalo cerrado $[a,b]$, entonces la función toma todos los valores comprendidos entre $f(a)$ y $f(b)$. Es decir, para cualquier valor $k$ comprendido entre $f(a)$ y $f(b)$, existe al menos un punto $c \in (a,b)$ tal que $f(c)=k$
+
+\pause
+\textbf{Teorema de Weierstrass}
+Si una función es continua en un intervalo cerrado $[a,b]$, entonces la función alcanza su máximo absoluto y su mínimo absoluto en el intervalo $[a,b]$
+\end{frame}
+
+\begin{frame}[t]{Teoremas relativos a la continuidad}
+\begin{exampleblock}{Ejemplo}
+Comprobar que la ecuación $x^3+4x^2-2x-8=0$ tiene solución en el intervalo $(1,2)$.
+
+Idem para la ecuación $e^x-3$ en el intervalo $(1,2)$.
+
+Aplicando el teorema de Bolzano demostrar que las gráficas de las funciones $f(x)=\ln x$ y $g(x)=e^{-x}$ se cortan en algún punto.
+\end{exampleblock}
+\end{frame}
+\end{document}

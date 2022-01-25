@@ -1,0 +1,215 @@
+\documentclass[8pt]{beamer}
+%\usetheme{CambridgeUS}
+\logo{\includegraphics[scale=0.10]{../imagenes/logoa}}
+\usepackage[spanish]{babel}
+%\usecolortheme{seahorse}
+%\usepackage{beamerthemeblackboard}
+%\usepackage{graphics}
+%\usecolortheme[RGB={6,138,200}]{structure}
+%\usepackage[orientation=landscape, size=custom,
+ % width=16, height=9, scale=0.5]{beamerposter}
+%\usepackage[utf8]{inputenc}
+\usetheme{metropolis}
+\metroset{titleformat=smallcaps,block=fill}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{tikz} 
+\usetikzlibrary{matrix}
+\usetikzlibrary{calendar,decorations.markings} 
+\usetikzlibrary{shapes,positioning}
+
+\usepackage{tkz-tab,tkz-euclide,tkz-fct}
+\usetkzobj{all}  
+\usepackage{tcolorbox} 
+%\usepackage{enumitem} 
+\usepackage{tasks} 
+\usepackage{asymptote}  
+
+\newcommand{\sen}{\mathop{\rm sen}\nolimits}
+\newcommand{\arcsen}{\mathop{\rm arcsen}\nolimits}
+\newcommand{\tg}{\mathop{\rm tg}\nolimits}
+\newcommand{\arctg}{\mathop{\rm arctg}\nolimits}
+\newcommand{\cotg}{\mathop{\rm cotg}\nolimits}
+\newcommand{\arccotg}{\mathop{\rm arccotg}\nolimits}
+        
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\limite}[2]{\displaystyle \lim_{x \rightarrow #1}{#2}}
+\renewcommand{\vector}[1]{\overrightarrow{#1}}
+\newcommand{\g}{{}^\circ}
+\newtcbox{\resultado}[1][center]{#1,colback=red!5!white,
+colframe=red!75!black}
+
+\newtcbox{\resaltado}[1][center]{#1,colback=blue!5!white,
+colframe=blue!75!black}
+\definecolor{titleColor}{rgb}{0.0, 0.42, 0.24}
+
+\title{}
+\author{Ricardo Mateos}
+\institute[UHEI-IVED]{Departamento de Matemáticas \\ UHEI - IVED}
+\date{Matemáticas I}
+\begin{document}
+%\ECFJD
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\section{Fórmulas trigonométricas}
+
+\begin{frame}{Fórmulas trigonométricas}
+\begin{alertblock}{Suma y diferencia de ángulos}
+$\begin{array}{ll}
+\sen(\alpha+\beta)=\sen\alpha\cos\beta+\cos\alpha\sen\beta & 
+\sen(\alpha-\beta)=\sen\alpha\cos\beta-\cos\alpha\sen\beta \\
+\cos(\alpha+\beta)=\cos\alpha\cos\beta-\sen\alpha\sen\beta & 
+\cos(\alpha-\beta)=\cos\alpha\cos\beta+\sen\alpha\sen\beta \\
+\tg(\alpha+\beta)=\dfrac{\tg\alpha+\tg\beta}{1-\tg\alpha\tg\beta} & 
+\tg(\alpha-\beta)=\dfrac{\tg\alpha-\tg\beta}{1+\tg\alpha\tg\beta}
+\end{array}$
+\end{alertblock}
+
+\begin{columns}
+\begin{column}{0.45\textwidth}
+\begin{alertblock}{Ángulo doble}
+$\begin{array}{l}
+\sen 2\alpha=2\sen\alpha\cos\beta  \\
+\cos 2\alpha=\cos^2\alpha-\sen^2\alpha \\
+\tg 2\alpha =\dfrac{2\tg\alpha}{1-\tg^2\alpha} 
+\end{array}$
+\vspace{2.3em}
+
+\end{alertblock}
+\end{column}
+\begin{column}{0.45\textwidth}
+\begin{alertblock}{Ángulo mitad}
+$\begin{array}{l}
+\sen \dfrac{\alpha}{2}=\pm \sqrt{\dfrac{1-\cos\alpha}{2}} \\
+\cos \dfrac{\alpha}{2}=\pm \sqrt{\dfrac{1+\cos\alpha}{2}} \\
+\tg \dfrac{\alpha}{2}=\pm \sqrt{\dfrac{1-\cos\alpha}{1+\cos\alpha}} 
+\end{array}$
+\end{alertblock}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fórmulas trigonométricas}
+\begin{alertblock}{Transformaciones de sumas en productos}
+$\begin{array}{ll}
+\sen A + \sen B =2 \sen\left( \dfrac{A+B}{2}\right) \cos\left( \dfrac{A-B}{2}\right)  \\ \\ 
+\sen A - \sen B =2 \cos\left( \dfrac{A+B}{2}\right) \sen\left( \dfrac{A-B}{2}\right)  \\ \\ 
+\cos A + \cos B =2 \cos\left(  \dfrac{A+B}{2}\right) \cos\left( \dfrac{A-B}{2}\right)  \\ \\
+\cos A - \cos B =-2 \sen\left( \dfrac{A+B}{2}\right) \sen\left( \dfrac{A-B}{2}\right)  \\
+\end{array}$
+\end{alertblock}
+\end{frame}
+\section{Identidades trigonométricas}
+\begin{frame}{Identidades trigonométricas}
+\begin{alertblock}{Ejemplo}
+Comprobar que $\dfrac{\cos x +\cosec x}{\sen x +\sec x}= \cotg x$
+\end{alertblock}
+
+\[\dfrac{\cos x +\cosec x}{\sen x +\sec x}= \cotg x \Rightarrow \dfrac{\cos x + \dfrac{1}{\sen x}}{\sen x +\dfrac{1}{\cos x}}= \cotg x \Rightarrow\]
+\[\Rightarrow \dfrac{\dfrac{\sen x \cos x +1}{\sen x}}{\dfrac{\cos x \sen x +1}{\cos x}}= cotg x \Rightarrow \dfrac{(\sen x \cos x +1)\cos x }{(\sen x \cos x +1)\sen x}= \cotg x \Rightarrow\]
+\[\Rightarrow \dfrac{\cos x }{\sen x}= \cotg x \Rightarrow \cotg x = \cotg x\]
+
+\end{frame}
+
+\begin{frame}{Identidades trigonométricas}
+\begin{alertblock}{Ejemplo}
+Comprobar que $\dfrac{\sen (\alpha + \beta)}{\cos \alpha \cos \beta}= \tg \alpha +\tg \beta$
+\end{alertblock}
+
+\[\dfrac{\sen (\alpha + \beta)}{\cos \alpha \cos \beta}= \tg \alpha +\tg \beta \Rightarrow \dfrac{\sen \alpha \cos \beta +\cos \alpha \sen \beta}{\cos \alpha \cos \beta}= \tg \alpha +\tg \beta \Rightarrow\]
+
+\[\dfrac{\sen \alpha  \cos \beta}{\cos \alpha \cos \beta}+\dfrac{\cos \alpha  \sen \beta}{\cos \alpha \cos \beta}= \tg \alpha +\tg \beta \Rightarrow \dfrac{\sen \alpha}{\cos \alpha}+\dfrac{\sen \beta}{\cos \beta}= \tg \alpha +\tg \beta \Rightarrow\]
+
+\[ \Rightarrow \tg \alpha +\tg \beta = \tg \alpha +\tg \beta \]
+\end{frame}
+\section{Ecuaciones trigonométricas}
+
+\begin{frame}{Ecuaciones trigonométricas}
+\begin{alertblock}{Ejemplo}
+Resolver la ecuación $2\sen (2x+60)= \sqrt{3}$
+\end{alertblock}
+Primero aislamos la razón trigonométrica 
+
+$\sen(2x+60)=\dfrac{\sqrt{3}}{2}$
+
+Buscamos los ángulos donde el seno vale $\dfrac{\sqrt{3}}{2}$. Los menores de $360\g$ son $60\g$ y $120\g$. Sumamos a estos ángulos vueltas completas $k\cdot 360\g$, para hallar todas las soluciones.
+
+$2x+60 = \begin{cases} 60\g+ k\cdot 360\g \\ 120\g+ k\cdot 360\g \end{cases} \Rightarrow 
+2x = \begin{cases} 0\g+ k\cdot 360\g \\ 60\g+ k\cdot 360\g \end{cases} \Rightarrow$
+
+\resultado{$x = \begin{cases} 0\g+ k\cdot 180\g \\ 30\g+ k\cdot 180\g \end{cases}\quad (k \in \Z)$}
+
+\end{frame}
+
+\begin{frame}{Ecuaciones trigonométricas}
+\begin{alertblock}{Ejemplo}
+Resolver la ecuación $\sen 2x - \cos x= 0$
+\end{alertblock}
+Primero desarrollamos $\sen 2x$.
+
+$\sen 2x - \cos x= 0 \Rightarrow 2\sen x \cdot \cos x -\cos x =0$
+
+Sacamos factor común. $\cos x (2\sen x -1)=0 \Rightarrow \begin{cases} \cos x = 0 \\ 2\sen x-1= 0 \end{cases}$
+
+Hallamos las soluciones en cada uno de los casos:
+
+$\cos x = 0 \Rightarrow x= \begin{cases} 90\g+k\cdot 360\g \\ 180\g+k\cdot 360\g \end{cases} \quad (k \in \Z)$
+ 
+$2\sen x -1= 0 \Rightarrow \sen x=\dfrac{1}{2} \Rightarrow x= \begin{cases} 30\g+k\cdot 360\g \\ 150\g+k\cdot 360\g \end{cases} \quad (k \in \Z)$
+
+\end{frame}
+
+\begin{frame}{Ecuaciones trigonométricas}
+\begin{alertblock}{Ejemplo}
+Resolver la ecuación $\sen 6x - \sen 4x= 0$
+\end{alertblock}
+Transformamos la suma en producto:
+
+$\sen 6x - \sen 4x= 0 \Rightarrow 2\cos \left( \dfrac{6x+4x}{2}\right)  \sen \left( \dfrac{6x-4x}{2}\right)=0 \Rightarrow 2\cos 5x \sen x =0 $
+
+Hallamos las soluciones en cada uno de los casos:
+
+$\cos 5x = 0 \Rightarrow 5x= \begin{cases} 90\g+k\cdot 360\g \\ 270\g+k\cdot 360\g \end{cases} \Rightarrow x= \begin{cases} 18\g+k\cdot 72\g \\ 54\g+k\cdot 72\g \end{cases} \quad (k \in \Z)$
+ 
+$\sen x = 0 \Rightarrow x= \begin{cases} 0\g+k\cdot 360\g \\ 180\g+k\cdot 360\g \end{cases} \quad (k \in \Z)$
+
+\end{frame}
+
+\begin{frame}{Ecuaciones trigonométricas}
+\begin{alertblock}{Ejemplo}
+Resolver la ecuación $\cos 2x+\sen x =4\sen^2 x$
+\end{alertblock}
+Transformamos la ecuación para que haya una sola razón trigonométrica.
+
+$\cos 2x+\sen x =4\sen^2 x \Rightarrow \cos^2x - \sen^2 x +\sen x = 4 \sen^2 x $
+
+$ 1-\sen^2x - \sen^2 x +\sen x = 4 \sen^2 x \Rightarrow - 6\sen^2 x +\sen x +1= 0$
+
+$\sen x = \dfrac{1\pm \sqrt{1+24}}{2} = \begin{cases} \dfrac{1}{2} \\ \\ -\dfrac{1}{3} \end{cases}$
+
+Hallamos las soluciones en cada uno de los casos:
+
+$\sen x = \dfrac{1}{2} \Rightarrow x= \begin{cases} 30\g+k\cdot 360\g \\ 150\g+k\cdot 360\g \end{cases} \quad (k \in \Z)$
+ 
+$\sen x = -\dfrac{1}{3} \Rightarrow x= \begin{cases} 199,17\g+k\cdot 360\g \\ 340,53\g+k\cdot 360\g \end{cases} \quad (k \in \Z)$
+
+\end{frame}
+
+
+\end{document}

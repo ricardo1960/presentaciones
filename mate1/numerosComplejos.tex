@@ -1,0 +1,251 @@
+\documentclass[8pt]{beamer}
+%\usetheme{CambridgeUS}
+\logo{\includegraphics[scale=0.10]{../imagenes/logoa}}
+\usepackage[spanish]{babel}
+%\usecolortheme{seahorse}
+%\usepackage{beamerthemeblackboard}
+%\usepackage{graphics}
+%\usecolortheme[RGB={6,138,200}]{structure}
+%\usepackage[orientation=landscape, size=custom,
+ % width=16, height=9, scale=0.5]{beamerposter}
+%\usepackage[utf8]{inputenc}
+\usetheme{metropolis}
+\metroset{titleformat=smallcaps,block=fill}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{tikz} 
+\usetikzlibrary{matrix}
+\usetikzlibrary{calendar,decorations.markings} 
+\usetikzlibrary{shapes,positioning}
+
+\usepackage{tkz-tab,tkz-euclide,tkz-fct}
+\usetkzobj{all}  
+\usepackage{tcolorbox} 
+%\usepackage{enumitem} 
+\usepackage{tasks} 
+\usepackage{asymptote}  
+
+\newcommand{\sen}{\mathop{\rm sen}\nolimits}
+\newcommand{\arcsen}{\mathop{\rm arcsen}\nolimits}
+\newcommand{\tg}{\mathop{\rm tg}\nolimits}
+\newcommand{\arctg}{\mathop{\rm arctg}\nolimits}
+\newcommand{\cotg}{\mathop{\rm cotg}\nolimits}
+\newcommand{\arccotg}{\mathop{\rm arccotg}\nolimits}
+        
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\limite}[2]{\displaystyle \lim_{x \rightarrow #1}{#2}}
+\renewcommand{\vector}[1]{\overrightarrow{#1}}
+\newcommand{\g}{{}^\circ}
+\newtcbox{\resultado}[1][center]{#1,colback=red!5!white,
+colframe=red!75!black}
+
+\newtcbox{\resaltado}[1][center]{#1,colback=blue!5!white,
+colframe=blue!75!black}
+\definecolor{titleColor}{rgb}{0.0, 0.42, 0.24}
+
+\title{Números Complejos}
+\author{Ricardo Mateos}
+\institute[UHEI-IVED]{Departamento de Matemáticas \\ UHEI - IVED}
+\date{Matemáticas I}
+\begin{document}
+%\ECFJD
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\section{Números complejos}
+
+\begin{frame}[t]{Números complejos}
+\begin{exampleblock}{Ejemplo}
+Resolver la siguiente ecuación: $x^2-6x+13=0$
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Números complejos}
+\begin{exampleblock}{Ejemplo}
+Rellenar la siguiente tabla:
+\end{exampleblock}
+\begin{tabular}{|p{3cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+\hline
+& $3+2i$ & $-4+i$ & $-2-4i$ & $ 3i$ & $6 $  \\ \hline
+Parte real & &  & & & \\ \hline
+Parte imaginaria & & & & & \\ \hline
+Opuesto & & & & &  \\ \hline
+Conjugado  & & & & & \\ \hline
+\end{tabular}
+
+\end{frame}
+
+
+\section{Operaciones con números complejos}
+\begin{frame}[t]{Suma, resta, multiplicación y división}
+\begin{exampleblock}{Ejemplo}
+Dados los siguientes números complejos: $z_1= 2-i $, $z_ 2= -3+2i$, $z_3= -1+4i$ y $z_4=2i$, realizar las siguientes operaciones:
+\begin{tasks}[label=\alph*)](3)
+\task $z_1+z_2$
+\task $z_2-3z_3$
+\task $3z_1+4z_2- 3z_3$
+\task $z_1\cdot z_2$
+\task $z_2\cdot z_3$
+\task $z_1\cdot z_2 \cdot z_3$
+\task $\dfrac{z_1}{z_2}$
+\task $\dfrac{z_3}{z_4}$
+\task $ \dfrac{z_1 \cdot z_2}{z_3 \cdot z_4}$
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Potencias de números complejos}
+\begin{exampleblock}{Ejemplo}
+Calcular las siguientes potencias:
+\begin{tasks}[label=\alph*)](3)
+\task $(2i)^5$
+\task $(1-i)^4$
+\task $(2+2i)^3$
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Operaciones con números complejos}
+\begin{exampleblock}{Ejemplo}
+Hallar $x$ para que $(25-xi)^2$ sea imaginario puro.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Operaciones con números complejos}
+\begin{exampleblock}{Ejemplo}
+Hallar $a$ y $b$ para que se cumpla $(2-ai)\cdot(3-bi)=8+4i$
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[t]{Operaciones con números complejos}
+\begin{exampleblock}{Ejemplo}
+Hallar $a$ y $b$ para que se cumpla $a-3i= \dfrac{2+bi}{5-3i}$
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[t]{Operaciones con números complejos}
+\begin{exampleblock}{Ejemplo}
+Hallar  $b$ para que el producto  $(3-6i)\cdot(4+bi)$ sea un número:
+\begin{tasks}[label=\alph*)](2)
+\task Imaginario puro.
+\task Real.
+\end{tasks}
+\end{exampleblock}
+
+\end{frame}
+
+\section{Números complejos en forma polar}
+\begin{frame}[t]{Representación de números complejos}
+\begin{exampleblock}{Ejemplo}
+Representar los siguientes números complejos:
+\begin{tasks}[label=\alph*)](2)
+\task $3+2i$
+\task $2-i$
+\task $-4+3i$
+\task $-2-3i$
+\task $4$
+\task $-3i$
+\end{tasks}
+\end{exampleblock}
+
+
+\end{frame}
+
+\begin{frame}[t]{Representación de números complejos}
+\begin{exampleblock}{Ejemplo}
+Hallar la solución de la siguiente ecuación y representarla en el plano complejo:
+\[ z^2-4z+13=0 \]
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Números complejos en forma polar}
+\begin{exampleblock}{Ejemplo}
+Expresar en forma polar los siguientes números complejos:
+\begin{tasks}[label=\alph*)](3)
+\task $1+i$
+\task $-\sqrt{3}-i$
+\task $2i$
+\task $4$
+\task $2\sqrt{3}-2i$
+\task $-1+\sqrt{3}i$
+\end{tasks}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[t]{Operaciones en forma polar}
+\begin{exampleblock}{Ejemplo}
+Realizar las siguientes operaciones en forma polar:
+\begin{tasks}[label=\alph*)](2)
+\task $1_{120} \cdot 2_{280}$
+\task $\left(\sqrt{2} \right)_{45} \cdot \left( 2\sqrt{3} \right)_{90}$
+\task $\dfrac{6_{270}}{6_{90}}$
+\task $\dfrac{4_{30}}{2_{120}}$
+\task $\left( 2_{30}\right)^6$
+\task $\left( 1_{120}\right)^5$
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Operaciones en forma polar}
+\begin{exampleblock}{Ejemplo}
+Realizar las siguientes operaciones:
+\begin{tasks}[label=\alph*)](2)
+\task $\left( \dfrac{\sqrt{2}}{2}+ \dfrac{\sqrt{2}}{2} i\right)^8$
+\task $\left( 2\sqrt{3}-2i \right)^5 $
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}[t]{Radicales de números complejos}
+\begin{exampleblock}{Ejemplo}
+Calcular las siguientes raices:
+\begin{tasks}[label=\alph*)](2)
+\task $\sqrt[3]{-i}$
+\task $\sqrt[4]{16_{120}}$
+\task $\sqrt[8]{6561}$
+\task $\sqrt[5]{2_{150}}$
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Radicales en forma polar}
+\begin{exampleblock}{Ejemplo}
+Halla las siguientes raices:
+\begin{tasks}[label=\alph*)](2)	
+\task $\sqrt[3]{\dfrac{1-i}{1+i}}$
+\task $\sqrt[5]{\dfrac{-64}{\sqrt{3}+i}}$
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Ecuaciones}
+\begin{exampleblock}{Ejemplo}
+Resolver las siguientes ecuaciones.
+\begin{tasks}[label=\alph*)](2)
+\task $z^3-6z^2+12z-16=0$
+\task $z^4 -256 =0 $
+\task $z^3-8=0$
+\task $z^4+\left(1+\sqrt{3}i\right)=0$
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+\end{document}

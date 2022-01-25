@@ -1,0 +1,83 @@
+\documentclass[8pt]{beamer}
+%\usetheme{CambridgeUS}
+\logo{\includegraphics[scale=0.10]{../imagenes/logoa}}
+\usepackage[spanish]{babel}
+%\usecolortheme{seahorse}
+%\usepackage{beamerthemeblackboard}
+%\usepackage{graphics}
+%\usecolortheme[RGB={6,138,200}]{structure}
+%\usepackage[orientation=landscape, size=custom,
+ % width=16, height=9, scale=0.5]{beamerposter}
+%\usepackage[utf8]{inputenc}
+\usetheme{metropolis}
+\metroset{titleformat=smallcaps,block=fill}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{tikz} 
+\usetikzlibrary{matrix}
+\usetikzlibrary{calendar,decorations.markings} 
+\usetikzlibrary{shapes,positioning}
+
+\usepackage{tkz-tab,tkz-euclide,tkz-fct}
+\usetkzobj{all}  
+\usepackage{tcolorbox} 
+%\usepackage{enumitem} 
+\usepackage{tasks} 
+\usepackage{asymptote}  
+\usepackage{cancel}
+\newcommand{\sen}{\mathop{\rm sen}\nolimits}
+
+\newcommand{\tg}{\mathop{\rm tg}\nolimits}
+\newcommand{\arcsen}{\mathop{\rm arcsen}\nolimits}
+\newcommand{\arctg}{\mathop{\rm arctg}\nolimits}
+\newcommand{\g}{{}^\circ}     
+        
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\limite}[2]{\displaystyle \lim_{x \rightarrow #1}{#2}}
+\renewcommand{\vector}[1]{\overrightarrow{#1}}
+
+\newtcbox{\resultado}[1][center]{#1,colback=red!5!white,
+colframe=red!75!black}
+
+\newtcbox{\resaltado}[1][center]{#1,colback=blue!5!white,
+colframe=blue!75!black}
+\definecolor{titleColor}{rgb}{0.0, 0.42, 0.24}
+
+\title{Representación de funciones}
+\author{Ricardo Mateos}
+\institute[UHEI-IVED]{Departamento de Matemáticas \\ UHEI - IVED}
+\date{Matemáticas II}
+\begin{document}
+%\ECFJD
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\begin{frame}[t]{Funciones racionales}
+\begin{exampleblock}{Ejemplo}
+Sea f la función de variable real definida mediante la expresión: $f(x)=\dfrac{2x}{x^2+1}$
+
+\begin{tasks}[label=\alph*)](1)
+\task Determine el dominio de continuidad, simetrías, corte con los ejes, y asíntotas de la función $f$.
+\task Calcule, si existen, los extremos relativos y absolutos, e intervalos de crecimiento y decrecimiento de $f$.
+\task Calcule, si existen, los puntos de inflexión de $f$.
+\task Dibuje la gráfica de $f$.
+\end{tasks}
+ 
+\end{exampleblock}
+\end{frame}
+\end{document}

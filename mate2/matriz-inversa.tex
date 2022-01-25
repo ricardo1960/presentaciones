@@ -1,0 +1,403 @@
+\documentclass[9pt]{beamer}
+\usetheme{metropolis}
+%\usetheme{Warsaw}
+\metroset{titleformat=smallcaps,block=fill}
+\usecolortheme{seahorse}
+%\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz} 
+\usetikzlibrary{matrix}
+\usetikzlibrary{calendar,decorations.markings} 
+\usetikzlibrary{shapes,positioning}
+
+\usepackage{tkz-tab,tkz-euclide,tkz-fct}
+\usetkzobj{all}
+
+\usepackage{tcolorbox}
+\usepackage{varwidth}
+\newtcbox{\resultado}[1][center]{#1,colback=red!5!white,
+colframe=red!75!black,varwidth upper}
+
+\newtcbox{\resaltado}{colback=blue!5!white,
+colframe=blue!75!black,varwidth upper}
+
+\usepackage{polynom}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newenvironment{gaussjordandos}{\left( \begin{array}{cc|cc}}{\end{array}\right)}
+\newenvironment{gaussjordantres}{\left( \begin{array}{ccc|ccc}}{\end{array}\right)}
+
+\author{Departamento de Matemáticas}
+\title{Matriz Inversa}
+%\subtitle{Definición y cálculo}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{\includegraphics[scale=0.05]{../../images/logoa.jpg}} 
+%\institute{UHEI - IVED} 
+\date{\includegraphics[scale=0.15]{imagenes/logoa.jpg}} 
+%\subject{} 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\section{Definición}
+
+\begin{frame}{Definición}
+
+\begin{alertblock}{Definición de matriz inversa}
+La matriz inversa de una matriz cuadrada $A$ de orden $n$ es otra matriz $A^{-1}$ de orden $n$ que verifica:
+\[
+A\cdot A^{-1}=A^{-1} \cdot A = I
+\]
+Las matrices que tienen inversa se llaman \textbf{matrices regulares} y las que no tienen inversa se llaman \textbf{matrices singulares}.
+\end{alertblock}
+\end{frame}
+
+
+\begin{frame}{Métodos de calculo de la matriz inversa}
+
+Para calcular la matriz inversa vamos a utilizar tres procedimientos:
+\begin{enumerate}[<+-|alert@+>]
+\item Mediante la definición.
+\item Método de Gauss-Jordan.
+\item Por determinantes.
+\end{enumerate}
+
+\end{frame}
+
+\section{Calculo mediante la definición}
+
+\begin{frame}{Cálculo mediante la definición}
+En este procedimento escribiremos cada elemento de la matriz inversa como una incógnita y mediante la definición de matriz inversa plantearemos un sistema de ecuaciones que luego resolveremos calculando de esta manera cada uno de los elementos de la matriz inversa.
+
+\end{frame}
+
+\begin{frame}{Cálculo mediante la definición}
+
+\begin{exampleblock}{Ejemplo}
+Dada la matriz    $A= \begin{pmatrix} 
+ 2& -1 \\
+ -7& 4 \\
+\end{pmatrix}$, hallar su inversa, si existe.
+\end{exampleblock}
+\onslide*<2-4>{
+La matriz $A$ es de orden $2$, por lo tanto, la inversa también será de orden $2$.
+
+Es decir, $A^{-1}=\begin{pmatrix} 
+ x& y \\
+ z& t \\ 
+\end{pmatrix}$}
+
+\onslide*<3-4>{
+Utilizaremos ahora la definición de matriz inversa y calcularemos las incógnitas y la matriz inversa.
+
+$A\cdot A^{-1}= I \Leftrightarrow \begin{pmatrix} 
+ 2& -1 \\
+ -7& 4 \\
+\end{pmatrix} 
+\begin{pmatrix} 
+ x& y \\
+ z& t \\ 
+\end{pmatrix}
+=\begin{pmatrix} 
+ 1& 0 \\
+ 0& 1 \\ 
+\end{pmatrix}$}
+
+\onslide*<4>{
+Operando e igualando las dos matrices:
+
+$\begin{pmatrix} 
+ 2x-z& 2y-t \\
+ -7x+4z& -7y+4t \\ 
+\end{pmatrix}=\begin{pmatrix} 
+ 1& 0 \\
+ 0& 1 \\ 
+\end{pmatrix} \Leftrightarrow
+\left. 
+\begin{array}{l}
+ 2x-z = 1 \\
+ 2y-t = 0 \\
+ -7x+4z = 0 \\
+ -7y+4t = 1 \\
+\end{array}
+\right\rbrace
+\Rightarrow 
+\begin{array}{l}
+ x = 4 \\
+ y =1 \\
+ z =7 \\
+ t = 2 \\
+\end{array} $}
+
+\onslide*<5>{
+Luego la matriz inversa de $A=\begin{pmatrix} 
+ 2& -1 \\
+ -7& 4 \\
+\end{pmatrix}$ es:
+$A^{-1}= \begin{pmatrix}
+ 4& 1 \\
+ 7& 2 \\
+\end{pmatrix}$} 
+\end{frame}
+\section{Calculo de la matriz inversa por el método de Gauss-Jordan}
+
+\begin{frame}{Método de Gauss-Jordan}
+
+
+En este método calcularemos la matriz inversa de una matriz mediante transformaciones elementales.
+
+\pause
+
+Este método consiste en lo siguiente:
+\pause
+\begin{enumerate}[<+-|alert@+>]
+\item Tomamos una matriz formada por la matriz $A$ y la matriz identidad del mismo orden. Esta matriz la simbolizaremos por $\left( \begin{array}{c | c}
+A &  I 
+\end{array} \right) $
+\item Realizamos transformaciones elementales para llegar a la matriz: $\left( \begin{array}{c | c} I & B 
+\end{array} \right) $
+\end{enumerate}
+\onslide*<5->{
+La matriz $B$ es la inversa de la matriz $A$, es decir $A^{-1}$}
+
+\pause
+Las transformaciones elementales son las siguientes:
+\pause
+\begin{enumerate}[<+-|alert@+>]
+\item Intercambiar dos filas. $F_i \leftrightarrow F_j$
+\item Multiplicar una fila por un número distinto de cero. $F_i \rightarrow kF_i$
+\item Sumar dos filas multiplicadas por sendos números y sustituir una de estas filas por el resultado. $F_i \rightarrow kF_i+tF_j$.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Método de Gauss-Jordan}
+
+\begin{exampleblock}{Ejemplo}
+ Hallar la inversa de  la matriz:$\begin{pmatrix}
+1 & 2  \\
+2 & 3   \end{pmatrix}$.
+\end{exampleblock}
+
+\pause
+$
+\begin{gaussjordandos}
+1 & 2  & 1& 0 \\
+  2& 3  & 0& 1 \\
+\end{gaussjordandos}
+$
+\pause
+\onslide*<3>{$\alert{F_2=F_2-2F_1}$}
+\onslide*<4->{$F_2=F_2-2F_1$}
+\pause
+$
+\begin{gaussjordandos}
+ 1& 2  & 1& 0 \\
+ 0& -1  & -2& 1 \\
+\end{gaussjordandos}
+$
+\pause
+$\alert{F_1=F_1+2F_1} $
+\pause
+$\begin{gaussjordandos}
+ 1& 0  & -3& 2 \\
+ 0& -1  & -2& 1 \\
+\end{gaussjordandos}$
+\pause
+$\alert{F_2=-F_2}$
+\pause
+$
+\begin{gaussjordandos}
+ 1& 0 &  -3& 2 \\
+ 0& 1  & 2& -1 \\
+\end{gaussjordandos}
+$
+
+Luego la matriz inversa de $A$ es $A^{-1}=\begin{pmatrix}
+  -3& 2 \\
+  2& -1 \\
+\end{pmatrix}$
+
+\end{frame}
+
+\begin{frame}
+\begin{exampleblock}{Ejemplo}
+Hallar la inversa de la matriz $B=\begin{pmatrix}
+1 & -1 & 1 \\
+2 & 0 & 1 \\
+-1 & 1 & 1
+\end{pmatrix}$
+\end{exampleblock}
+
+\onslide*<2-4>{
+$ \begin{gaussjordantres} 
+1 & -1 & 1 & 1 & 0 &0 \\
+2 & 0 & 1 & 0 & 1 & 0 \\
+-1 & 1 & 1 & 0 & 0 & 1
+\end{gaussjordantres} $
+}
+\onslide*<3-4>{
+$\begin{array}{l}  \\  \rightarrow f_2=f_2-2f_1 \\  \rightarrow f_3=f_3+f_1 \end{array}$
+}
+\onslide*<4-6>{
+$\begin{gaussjordantres} 
+1 & -1 & 1 & 1 & 0 &0 \\
+0 & 2 & -1 & -2 & 1 & 0 \\
+0 & 0 & 2 & 1 & 0 & 1
+\end{gaussjordantres}$}
+\onslide*<5-6>{
+$\begin{array}{l} \rightarrow f_1=2f_1+f_2 \\ \\ \\ \end{array}$
+}
+\onslide*<6-8>{
+$\begin{gaussjordantres} 
+2 & 0 & 1 & 0 & 1 &0 \\
+0 & 2 & -1 & -2 & 1 & 0 \\
+0 & 0 & 2 & 1 & 0 & 1
+\end{gaussjordantres} $
+}
+\onslide*<7-8>{
+$\begin{array}{l} \rightarrow f_1=2f_1-f_3 \\ \rightarrow f_2=2f_2+f_3 \\ \\ \end{array} $
+}
+\onslide*<8-10>{
+$\begin{gaussjordantres} 
+4 & 0 & 0 & -1 & 2 & -1 \\
+0 & 4 & 0 & -3 & 2 & 1 \\
+0 & 0 & 2 & 1 & 0 & 1
+\end{gaussjordantres}$
+}
+\onslide*<9-10>{
+$\begin{array}{l} \rightarrow f_1=f_1/4 \\ \rightarrow f_2=f_2/4 \\ \rightarrow f_3=f_3/2 \end{array}  $
+}
+\onslide*<10-11>{
+$\begin{gaussjordantres} 
+1 & 0 & 0 & -1/4 & 1/2 & -1/4 \\
+0 & 1 & 0 & -3/4 & 1/2 & 1/4 \\
+0 & 0 & 1 & 1/2 & 0 & 1/2
+\end{gaussjordantres} $
+}
+
+\onslide*<11>{
+$B^{-1}=\begin{pmatrix}
+-1/4 & 1/2 & -1/4 \\
+ -3/4 & 1/2 & 1/4 \\
+ 1/2 & 0 & 1/2
+\end{pmatrix} $
+}
+\end{frame}
+\section{Cálculo de la matriz inversa por determinantes}
+
+\begin{frame}{Cálculo de la matriz inversa por determinantes}
+La condición necesaria y suficiente para que una matriz tenga inversa es que su determinante sea distinto de cero.
+\[ \exists A^{-1} \Leftrightarrow |A| \neq 0 \]
+
+\pause
+
+Si existe la matriz inversa se puede calcular de la siguiente forma:
+
+\begin{center}
+\resaltado{
+\[ A^{-1}= \dfrac{1}{|A|}\cdot \left[ Adj (A) \right]^t = \dfrac{1}{|A|}\cdot Adj  \left( A^t \right) \]
+} 
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Por determinantes}
+
+\begin{exampleblock}{Ejemplo por determinantes}
+Hallar la matriz inversa de :
+$A=\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & -1 \\
+2 & -1 & 1
+\end{pmatrix} $
+\end{exampleblock}
+\onslide*<2-4>{
+Hallamos el determinante de $A$.}
+
+\onslide*<3-4>{
+$|A|=0+0+0-0-1-0=-1 $}
+
+\onslide*<4>{
+Como el determinante es distinto de cero la matriz tiene inversa.}
+
+\onslide*<5>{
+Hallamos la matriz adjunta de $A$.}
+
+\onslide*<6-7>{
+$\begin{matrix}
+A_ {11}=\begin{vmatrix}
+0 & -1 \\
+-1 & 1
+\end{vmatrix}=-1 & \pause A_ {12}=-\begin{vmatrix}
+0 & -1 \\
+2 & 1
+\end{vmatrix}=-2 & A_ {13}=\begin{vmatrix}
+0 & 0 \\
+2 & -1
+\end{vmatrix}=0 \\
+A_ {21}=-\begin{vmatrix}
+0 & 0 \\
+-1 & 1
+\end{vmatrix}=0 & A_ {22}=\begin{vmatrix}
+1 & 0 \\
+2 & 1
+\end{vmatrix}=1 & A_ {23}=-\begin{vmatrix}
+1 & 0 \\
+2 & -1
+\end{vmatrix}=1 \\
+A_ {31}=\begin{vmatrix}
+0 & 0 \\
+0 & -1
+\end{vmatrix}=0 & A_ {32}=-\begin{vmatrix}
+1 & 0 \\
+0 & -1
+\end{vmatrix}=1 & A_ {33}=\begin{vmatrix}
+1 & 0 \\
+0 & 0
+\end{vmatrix}=0
+\end{matrix} $}
+
+\onslide*<7->{
+$(Adj A)= \begin{pmatrix}
+-1 & -2 & 0 \\
+0 & 1 & 1 \\
+0 & 1 & 0
+\end{pmatrix} $}
+\onslide*<8->{ 
+$\qquad \left( Adj A \right)^t=\begin{pmatrix}
+-1 & 0 & 0 \\
+-2 & 1 & 1 \\
+0 & 1 & 0
+\end{pmatrix}  $}
+
+\onslide*<9->{
+\resultado{
+$A^{-1}= \dfrac{\left( Adj A \right)^t}{|A|}=\begin{pmatrix}
+1 & 0 & 0 \\
+2 & -1 & -1 \\
+0 & -1 & 0
+\end{pmatrix}  $ 
+}}
+
+
+\end{frame}
+\end{document}
+
+
+
+
+
+

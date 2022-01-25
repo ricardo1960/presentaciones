@@ -1,0 +1,890 @@
+\documentclass[9pt]{beamer}
+\usetheme{metropolis}
+%\usetheme{Warsaw}
+\metroset{titleformat=smallcaps,block=fill}
+\usecolortheme{seahorse}
+%\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz} 
+\usetikzlibrary{matrix}
+\usetikzlibrary{calendar,decorations.markings} 
+\usetikzlibrary{shapes,positioning}
+\usepackage{tcolorbox}
+\usepackage{tkz-tab,tkz-euclide,tkz-fct}
+
+\usetkzobj{all} 
+\usepackage{polynom}
+%\usepackage{enumitem}
+\usepackage{extarrows}
+%Nuevos entornos
+\newenvironment{matrizgauss}{\left( \begin{array}{ccc|ccc}}{\end{array} \right)}
+\newenvironment{matrizampliada}{\left( \begin{array}{ccc|c}}{\end{array} \right)}
+\newenvironment{sistematres}{\left\lbrace \begin{array}{rrrrrrr}}{\end{array} \right.}
+\newenvironment{sistemados}{\left\lbrace \begin{array}{rrrr}}{\end{array} \right.}
+\newenvironment{adjunto}{\[ \begin{array}{lll}}{\end{array} \]}
+\newenvironment{sistema}{\left\lbrace \begin{array}{rrrrrr}}{\end{array} \right. }
+
+%nuevos comandos
+
+\newcommand{\limite}[2]{\displaystyle \lim_{x \rightarrow #1}{#2}}
+\newcommand{\limiteserie}[1]{\displaystyle \lim_{n \rightarrow +\infty}{#1}}
+\newcommand{\matrizdos}[4]{\begin{pmatrix} #1 & #2 \\  #3 & #4  \end{pmatrix}}
+\newcommand{\determinantedos}[4]{\begin{vmatrix} #1 & #2 \\ #3 & #4  \end{vmatrix}}
+\newcommand{\matriztres}[9]{\begin{pmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9 \end{pmatrix}}
+\newcommand{\determinantetres}[9]{\begin{vmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9 \end{vmatrix}}
+\newcommand{\filasistematres}[6]{#1 & #2 & #3 &#4 & #5 & = & #6}
+\newcommand{\integral}[1]{\displaystyle \int #1}
+\newcommand{\intdef}[3]{\displaystyle \int_#1^#2 #3}
+
+
+%%Comandos para abreviar los entornos%%
+
+\newcommand{\problema}[1]{\begin{ejer} #1  \end{ejer}}
+\newcommand{\sol}[1]{\begin{solu} #1 \end{solu}}
+
+\newtcbox{\resultado}[1][center]{#1,colback=red!5!white,
+colframe=red!75!black}
+
+\newtcbox{\resaltado}[1][center]{#1,colback=blue!5!white,
+colframe=blue!75!black}
+
+\newenvironment{gaussjordandos}{\left( \begin{array}{cc|cc}}{\end{array}\right)}
+\newenvironment{gaussjordantres}{\left( \begin{array}{ccc|ccc}}{\end{array}\right)}
+
+
+\newcommand{\R}{\mathbb{R}}
+
+\author{Departamento de Matemáticas}
+\title{Sistemas de Ecuaciones con Parámetros}
+%\subtitle{Definición y cálculo}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{\includegraphics[scale=0.05]{../../images/logoa.jpg}} 
+%\institute{UHEI - IVED} 
+\date{\includegraphics[scale=0.15]{imagenes/logoa.jpg}} 
+%\subject{} 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\begin{frame}{Discusión de un sistema con parámetros}
+Discutir un sistema con parámetros es calcular los valores del parámetro para los cuales el sistema es compatible determinado, compatible indeterminado e incompatible.
+
+Para ello, hallaremos los rangos de la matriz del sistema y de la matriz ampliada en función de los valores del parámetro y utilizando el teorema de Rouché-Fröbenius sabremos de que tipo es.
+
+Si el sistema tiene el mismo número de incógnitas que de ecuaciones es conveniente empezar con la matriz de los coeficientes ya que si el determinante de esta matriz es distinto de cero el rango de la matriz y de la matriz ampliada sera el mismo y el sistema será compatible determinado. A continuación hallaremos los rangos con los valores del parámetro que hacen cero al determinante de esta matriz.
+\end{frame}
+
+
+\begin{frame}{Sistema de dos ecuaciones con dos incógnitas }
+\begin{exampleblock}{Ejemplo}
+Discutir y resolver el siguiente sistema de ecuaciones con dos incógnitas en función del parámetro $m$.
+
+\[ \begin{cases} mx+2y = 2m \\ 2x+my = m+2 \end{cases} \]
+
+\end{exampleblock}
+
+\pause
+
+Escribimos la matriz de los coeficientes y la matriz ampliada del sistema.
+
+\[ A=\begin{pmatrix}
+m & 2 \\ 2 & m
+\end{pmatrix} \qquad A^*=\begin{pmatrix}
+m & 2 & 2m \\ 2 & m & m+2
+\end{pmatrix} \]
+\end{frame}
+
+\begin{frame}{Discusión de un sistema con parámetros}
+Tendremos en cuenta que el rango máximo de las dos matrices es 2 y además que el rango de la matriz ampliada siempre es mayor o igual que el de la matriz de los coeficientes.
+
+Por lo tanto, en este caso es conveniente empezar calculando el determinante de la matriz de los coeficientes, ya que en caso de ser distinto de cero, los rangos de las dos matrices será 2 y el sistema será compatible determinado. 
+
+\pause
+\[ \begin{vmatrix}
+m & 2 \\ 2 & m 
+\end{vmatrix}= m^2 -4  \qquad |A| = 0 \Rightarrow m^2-4 = 0 \Rightarrow \begin{cases} m= -2 \\ m= 2 \end{cases} \]
+
+\pause
+
+A continuación estudiamos los tres casos siguientes:  
+\pause
+\begin{itemize}[<+->]
+\item $m \neq -2 \wedge m \neq 2 $
+\item $m=-2$
+\item $m=2$
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{Sistema de dos ecuaciones con dos incógnitas $ \begin{cases} mx+2y = 2m \\ 2x+my = m+2 \end{cases}$ }
+
+\resaltado{$ m \neq -2 \wedge m \neq 2$ }
+
+\pause
+En este caso el determinante de $A$ es distinto de cero y por lo tanto:
+
+\[ \text{rg} A = 2 \wedge \text{rg}A^* =2 \pause \Rightarrow \text{S. C. D.} \]
+
+\pause
+Resolvemos el sistema por la regla de Cramer.
+
+
+
+\pause
+$\begin{vmatrix}
+A
+\end{vmatrix}= m^2-4 $
+
+\pause
+$\begin{vmatrix}
+A_x
+\end{vmatrix}= \begin{vmatrix}
+2m & 2 \\ m+2 & m  
+\end{vmatrix} = 2m^2-2m-4 \Rightarrow x= \dfrac{2m^2-2m-4}{m^2-4}=  \dfrac{2(m+1)}{m+2}$
+
+\pause 
+$\begin{vmatrix}
+A_y
+\end{vmatrix}=\begin{vmatrix}
+m & 2m \\ 2 & m+2  
+\end{vmatrix} = m^2-2m \Rightarrow y= \dfrac{m^2-2m}{m^2-4}=  \dfrac{m}{m+2} $
+\end{frame}
+
+\begin{frame}{Sistema de dos ecuaciones con dos incógnitas$ \begin{cases} mx+2y = 2m \\ 2x+my = m+2 \end{cases}$ }
+
+\resaltado{$ m = -2 $ } 
+
+\pause
+
+Escribimos las matrices con este valor de $m$ 
+
+\pause
+
+\[ A=\begin{pmatrix}
+-2 & 2  \\ 2 & -2  
+\end{pmatrix} \qquad A^*=\begin{pmatrix}
+-2 & 2 & -4 \\ 2 & -2 & 0 
+\end{pmatrix} \]
+
+En este caso el determinante de $A$ es  cero.
+
+Tomamos un menor de orden 1 que sea distinto de cero si lo hay.
+
+\pause
+
+\[ \begin{vmatrix}
+-2
+\end{vmatrix}=-2 \neq 0 \Rightarrow \text{rg}A=1 \]
+
+\pause
+Estudiamos el rango de la matriz ampliada orlando el menor anterior.
+
+\[ \begin{vmatrix}
+-2 & -4 \\ 2 & 0 
+\end{vmatrix}= 8 \neq 0 \Rightarrow \text{rg}A^* =2 \]
+
+\pause
+
+\[ \text{rg}A=1 \wedge \text{rg}A^* =2 \pause \Rightarrow \text{S.I.} \]
+
+
+\end{frame}
+
+\begin{frame}{Sistema de dos ecuaciones con dos incógnitas$ \begin{cases} mx+2y = 2m \\ 2x+my = m+2 \end{cases}$ }
+
+\resaltado{$ m = 2 $ } 
+
+\pause
+
+Escribimos las matrices con este valor de $m$ 
+
+\pause
+
+\[ A=\begin{pmatrix}
+2 & 2  \\ 2 & 2  
+\end{pmatrix} \qquad A^*=\begin{pmatrix}
+2 & 2 & 4 \\ 2 & 2 & 4 
+\end{pmatrix} \]
+
+En este caso el determinante de $A$ es  cero.
+
+Tomamos un menor de orden 1 que sea distinto de cero si lo hay.
+\pause
+\[ \begin{vmatrix}
+2
+\end{vmatrix}=2 \neq 0 \Rightarrow \text{rg}A=1 \]
+\pause
+Estudiamos el rango de la matriz ampliada orlando el menor anterior.
+\[ \begin{vmatrix}
+2 & 4 \\ 2 & 4 
+\end{vmatrix}=  0 \Rightarrow \text{rg}A^* =1 \]
+\pause
+\[ \text{rg}A=1 \wedge \text{rg}A^* =1 \pause \Rightarrow \text{S.C.I.} \]
+\pause
+\[ \textbf{Solución: } x= 2-\lambda \qquad y= \lambda \]
+
+\end{frame}
+
+\begin{frame}{Discusión sistema de ecuaciones con parámetros}
+\begin{exampleblock}{Discusión sistema de ecuaciones con parámetros}
+Discutir, y resolver cuando sea posible, el sistema de ecuaciones lineales según los valores del parámetro $m$
+
+\[ \left\lbrace \begin{array}{rcl}
+mx+y & = & 1 \\
+x+my & = & m \\
+2mx+2y & = & m+1
+\end{array} \right. \]
+\end{exampleblock}
+\pause
+
+Escribimos la matriz de los coeficientes y la matriz ampliada.
+
+\[ A=\begin{pmatrix}
+m & 1 \\
+1 & m \\
+2m & 2
+\end{pmatrix} \qquad A^*=\begin{pmatrix}
+m & 1 & 1 \\
+1 & m & m \\
+2m & 2 & m+1
+\end{pmatrix} \]
+\pause
+Veamos los posibles rangos de las matrices y a partir de estos datos iniciamos el estudio.
+$\text{rango} (A) \leq 2 \qquad \text{rango} (A^*) \leq 3 $
+\pause
+\end{frame}
+
+\begin{frame}{Discusión sistema de ecuaciones con parámetros}
+Empezamos estudiando el rango de $A^*$ ya que si el rango de $A^*$ es 3, el rango de $A$ sería 2 y el sistema es incompatible.
+\pause
+
+$ \begin{vmatrix}
+m & 1 & 1 \\
+1 & m & m \\
+2m & 2 & m+1
+\end{vmatrix}= m^3-m^2-m+1 $
+\pause
+
+Igualamos a cero y resolvemos: $m^3-m^2-m+1= 0 \Rightarrow \begin{cases} m=1 \\ m=-1 \end{cases}$
+\pause
+
+Por lo tanto, $\forall m \in \R - \{\pm 1\} \left. \begin{array}{l} \text{rango} (M)=3 \\  \text{rango} (A)= 2 \end{array} \right\rbrace \Rightarrow$ Sistema Incompatible.
+
+\pause
+Ahora estudiamos los casos en que $m=-1$ o $m=1$
+\end{frame}
+
+\begin{frame}{Discusión sistema de ecuaciones con parámetros}
+Para $m=-1 \qquad A=\begin{pmatrix}
+-1 & 1  \\
+1 & -1  \\
+-2 & 2  
+\end{pmatrix} 
+\qquad A^*=\begin{pmatrix}
+-1 & 1 & 1 \\
+1 & -1 & -1 \\
+-2 & 2 & 0 
+\end{pmatrix}$
+\pause
+
+Estudiamos el rango de $A$.
+\pause
+
+Las tres filas son proporcionales, luego $\text{rango}(A)=1$
+
+\pause
+Estudiamos el rango de $A^*$
+\pause
+
+$\begin{vmatrix}
+-1 & 1 \\
+-2 & 0
+\end{vmatrix}= 2 \neq 0 \Rightarrow \text{rango}(A^*)=2 $
+\pause
+
+Por lo tanto, para $m=-1$ Sistema Incompatible.
+\end{frame}
+
+\begin{frame}{Discusión sistema de ecuaciones con parámetros}
+Para $m=1 \qquad A=\begin{pmatrix}
+1 & 1  \\
+1 & 1  \\
+2 & 2  
+\end{pmatrix} 
+\qquad A^*=\begin{pmatrix}
+1 & 1 & 1 \\
+1 & 1 & 1 \\
+2 & 2 & 2 
+\end{pmatrix}$.
+\pause
+
+Estudiamos el rango de $A$. 
+\pause
+
+Las tres filas son proporcionales, luego $\text{rango}(A)=1$
+\pause
+
+Estudiamos el rango de $A^*$
+\pause
+
+Las tres filas son proporcionales, luego $\text{rango}(A^*)=1$
+\pause
+
+Por lo tanto, para $m=1$ Sistema Compatible Indeterminado.
+\end{frame}
+
+\begin{frame}{Discusión sistema de ecuaciones con parámetros}
+Resolvemos en este último caso.
+\pause
+Como los rangos son 1, nos quedamos con una sola ecuación.
+
+$x+y=1 \Rightarrow \left\lbrace \begin{array}{l}
+x= 1- \lambda \\
+y= \lambda 
+\end{array} \right.$
+\pause
+
+\end{frame}
+
+\begin{frame}
+\begin{exampleblock}{Ejemplo}
+Discutir la compatibilidad del siguiente sistema de ecuaciones:
+\[
+S=\begin{sistematres}
+	x & + & ay & + & z & = & 1 \\
+	2x & + & y & - & z & = & 1 \\
+	3x & + & y & + & az & = & 2 
+\end{sistematres}
+\]
+en función del parámetro $a$.
+\end{exampleblock}
+
+\pause
+\textbf{Solución:}
+Formamos la matriz de los coeficientes y la matriz ampliada del sistema:
+\[
+A=\begin{pmatrix}
+	1 & a & 1 \\
+	2 & 1 & -1 \\
+	3 & 1 & a
+\end{pmatrix}
+\qquad
+A^{*}=\begin{pmatrix}
+	1 & 1 & 1 & 1 \\
+	2 & 1 & -1 & 1 \\
+	3 & 1 & a & 2
+\end{pmatrix} 
+\]
+
+En este caso el rango máximo de las dos matrices es 3, por lo tanto, es conveniente empezar calculando el determinante de la matriz $A$ y hallando los valores para los cuales este determinante es distinto de cero ya que en este caso el rango de ambas matrices será 3.
+\end{frame}
+\begin{frame}
+
+Calculamos el determinante de la matriz $A$. 
+
+\[ \begin{vmatrix}
+	1 & a & 1 \\
+	2 & 1 & -1 \\
+	3 & 1 & a
+\end{vmatrix}= a-3a+2-3-2a^2+1=-2a^2-2a
+\]
+
+
+\pause
+Igualamos a cero:
+
+\[ -2a^2-2a=0 \rightarrow \left\lbrace \begin{array}{l} a=0 \\ a=-1 \end{array} \right. \]
+\pause
+
+Ahora discutimos el sistema según los valores de $a$.
+
+\end{frame}
+
+\begin{frame}
+
+\resaltado{$a\neq 0 \wedge a \neq -1$}
+
+\pause
+
+En este caso $\begin{vmatrix}
+A
+\end{vmatrix} \neq 0 $ y por lo tanto:
+
+\pause
+\[ rg(A)=3 \wedge rg(A^*)=3 \rightarrow \pause \text{Sistema Compatible Determinado} \]
+\end{frame}
+
+\begin{frame}
+Si $a=0$ 
+
+\[ A=\begin{pmatrix}
+	1 & 0 & 1 \\
+	2 & 1 & -1 \\
+	3 & 1 & 0
+\end{pmatrix}
+\qquad
+M=\begin{pmatrix}
+	1 & 0 & 1 & 1 \\
+	2 & 1 & -1 & 1 \\
+	3 & 1 & 0 & 2
+\end{pmatrix} 
+\]
+
+\pause
+Calculamos el rango de $A$.
+
+\[ \begin{vmatrix}
+	 1 & 0 \\
+ 	2 & 1
+\end{vmatrix}= 1-0=1 \neq 0 \rightarrow rg(A)=2\]
+
+\pause
+Estudiamos el rango de $A^*$
+
+\[ \begin{vmatrix}
+	1 & 0& 1 \\
+	2 & 1 & 1 \\
+	3 & 1 & 2
+\end{vmatrix}= 2+0+2-3-1-0=0 \rightarrow rg(A^*)=2
+\]
+
+\pause
+En este caso $r(A)=rg(A^*)=2 < \text{número de incognitas} \rightarrow$Sistema Compatible Indeterminado
+\end{frame}
+
+\begin{frame} 
+
+Si $a=-1$ 
+
+\[ A=\begin{pmatrix}
+	1 & -1 & 1 \\
+	2 & 1 & -1 \\
+	3 & 1 & -1
+\end{pmatrix}
+\qquad
+A^*=\begin{pmatrix}
+	1 & -1 & 1 & 1 \\
+	2 & 1 & -1 & 1 \\
+	3 & 1 & -1 & 2
+\end{pmatrix} 
+\]
+
+\pause
+Calculamos el rango de $A$.
+
+\[ \begin{vmatrix}
+	 1 & -1 \\
+ 	2 & 1
+\end{vmatrix}= 1+2=3 \neq 0 \rightarrow rg(A)=2\]
+
+\pause
+Estudiamos el rango de $A^*$
+
+\[ \begin{vmatrix}
+	1 & -1 & 1 \\
+	2 & 1 & 1 \\
+	3 & 1 & 2
+\end{vmatrix}= 2-3+2-3-1+4=1 \rightarrow rg(A^*)=3
+\]
+
+En este caso $r(A)=2 \neq rg(A^*)=3 \rightarrow \text{Sistema Incompatible}$
+\end{frame}
+
+\begin{frame}
+
+
+Resumiendo 
+\pause
+
+$\left\lbrace 
+\begin{array}{lll} 
+a\neq 1 \wedge a \neq -2 & rg(A)=rg(A^*)=3=\text{nº incógnitas} & \text{S.C.D.} \\
+a=0 & rg(A)=rg(A^*)=2 <\text{nº incógnitas} & \text{S.C.I.} \\
+a=-1 & rg(A)=2 \quad rg(A^*)=3 & \text{S.I.}
+\end{array}
+\right.$
+\end{frame}
+
+\begin{frame}
+\begin{exampleblock}{Ejemplo}
+Dado el sistema de ecuaciones:
+\[
+S=\begin{sistematres}
+	x & + & y & + & z & = & 2 \\
+	2x & + & y & & & = & 0 \\
+	3x & + & 2y & + & az & = &2a 
+\end{sistematres}
+\]
+
+\begin{enumerate}
+\item Demostrar que es compatible para todos los valores de $a$.
+\item Resolver en los casos en que sea compatible indeterminado.
+\end{enumerate}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}
+\begin{exampleblock}{Ejemplo}
+
+Un museo ofrece entradas con tarifas distintas: adulto, niño y jubilado. La suma de las tarifas de adulto y jubilado es cinco veces la tarifa de niño. Además, se sabe que un grupo de 5 adultos, 3 niños y 3 jubilados, ha pagado 222 euros; y otro grupo de 3 adultos, 2 niños y 4 jubilados, 168 euros.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+\begin{exampleblock}{ejemplo}
+Tres nietos desean hacer un regalo de 60 euros a su abuela y deciden reunir esta cantidad de la siguiente forma: Luis, el mayor, aporta el triple de lo que aportan los otros dos juntos. Carmen aporta 3 euros por cada dos que aporta Pedro.
+a) Plantear el sistema de ecuaciones lineales.
+b) Resolver el sistema.
+c) ¿Cuánto aporta cada nieto?
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+En un cajero automático hay billetes de 10, 20 y 50 euros. Sabemos que hay 130 billetes y 3000 euros, además sabemos que la cantidad de billetes de 10 euros es doble que la de 50 euros. Calcula cuántos billetes hay de cada tipo.
+\end{frame}
+
+\begin{frame}
+\begin{exampleblock}{Ejemplo}
+Una fábrica de tabletas de chocolate ha usado 200 kilogramos de chocolate y 100 litros de leche en la producción de dos tipos de tabletas A y B. Cada tableta de tipo A usa 0,2 kilogramos de chocolate y 0,1 litros de leche y cada tableta de tipo B usa $m$ kilogramos de chocolate y 0,2 litros de leche.
+a) 
+b) 
+\begin{enumerate}
+\item Plantea un sistema de ecuaciones (en función de $m$) donde las incógnitas $x$ e $y$ sean el número de tabletas producidas de tipo A y B, respectivamente. ¿Para qué valores de $m$ el sistema tiene solución? En caso de existir solución, ¿es siempre única?
+\item Si cada tableta de tipo B precisa de 0,4 kg de chocolate y se produjeron 200 tabletas de tipo B, ¿cuántas se habrán producido de tipo A?
+\end{enumerate}
+
+\end{exampleblock}
+\end{frame}
+
+\end{document}
+
+
+\begin{cejercicios}
+\begin{ejer}
+Considera el siguiente sistema de ecuaciones lineales,
+\[ \begin{sistematres}
+x & - & y & + & mz &= & 0 \\
+mx & + & 2y & + & z & = & 0 \\
+-x & + & y & + & 2mz & = & 0
+\end{sistematres} \]
+
+
+
+\bex
+\itemps {Halla los valores del parámetro $m$ para los que el sistema tiene una única solución.}{}
+\itemps {Halla los valores del parámetro $m$ para los que el sistema tiene alguna solución distinta de la solución nula.}{}
+\itemps {Resuelve el sistema para $m=2$}{}
+\eex
+\end{ejer}
+
+\begin{ejer}
+Considera el siguiente sistema de ecuaciones lineales,
+\[ \begin{sistematres}
+x & + & (m+1)y & + & 2z &= & -1 \\
+mx & + & y & + & z & = & m \\
+(1-m)x & + & 2y & + & z & = & -m-1
+\end{sistematres} \]
+
+\bex
+\itemps {Discute el sistema según los valores del parámetro $m$.}{}
+\itemps {Resuelve el sistema para $m=2$. Para dicho valor de $m$, calcula, si es posible, una solución en la que $z=2$}{}
+\eex
+\end{ejer}
+
+\end{cejercicios}
+
+
+\newpage
+\section{Problemas}
+
+
+\begin{exampleblock}
+En un comercio de bricolaje se venden listones de madera de tres longitudes: 0,90m, 1,50m y 2,40m, cuyos precios respectivos son 4 euros, 6 euros y 10 euros. Un cliente ha comprado 19 listones, con una longitud total de 30m, que le han costado 126 euros en total.
+
+Plantee y resuelva el sistema de ecuaciones necesario para determinar cuántos listones de cada longitud ha comprado ese cliente.
+\end{exampleblock}
+
+\textbf{Solución:}
+
+Las incógnitas serán:
+\[ \left\lbrace 
+\begin{array}{ccc} 
+	x&=&\text{Listones de 0,90m} \\ 
+	y&=&\text{Listones de 1,50m} \\
+	z&=&\text{Listones de 2,40m}
+\end{array}
+\right.
+\]
+
+Según las condiciones del problema:
+\[
+\left\lbrace
+\begin{array}{ccc}
+\text{Cantidad total de listones = 19}& \rightarrow  & x+y+z=19 \\
+\text{Longitud total de los listones = 30m} &  \rightarrow & 0,90x+1,50y+2,40z= 30 \\
+\text{Precio total de los listones = 126 euros} & \rightarrow & 4x+6y+10z=126 
+\end{array}
+\right. \]
+
+El sistema resultante es:
+
+\[
+\begin{sistematres}
+x&+&y&+&z&=&19 \\
+0,9x&+&1,5y&+&2,4z&=& 30 \\
+4x&+&6y&+&10z&=&126
+\end{sistematres}
+\]
+
+que es un sistema lineal donde:
+
+\[ A=\begin{pmatrix}
+1 & 1 & 1 \\
+0,9 & 1,5 & 2,4 \\
+4&6&10 
+\end{pmatrix} \Rightarrow 
+|A| = \begin{vmatrix}
+1 & 1 & 1 \\
+0,9 & 1,5 & 2,4 \\
+4&6&10 
+\end{vmatrix} = 15+9,6+5,4-6-14,4-9=0,6 \]
+
+Luego el sistema es compatible determinado.
+
+La solución, por la regla de Cramer, es:
+
+\[
+x=\dfrac{1}{0,6} \begin{vmatrix}
+ 19& 1&1 \\
+ 30 & 1,5 & 2,4 \\
+ 126 & 6 & 10
+\end{vmatrix}= \dfrac{4,8}{0,6}= 8
+\]
+\[
+y=\dfrac{1}{0,6} \begin{vmatrix}
+ 1& 19&1 \\
+0,9 & 30 & 2,4 \\
+4 & 126 & 10
+\end{vmatrix}= \dfrac{2,4}{0,6}= 6
+\]
+\[
+z=\dfrac{1}{0,6} \begin{vmatrix}
+ 1& 1&19 \\
+ 0,9 & 1,5 & 30 \\
+ 4 & 6 & 126
+\end{vmatrix}= \dfrac{4,2}{0,6}= 7
+\]
+
+Ha comprado 8 listones de 0,9m, 6 listones de 1,5m y 7 listones de 2,4m.
+
+\newpage
+\section{Ejercicios}
+
+\begin{cejercicios}
+
+\begin{ejer}
+Dado el siguiente sistema de ecuaciones:
+\[ \left\lbrace \begin{array}{ccc}
+x+y+az & = & 1 \\
+x+ay+z & = & a \\
+ax+y+z & = & 1
+\end{array}
+\right.
+ \]
+\bex
+\itemps {Discutir el sistema en función del parámetro $a$}{$\begin{array}{l}
+a \in \R -\{-2,1\} \\ \text{S. Compatible Determinado} \\
+a=1 \\ \text{S. Compatible Indeterminado} \\
+a=-2 \\ \text{S. Compatible Indeterminado} \\
+\end{array} $}
+\itemps {Si es posible, resolverlo para el valor de $ a= -2 $}{$x=\lambda$, $y=1+\lambda$, $z=\lambda$}
+\eex
+\end{ejer}
+
+\begin{ejer}
+
+\bex
+\itemps {Discute el siguiente sistema de ecuaciones en función del parámetro $a$
+\[ \begin{sistematres} 
+\filasistematres x + y + {az}  1  \\
+\filasistematres{x}{+}{ay}{+}{z}{a} \\
+\filasistematres{ax}{+}{y}{+}{z}{1}
+\end{sistematres}\]}{•}
+\itemps {Si es posible, resuélvalo para el valor de $a=-2$}{•}
+\eex
+\end{ejer}
+
+\begin{ejer}
+Dado el sistema:
+\[ \begin{sistematres} 
+\filasistematres{(a+1)x}{+}{y}{+}{z}{a+1} \\
+\filasistematres{x}{+}{(a+1)y}{+}{z}{a+3} \\
+\filasistematres{x}{+}{y}{+}{(a+1)z}{-2a-4}
+ \end{sistematres} \]
+\bex
+\itemps {Estudie su compatibilidad según los distintos valores del número real $a$}{•}
+\itemps {Resuélvalo, si es posible, en el caso $a=3$}{•}
+\eex
+\end{ejer}
+
+\begin{ejer}
+Dado el sistema:
+\[ \begin{sistematres} 
+\filasistematres{x}{+}{(a-1)y}{+}{z}{1} \\
+\filasistematres{ax}{+}{(2a-2)y}{+}{2z}{0} \\
+\filasistematres{(a+1)x}{+}{(3a-3)y}{+}{(a+3)z}{0}
+ \end{sistematres} \]
+\bex
+\itemps {Estudie su compatibilidad según los distintos valores del número real $a$}{•}
+\itemps {Resuélvalo, si es posible, en el caso $a=1$}{•}
+\eex
+\end{ejer}
+
+\begin{ejer}
+Dado el sistema:
+\[ \begin{sistematres} 
+\filasistematres{ax}{-}{ay}{+}{3z}{a} \\
+\filasistematres{-2x}{+}{3y}{-}{2z}{-1} \\
+\filasistematres{2x}{-}{y}{+}{z}{a}
+ \end{sistematres} \]
+\bex
+\itemps {Estudie su compatibilidad según los distintos valores del número real $a$}{•}
+\itemps {Resuélvalo, si es posible, en el caso $a=1$}{•}
+\eex
+\end{ejer}
+
+\section{Sistemas con parámetros}
+
+
+
+
+\textbf{Solución:}
+
+\begin{enumerate}
+\item 
+
+Formamos la matriz de los coeficientes y la matriz ampliada del sistema:
+\[
+A=\begin{pmatrix}
+	1 & 1 & 1 \\
+	2 & 1 & 0 \\
+	3 & 2 & a
+\end{pmatrix}
+\qquad
+M=\begin{pmatrix}
+	1 & 1 & 1 & 2 \\
+	2 & 1 & 0 & 0 \\
+	3 & 2 & a & 2a
+\end{pmatrix} 
+\]
+
+Calculamos el determinante de la matriz $A$. 
+
+\[ \begin{vmatrix}
+	1 & 1& 1 \\
+	2 & 1 & 0 \\
+	3 & 2 & a
+\end{vmatrix}= a+0+4-3-0-2a=-a+1
+\]
+
+Si el valor del determinante es distinto de cero el rango de $A$ será $3$, en caso contrario será menor que $3$.
+Igualamos a cero:
+
+\[ -a+1=0 \rightarrow a=1 \]
+
+Ahora discutimos el sistema según los valores de $a$.
+
+Si $a\neq 1 \rightarrow rg(A)=3$. Sabemos que $rg(M)\geq rg(A) =3$. Como la matriz $M$ solo tiene $3$ filas $rg(M)\leq 3$, por lo tanto, $rg(M)=3$.
+
+En consecuencia: Si $a \neq 1 \rightarrow rg(A)=rg(M)=3=\text{número de incógnitas} \rightarrow $ Sistema Compatible Determinado.
+
+Si $a=1$ 
+
+\[ A=\begin{pmatrix}
+	1 & 1 & 1 \\
+	2 & 1 & 0 \\
+	3 & 2 & 1
+\end{pmatrix}
+\qquad
+M=\begin{pmatrix}
+	1 & 1 & 1 & 2 \\
+	2 & 1 & 0 & 0 \\
+	3 & 2 & 1 & 2
+\end{pmatrix} 
+\]
+
+Calculamos el rango de $A$.
+
+\[ \begin{vmatrix}
+	 1 & 1 \\
+ 	2 & 1
+\end{vmatrix}= 1-2=-1 \neq 0 \rightarrow rg(A)=2\]
+
+Estudiamos el rango de $M$
+
+\[ \begin{vmatrix}
+	1 & 1& 2 \\
+	2 & 1 & 0 \\
+	3 & 2 & 2
+\end{vmatrix}= 2+0+8-6-0-4=0 \rightarrow rg(M)=2
+\]
+
+En este caso $r(A)=rg(M)=2 < \text{número de incognitas} \rightarrow$Sistema Compatible Indeterminado
+
+Resumiendo $\left\lbrace 
+\begin{array}{lll} 
+a\neq 1 & rg(A)=rg(M)=3=\text{nº incógnitas} & \text{S.C.D.} \\
+a=1 & rg(A)=rg(M)=2 <\text{nº incógnitas} & \text{S.C.I.}
+\end{array}
+\right.$
+
+\item Resolvemos cuando $a=1$.
+
+Como el rango de las matrices es $2$ tenemos que eliminar una ecuación y pasar una incógnita al otro lado.
+
+Como el determinante de orden $2$ que es distinto de cero incluye la primera, la segunda fila y la primera y la segunda columna, eliminamos la tercera ecuación y pasamos la incógnita $z$ al otro miembro, quedando el sistema de la siguiente forma:
+
+\[ \begin{sistematres}
+	x&+&y&=&2-z \\
+	2x&+&y&=&0
+\end{sistematres} \]
+
+Lo resolvemos por Cramer:
+
+\[ A=\begin{pmatrix}
+	1 & 1 \\
+	2 & 1
+\end{pmatrix}
+\Longrightarrow
+\begin{vmatrix}
+	1 & 1 \\
+	2 & 1
+\end{vmatrix}= 1-2=-1
+\]
+\[ x=\dfrac{1}{-1} 
+\begin{vmatrix}
+	2-z & 1 \\
+	0 & 1
+\end{vmatrix} =-2+z \qquad 
+y=\dfrac{1}{-1} 
+\begin{vmatrix}
+	1 & 2-z  \\
+	2 & 0
+\end{vmatrix} =4-2z \]
+
+Haciendo $z=\lambda $, la solución es: $(x,y,z)=(-2+\lambda , 4 - 2 \lambda , \lambda)$.
+
+\end{enumerate}

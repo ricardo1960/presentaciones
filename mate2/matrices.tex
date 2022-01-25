@@ -1,0 +1,745 @@
+\documentclass[9pt]{beamer}
+\usetheme{metropolis}
+%\usetheme{Warsaw}
+\metroset{titleformat=smallcaps,block=fill}
+\usecolortheme{seahorse}
+%\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz} 
+\usetikzlibrary{matrix}
+\usetikzlibrary{calendar,decorations.markings} 
+\usetikzlibrary{shapes,positioning}
+
+\usepackage{tkz-tab,tkz-euclide,tkz-fct}
+
+\usetkzobj{all} 
+\usepackage{polynom}
+
+\newcommand{\R}{\mathbb{R}}
+
+\author{Departamento de Matemáticas}
+\title{Matrices}
+%\subtitle{Definición y cálculo}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{\includegraphics[scale=0.05]{../../images/logoa.jpg}} 
+%\institute{UHEI - IVED} 
+\date{\includegraphics[scale=0.15]{imagenes/logoa.jpg}} 
+%\subject{} 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\section{Definiciones. Tipos de matrices}
+
+\subsection{Definiciones}
+
+\begin{frame}{Definición}
+\begin{alertblock}{Definición}
+Una {\bf matriz de dimensión $m \times n$}  es un conjunto de números ordenados en m filas y n columnas de la forma:
+ \[ A=\begin{pmatrix} 
+ a_{11} & a_{12} & \cdots & a_{1n} \\
+ a_{21} & a_{22} & \cdots & a_{2n} \\
+  \vdots  & \vdots  & \cdots & \vdots \\
+ a_{m1} & a_{m2} & \cdots & a_{mn} \\
+\end{pmatrix}
+\]
+\end{alertblock}
+\pause
+
+Cada elemento genérico de la matriz se designa por $a_{ij}$, donde $i$ es el número de fila que ocupa y $j$ es el número de fila.
+
+\pause
+
+Dos matrices de la misma dimensión $A_{mxn}=(a_{ij})$ y $B_{mxn}=(b_{ij})$ son iguales si $a_{ij}=b_{ij}\quad \forall i,j$
+\end{frame}
+
+\begin{frame}{Ejemplos}
+\begin{exampleblock}{Ejemplo}
+
+Dada la matriz
+$A= \begin{pmatrix}  -1 & 1  \\  2 & -3 \\  3 & -5 \\ \end{pmatrix}$ , escribir su dimensión y los elementos $a_{12}$, $a_{22}$ y $a_{31}$
+
+\end{exampleblock}
+
+\pause
+
+La matriz tiene 3 filas y  2 columnas, luego su dimensión es $3x2$.
+
+\pause 
+
+$a_{12} = 1$, $a_{22}= -3$ y $a_{31}=3$
+
+\end{frame}
+
+\begin{frame}{Ejemplos}
+\begin{exampleblock}{Ejemplo}
+
+Hallar los valores de $x$ e $y$ para que las matrices $ \begin{pmatrix}  x & 1 \\  2 & y \\ \end{pmatrix}$, $ \begin{pmatrix}  3 & x-2 \\  y & x-1 \\ \end{pmatrix}$ sean iguales.
+
+
+\end{exampleblock}
+
+ \pause
+ Para que sean iguales cada elemento de la primera matriz tiene que ser igual a su correspondiente de la segunda.
+\pause 
+ 
+ Por lo tanto, $\begin{cases} x= 3 \cr 1= x-2 \cr 2= y \cr y=x-1 \end{cases}$
+ 
+ \pause
+ Resolviendo tenemos que $x=3 $ e $ y=2$.
+
+\end{frame}
+
+ \subsection{Tipos de matrices}
+\begin{frame}{Tipos de matrices}
+
+\begin{itemize}[<+-| alert@+>]
+	\item  {\bf Matriz fila}: es la matriz que solo tiene una fila $A_{1n}$.
+ 
+  		$A= \begin{pmatrix}  -1 & 1  & 2  \\ \end{pmatrix}$
+  
+    \item  {\bf Matriz columna}: es la matriz que solo tiene una fila $A_{m1}$
+   
+  		$A= \begin{pmatrix}  -1 \\  1  \\  2  \\  -3   \\\end{pmatrix}$
+
+  
+   \item  {\bf Matriz nula}: es la matriz en la que todos sus elementos son nulos.
+ 
+  $A= \begin{pmatrix}  0 & 0  \\  0  & 0 \\   0 & 0 \\\end{pmatrix}$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tipos de matrices}
+
+
+\begin{itemize}[<+-| alert@+>] 
+ 	\item  {\bf Matriz rectangular}: es la matriz que tiene distinto número de filas que de columnas.
+ 
+  		$A= \begin{pmatrix}  -1 & 1  & 2  \\  -3  & 3 & -5 \\\end{pmatrix}$
+
+	\item {\bf Matriz cuadrada}: es la matriz que tiene igual número de filas que de columnas (m=n). En este caso podemos decir que la matriz es de orden n. 
+
+  	$B= \begin{pmatrix}  -1 & 1  & 2  \\  -3  & 3 & -5 \\  2  & 1 & 6 \\\end{pmatrix}$
+
+\pause  
+  	En una matriz cuadrada definimos:
+  \begin{itemize}[<+->]
+  \item {\bf Diagonal principal}: Son los elementos cuyo número de fila coincide con el de columna: $a_{ii}$
+  \item {\bf Diagonal secundaria}: Son todos los elementos tales que $i+j=n+1$.
+  \end{itemize}
+  
+\end{itemize}
+\pause
+\begin{columns}
+\column{0.5\textwidth}
+\begin{center}
+\begin{tikzpicture}[baseline=(A.center)]
+\tikzset{BarreStyle/.style =   {opacity=.4,line width=4 mm,line cap=round,color=red}}
+  \matrix (A) [matrix of math nodes,ampersand replacement=\&,column sep=0 mm,left delimiter={(},right delimiter={)}] {a_{11} \& a_{12} \& \cdots \& a_{1n}  \\
+  a_{21} \& a_{22}  \& \cdots \& a_{2n}  \\
+  \cdots \& \cdots \& \vdots \& \vdots \\
+  a_{n1} \& a_{n2}  \& \cdots \& a_{nn}  \\ };
+\draw [BarreStyle] (A-1-1.north west)  to (A-4-4.south east) ;
+\end{tikzpicture}
+
+Diagonal principal
+\pause
+\end{center}
+\column{0.5\textwidth}
+\begin{center}
+\begin{tikzpicture}[baseline=(A.center)]
+\tikzset{BarreStyle/.style =   {opacity=.4,line width=4 mm,line cap=round,color=blue}}
+  \matrix (A) [matrix of math nodes,ampersand replacement=\&,column sep=0 mm,left delimiter={(},right delimiter={)}] {a_{11} \& a_{12} \& \cdots \& a_{1n}  \\
+  a_{21} \& a_{22}  \& \cdots \& a_{2n}  \\
+  \cdots \& \cdots \& \vdots \& \vdots \\
+  a_{n1} \& a_{n2}  \& \cdots \& a_{nn}  \\ };
+\draw [BarreStyle] (A-1-4.north east)  to (A-4-1.south west) ;
+\end{tikzpicture}
+
+Diagonal secundaria
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Matrices cuadradas}
+
+Dentro de las matrices cuadradas podemos distinguir las siguientes:
+
+\pause
+ \textbf{Matrices triangular superior:} Son las que todos sus elementos por debajo de la diagonal principal son cero.
+
+\[ \begin{pmatrix} 
+1 & -1 & 3 & 0  \\
+  \color{red}0 & 3  & 1 & -1  \\
+ \color{red}0 & \color{red}0 & 2 & 1 \\
+  \color{red}0 & \color{red}0  & \color{red}0 & -4  \\ 
+\end{pmatrix} \]
+
+
+\pause
+ \textbf{Matrices triangular inferior:} Son las que todos sus elementos por encima de la diagonal principal son cero.
+
+\[
+  \begin{pmatrix}1 & \color{red}0 & \color{red}0 & \color{red}0  \\
+  -1 & 3  & \color{red}0 & \color{red}0  \\
+  1 & 2 & -2 & \color{red}0 \\
+ 4 & 0  & 6 & -2  \\ 
+\end{pmatrix} \]
+
+\end{frame}
+
+\begin{frame}
+
+
+ \textbf{Matrices diagonal:} Son las que todos sus elementos fuera de la diagonal principal son cero.
+
+\[
+  \begin{pmatrix} 1 & \color{red}0 & \color{red}0 & \color{red}0  \\
+  \color{red}0 & 3  & \color{red}0 & \color{red}0  \\
+  \color{red}0 & \color{red}0 & -2 & \color{red}0 \\
+ \color{red}0 & \color{red}0  & \color{red}0 & -2  \\ 
+\end{pmatrix}
+\] 
+
+\pause
+ \textbf{Matrices escalar:} Son las que todos sus elementos  de la diagonal principal son iguales y el resto cero.
+
+\[
+  \begin{pmatrix} -2 & \color{red}0 & \color{red}0 & \color{red}0  \\
+  \color{red}0 & -2  & \color{red}0 & \color{red}0  \\
+  \color{red}0 & \color{red}0 & -2 & \color{red}0 \\
+ \color{red}0 & \color{red}0  & \color{red}0 & -2  \\ 
+\end{pmatrix}
+\] 
+
+
+\end{frame}
+
+\begin{frame}{Matrices cuadradas}
+\textbf{Matrices identidad:} Son las que todos sus elementos  de la diagonal principal son 1 y el resto cero.
+
+\[
+  \begin{pmatrix} 1 & \color{red}0 & \color{red}0 & \color{red}0  \\
+  \color{red}0 & 1  & \color{red}0 & \color{red}0  \\
+  \color{red}0 & \color{red}0 & 1 & \color{red}0 \\
+ \color{red}0 & \color{red}0  & \color{red}0 & 1  \\ 
+\end{pmatrix}
+\] 
+
+\pause
+La matriz identidad se llama $I_n$, siendo $n$ el orden de la matriz.
+
+\[ I_2= \begin{pmatrix}
+1 & 0 \\ 
+0 & 1 
+\end{pmatrix} \qquad 
+I_3=\begin{pmatrix} 
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 
+
+\end{pmatrix}
+\]
+\end{frame}
+
+\section{Operaciones con matrices}
+
+\subsection{Suma}
+
+\begin{frame}{Operaciones con matrices}
+\begin{alertblock}{Suma de matrices}
+Dadas dos matrices de la misma dimensión $A=(a_{ij})$ y $B=(b_{ij})$ llamamos suma a otra matriz $C=(c_{ij})$ definida por 
+$$(c_{ij})=(a_{ij})+(b_{ij})=(a_{ij}+b_{ij})$$
+\end{alertblock}
+\pause
+Y cumple las siguientes propiedades
+
+	\begin{enumerate}[<+-| alert@+>] 
+		\item Asociativa: $A+(B+C)=(A+B)+C$
+		\item Conmutativa: $A+B=B+A$
+		\item Elemento neutro: $A+0=A$
+		\item Elemento inverso: $A-A=0$
+	\end{enumerate}
+	
+\end{frame}
+
+\begin{frame}{Operaciones con matrices}
+\begin{exampleblock}{Ejemplo suma}
+Dadas las matrices $A=\begin{pmatrix}
+	2 & 1 \\
+	1 & 1 \\
+	3 & 2
+\end{pmatrix}$ y $ B=
+     \begin{pmatrix}
+	1 & 0 \\
+	-1 & -2 \\
+	2 & 3
+\end{pmatrix}    $, hallar su suma.
+\end{exampleblock}
+\pause
+\[ A+B=   \begin{pmatrix}
+	2 & 1 \\
+	1 & 1 \\
+	3 & 2
+\end{pmatrix} 
+     +
+     \begin{pmatrix}
+	1 & 0 \\
+	-1 & -2 \\
+	2 & 3
+\end{pmatrix}    = 
+\pause
+\begin{pmatrix}
+	3 & 1 \\
+	0 &-1 \\
+	5 & 5
+\end{pmatrix}    \]
+
+
+\end{frame}
+
+\subsection{Producto por un número real}
+
+\begin{frame}{Operaciones con matrices}
+
+
+\begin{alertblock}{Producto por un número real}
+Dados un número real $k\in \R$ y una matriz $A=(a_{ij})$ se define el producto de $k\cdot A$ de la siguiente manera:
+\[ k\cdot A=k\cdot (a_{ij})= (k\cdot a_{ij})\]
+\end{alertblock}
+\pause
+El producto de una matriz por un número real tiene las siguientes propiedades:
+
+\end{frame}
+
+\begin{frame}{Operaciones con matrices}
+
+\begin{exampleblock}{Ejemplo producto por un número real}
+Dada la matriz $A=\begin{pmatrix}
+	2 & 1 \\
+	1 & 1 \\
+	3 & 2
+\end{pmatrix}$, calcular $5A$.
+\end{exampleblock}
+\pause
+
+ \[ 5A=5\cdot\begin{pmatrix}
+	2 & 1 \\
+	1 & 1 \\
+	3 & 2
+\end{pmatrix}= \begin{pmatrix}
+	10 & 5 \\
+	5 & 5 \\
+	15 & 10
+\end{pmatrix}  \]
+\end{frame}
+
+\subsection{Producto de matrices}
+\begin{frame}{Operaciones con matrices}
+\begin{alertblock}{Producto de matrices}
+Dos matrices $A$ y $B$ se pueden multiplicar si el número de columnas de $A$ es igual al número de filas de $B$, en tal caso, se define la multiplicación de la siguiente manera
+\[ {A \atop {m\ast n}}\cdot {B \atop {n\ast p}} \]
+\[ \underbrace{A}_{m \ast n} \cdot \underbrace{B}_{n\ast p}=\underbrace{C}_{m\ast p} \]
+Para calcular el elemento $c_{ij}$ hay que utilizar la fila $i$ de $A$ y la columna $j$ de B.
+\[ \begin{pmatrix}
+	a_{i1} & a_{i2}&a_{i3}& \cdots &a_{in} \\
+\end{pmatrix}\cdot \begin{pmatrix}
+	a_{j1} \\ a_{j2}\\a_{j3}\\ \cdots \\a_{jn} \\
+\end{pmatrix}=a_{i1}\cdot a_{j1}+ a_{i2} \cdot a_{2j} + \cdots +a_{in}\cdot a_{nj}\]
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Operaciones con matrices}
+
+Propiedades del producto de matrices:
+
+\pause
+\begin{itemize}[<+- |alert@+>]
+\item \textbf{Asociativa:} $A \cdot(B \cdot C)= (A \cdot B) \cdot C$
+\item \textbf{Distributiva respecto a la suma por la izquierda:} $A \cdot (B + C)= A \cdot B + A \cdot C$
+\item \textbf{Distributiva respecto a la suma por la derecha:} $(A  +B )\cdot  C)= A \cdot C + B \cdot C$
+\item \textbf{Elemento neutro:} $A \cdot I = A \qquad I \cdot A = A$
+\end{itemize}
+
+\onslide*<6>{\textbf{{\Large El producto de matrices no es conmutativo $A \cdot B \neq B\cdot A$}}}
+
+\end{frame}
+\begin{frame}{Operaciones con matrices}
+\begin{exampleblock}{Ejemplo producto matrices}
+Dadas las matrices $A=\begin{pmatrix}
+	2 & 1 \\
+	1 & 1 \\
+	3 & 2
+\end{pmatrix}$ y $B= \begin{pmatrix}
+	10 & 5 &5\\
+	5 & 5 &-2
+\end{pmatrix} $, calcular $A\cdot B$ y $B \cdot A$, si se pueden.
+\end{exampleblock}
+\onslide*<2-5>{
+El número de columnas de $A$ es $2$ y el número de filas de $B$ es $2$, por lo tanto el producto $A \cdot B$ se puede realizar.}
+
+
+\onslide*<3-5>{
+\[  A\cdot B \]
+
+$ \begin{pmatrix}
+	2 & 1 \\
+	1 & 1 \\
+	3 & 2
+\end{pmatrix}\cdot \begin{pmatrix}
+	10 & 5 &5\\
+	5 & 5 &-2
+\end{pmatrix} $}
+ \onslide*<4>{
+$= \begin{pmatrix}
+	2\cdot 10 + 1 \cdot 5 & 2\cdot 5 + 1 \cdot 5 & 2\cdot 5 + 1 \cdot (-2)\\
+	1\cdot 10 + 1 \cdot 5 & 1\cdot 5 + 1 \cdot 5 & 1\cdot 5 + 1 \cdot (-2)\\
+	3\cdot 10 + 2 \cdot 5 & 3\cdot 5 + 2 \cdot 5 & 3\cdot 5 + 2 \cdot (-2)
+\end{pmatrix}$  }
+\onslide*<5>{
+$ = \begin{pmatrix}
+	25 & 15& 8 \\
+	15 & 10 & 3\\
+	40 & 25 & 11
+\end{pmatrix}  $\\}
+
+\onslide*<6-9>{
+El número de columnas de $B$ es $3$ y el número de filas de $A$ es $3$, por lo tanto el producto $B \cdot A $ se puede realizar.}
+
+
+\onslide*<7-9>{
+\[  B\cdot A \]
+$ \begin{pmatrix}
+    10 & 5 &5\\
+	5 & 5 &-2
+\end{pmatrix}\cdot \begin{pmatrix}
+	2 & 1 \\
+	1 & 1 \\
+	3 & 2
+\end{pmatrix} $}
+ \onslide*<8>{
+$= \begin{pmatrix}
+	10\cdot 2 + 5 \cdot 1 + 5\cdot 3 & 10 \cdot 1 + 5\cdot 1 + 5 \cdot 2\\
+	5\cdot 2 + 5 \cdot (-2) + 5\cdot 3 & 5 \cdot 1 + 5\cdot 1 + (-2) \cdot 2\\
+\end{pmatrix}$  }
+\onslide*<9>{
+$ = \begin{pmatrix}
+	40 & 25 \\
+	15 & 6 \\
+\end{pmatrix}  $}
+
+\onslide*<10>{
+$A\cdot B  = \begin{pmatrix}
+	25 & 15& 8 \\
+	15 & 10 & 3\\
+	40 & 25 & 11
+\end{pmatrix}  $
+
+$B \cdot A =  \begin{pmatrix}
+	40 & 25 \\
+	15 & 6 \\
+\end{pmatrix}  $}
+
+
+\end{frame}
+
+\begin{frame}{Producto de matrices}
+
+En el producto de matrices también hay que tener en cuenta lo siguiente:
+\begin{itemize}[<+-|alert@+>]
+
+\item Si $A \cdot B = A \cdot C \Rightarrow B$ no tiene necesariamente que ser igual a $C$.
+\item Si $A \cdot B = O$ puede ser que tanto $A$ como $B$ sean distintas de la matriz $O$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ejemplos}
+
+\begin{exampleblock}{Ejemplo}
+Dadas las matrices 
+\[A=\begin{pmatrix}
+	2&2&-1 \\
+	-1&-1&1 \\
+	-1&-2&2
+\end{pmatrix}
+\qquad
+I=\begin{pmatrix}
+	1&0&0 \\
+	0&1&0 \\
+	0&0&1
+\end{pmatrix} \]
+
+se pide:
+
+ Calcular la matriz $(A-I)^2$
+\end{exampleblock}
+
+\pause
+ Primero calculamos $A-I=\begin{pmatrix}
+	2&2&-1 \\
+	-1&-1&1 \\
+	-1&-2&2
+\end{pmatrix}
+-\begin{pmatrix}
+	1&0&0 \\
+	0&1&0 \\
+	0&0&1
+\end{pmatrix}=
+\begin{pmatrix}
+	1 & 2 & -1 \\
+	-1&-2&1 		\\
+	-1&-2 & 1
+\end{pmatrix} $ 
+
+\pause
+Ahora calculamos $(A-I)^2=\begin{pmatrix}
+	1 & 2 & -1 \\
+	-1&-2&1 		\\
+	-1&-2 & 1
+\end{pmatrix} \cdot\begin{pmatrix}
+	1 & 2 & -1 \\
+	-1&-2&1 		\\
+	-1&-2 & 1
+\end{pmatrix} =
+\begin{pmatrix}
+	0 & 0 & 0 \\
+	0&0&0 		\\
+	0&0 & 0
+\end{pmatrix} $
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Ejemplos}
+
+\begin{exampleblock}{Ejemplo}
+Sean las matrices 
+$A=\begin{pmatrix}
+	2 & 1 \\
+	1 & 1
+\end{pmatrix}$, 
+$B=\begin{pmatrix}
+ 	1 & x \\ 
+ 	x & 0
+\end{pmatrix}$ y  
+$C=\begin{pmatrix}
+	0 & -1 \\
+	-1 & 2
+\end{pmatrix}
+$
+
+\begin{enumerate}
+\item Encuentre el valor o los valores de $x$ de forma que $B^2=A$
+\item Determine $x$ para que $A+B+C=3I_2$
+\end{enumerate}
+
+\end{exampleblock}
+
+\begin{enumerate}
+\item
+\onslide*<2-4>{
+ Hallamos $B^2$. 
+\[ \begin{pmatrix}
+	1 & x \\
+	x & 0 
+\end{pmatrix} \cdot 
+\begin{pmatrix}
+	1 & x \\
+	x & 0 
+\end{pmatrix}=
+\begin{pmatrix}
+	x^2+1 & x \\
+	x & x^2
+\end{pmatrix}
+\]
+}
+\onslide*<3-4>{
+Igualamos las dos matrices : 
+\[ \begin{pmatrix}
+	x^2+1 & x \\
+	x & x^2
+\end{pmatrix} =
+\begin{pmatrix}
+	2 & 1 \\
+	1 & 1
+\end{pmatrix} \]
+}
+\onslide*<4>{
+De aquí obtenemos el siguiente sistema de ecuaciones:
+\[
+\left\lbrace
+\begin{array}{l}
+x^2+1=2 \\
+x=1 \\
+x=1 \\
+x^2=1
+\end{array}
+\right. \Rightarrow x=1 \]
+}
+\item
+\onslide*<5-6>{
+ Hallamos $A+B+C$
+
+\[ 
+\begin{pmatrix}
+	2 & 1 \\
+	1 & 1
+\end{pmatrix} +  
+\begin{pmatrix}
+ 	1 & x \\ 
+ 	x & 0
+\end{pmatrix}
++\begin{pmatrix}
+	0 & -1 \\
+	-1 & 2
+\end{pmatrix}=
+\begin{pmatrix}
+	3 & x \\
+	x & 3
+\end{pmatrix}
+\]}
+
+\onslide*<6>{
+
+Igualando esta matriz a $3I_2$ obtenemos:
+\[
+\begin{pmatrix}
+	3 & x \\
+	x & 3
+\end{pmatrix}=
+\begin{pmatrix}
+	3 & 0 \\
+	0 & 3
+\end{pmatrix}
+ \Rightarrow \left\lbrace
+\begin{array}{l}
+3=3 \\
+x=0 \\
+x=0 \\
+3=3
+\end{array}
+\right. \Rightarrow x=0 \]
+}
+\end{enumerate}
+
+
+\end{frame}
+
+\section{Trasposición de matrices}
+\subsection{Matriz traspuesta}
+\begin{frame}{Matriz traspuesta}
+\begin{alertblock}{Matriz traspuesta}
+Se llama \textbf{matriz traspuesta} de una matriz $A$ de dimensión $m \times n$ a la matriz que se obtiene de cambiar en $A$ las filas por columnas o las columnas por filas. Se representa por $A^t$ y su dimensión es $n \times m$. Si la matriz es cuadrada el orden de su traspuesta es el mismo.
+\end{alertblock}
+
+\pause
+Las propiedades de la trasposición de matrices son las siguientes:
+\begin{itemize}[<+- |alert@+>]
+\item $\left( A^t \right)^t = A$
+\item $(A+B)^t = A^t + B^t$
+\item $(k\cdot A)^t = k  \cdot A^t $ siendo $ k \in \R$
+\item $(A \cdot B)^t = B^t \cdot A^t$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Matriz traspuesta}
+\begin{exampleblock}{Ejemplo}
+Dada la matriz $A=\begin{pmatrix} 1 & 2 & -1 \\ 0 & 2 & 3 \\ 1 & -2 & -1 \end{pmatrix}$, hallar su traspuesta.
+\end{exampleblock}
+
+Para hallar la traspuesta cambiamos las filas por columnas, por lo tanto, la matriz traspuesta de $A$ será:
+
+$A^t = \begin{pmatrix} 1 & 0 & 1 \\ 2 & 2 & -2 \\ -1 & 3 & -1 \end{pmatrix}$
+
+\end{frame}
+\subsection{Matriz simétrica y antisimétrica}
+
+\begin{frame}{Matriz simétrica}
+\begin{alertblock}{Matriz simétrica}
+Una matriz es simétrica si se cumple que $A=A^t$
+\end{alertblock}
+
+\begin{exampleblock}{Ejemplo}
+Dada la matriz $A=\begin{pmatrix} 1 & 2 & -1 \\ 2 & -2 & 3 \\ -1 & 3 & 0 \end{pmatrix}$, comprobar que es simétrica.
+\end{exampleblock}
+
+Hallamos  la traspuesta de $A$:
+
+$A^t = \begin{pmatrix} 1 & 2 & -1 \\ 2 & -2 & 3 \\ -1 & 3 & 0 \end{pmatrix}$
+
+Observamos que $A=A^t$, por lo tanto la matriz $A$ es simétrica.
+\end{frame}
+
+\begin{frame}{Matriz antisimétrica}
+\begin{alertblock}{Matriz antisimétrica}
+Una matriz es antisimétrica si se cumple que $A=-A^t$
+\end{alertblock}
+
+\begin{exampleblock}{Ejemplo}
+Dada la matriz $A=\begin{pmatrix} 0 & 2 & -1 \\ -2 & 0 & 3 \\ 1 & -3 & 0 \end{pmatrix}$, comprobar que es antisimétrica.
+\end{exampleblock}
+
+Hallamos  la traspuesta de $A$:
+
+$A^t = \begin{pmatrix} 0 & -2 & 1 \\ 2 & 0 & -3 \\ -1 & 3 & 0 \end{pmatrix}$
+
+Observamos que $A=-A^t$, por lo tanto la matriz $A$ es antisimétrica.
+\end{frame}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+ 
+  
+ 

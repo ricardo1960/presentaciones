@@ -1,0 +1,119 @@
+\documentclass[8pt]{beamer}
+%\usetheme{CambridgeUS}
+\logo{\includegraphics[scale=0.10]{../imagenes/logoa}}
+\usepackage[spanish]{babel}
+%\usecolortheme{seahorse}
+%\usepackage{beamerthemeblackboard}
+%\usepackage{graphics}
+%\usecolortheme[RGB={6,138,200}]{structure}
+%\usepackage[orientation=landscape, size=custom,
+ % width=16, height=9, scale=0.5]{beamerposter}
+%\usepackage[utf8]{inputenc}
+\usetheme{metropolis}
+\metroset{titleformat=smallcaps,block=fill}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{tikz} 
+\usetikzlibrary{matrix}
+\usetikzlibrary{calendar,decorations.markings} 
+\usetikzlibrary{shapes,positioning}
+
+\usepackage{tkz-tab,tkz-euclide,tkz-fct}
+\usetkzobj{all}  
+\usepackage{tcolorbox} 
+%\usepackage{enumitem} 
+\usepackage{tasks} 
+\usepackage{asymptote}  
+\newcommand{\sen}{\mathop{\rm sen}\nolimits}
+
+\newcommand{\tg}{\mathop{\rm tg}\nolimits}
+\newcommand{\arcsen}{\mathop{\rm arcsen}\nolimits}
+\newcommand{\arctg}{\mathop{\rm arctg}\nolimits}
+\newcommand{\g}{{}^\circ}     
+        
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\limite}[2]{\displaystyle \lim_{x \rightarrow #1}{#2}}
+\renewcommand{\vector}[1]{\overrightarrow{#1}}
+
+\newtcbox{\resultado}[1][center]{#1,colback=red!5!white,
+colframe=red!75!black}
+
+\newtcbox{\resaltado}[1][center]{#1,colback=blue!5!white,
+colframe=blue!75!black}
+\definecolor{titleColor}{rgb}{0.0, 0.42, 0.24}
+
+\title{Aplicaciones de las derivadas 1}
+\author{Ricardo Mateos}
+\institute[UHEI-IVED]{Departamento de Matemáticas \\ UHEI - IVED}
+\date{Matemáticas Aplicadas a las CC.SS. II}
+\begin{document}
+%\ECFJD
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\begin{frame}[t]{Recta tangente}
+\begin{exampleblock}{Ejemplo}
+Hallar la recta tangente a la gráfica de la función $f(x)=\dfrac{2x}{x^2+1}$ en el punto $x=0$.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Recta tangente}
+\begin{exampleblock}{Ejemplo}
+Dada la función real de variable real definida por:
+\[ f(x)= \begin{cases} x^2-x-1 & x \leq 3 \\ \\ \dfrac{3a}{x} \end{cases} \]
+\begin{tasks}[label=\alph*)](1)
+\task Determine el valor del parámetro real $a$ para que la función $f(x)$ sea continua en todo su dominio. ¿Para ese valor de $a$ es $f(x)$ derivable?
+\task Para $a = 1$, calcule la ecuación de la recta tangente a la gráfica de la función en el punto de abscisa $x = 1$.
+\end{tasks}
+
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Monotonia y extremos relativos}
+\begin{exampleblock}{Ejemplo}
+Hallar los intervalos de crecimiento y los extremos relativos de la función: $f(x)=4x^3-24x^2+36x+100$
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Monotonia y extremos relativos}
+\begin{exampleblock}{Ejemplo}
+Hallar los intervalos de crecimiento y los extremos relativos de la función: $f(x)=\dfrac{1-x^2}{x^2-4}$
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}[t]{Monotonía}
+\begin{exampleblock}{Ejemplo}
+Hallar los intervalos de crecimiento y decrecimiento y los extremos relativos de la función: $f(x)=x^2 \cdot e^{-x}$.
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}[t]{Curvatura y puntos de inflexión}
+\begin{exampleblock}{Ejemplo}
+Hallar la curvatura y los puntos de inflexión de la función: $f(x)=x^4-6x^2$
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Curvatura y puntos de inflexión}
+\begin{exampleblock}{Ejemplo}
+Hallar la curvatura y los puntos de inflexión de la función: $f(x)=\dfrac{6}{x^2+3}$
+\end{exampleblock}
+\end{frame}
+
+\end{document}

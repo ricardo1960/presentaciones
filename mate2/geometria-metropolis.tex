@@ -1,0 +1,385 @@
+\documentclass[8pt]{beamer}
+%\usetheme{CambridgeUS}
+\logo{\includegraphics[scale=0.10]{../imagenes/logoa}}
+\usepackage[spanish]{babel}
+%\usecolortheme{seahorse}
+%\usepackage{beamerthemeblackboard}
+%\usepackage{graphics}
+%\usecolortheme[RGB={6,138,200}]{structure}
+%\usepackage[orientation=landscape, size=custom,
+ % width=16, height=9, scale=0.5]{beamerposter}
+%\usepackage[utf8]{inputenc}
+\usetheme{metropolis}
+\metroset{titleformat=smallcaps,block=fill}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{tikz} 
+\usetikzlibrary{matrix}
+\usetikzlibrary{calendar,decorations.markings} 
+\usetikzlibrary{shapes,positioning}
+
+\usepackage{tkz-tab,tkz-euclide,tkz-fct}
+\usetkzobj{all}  
+\usepackage{tcolorbox} 
+%\usepackage{enumitem} 
+\usepackage{tasks} 
+\usepackage{asymptote}           
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\limite}[2]{\displaystyle \lim_{x \rightarrow #1}{#2}}
+\renewcommand{\vector}[1]{\overrightarrow{#1}}
+
+\newtcbox{\resultado}[1][center]{#1,colback=red!5!white,
+colframe=red!75!black}
+
+\newtcbox{\resaltado}[1][center]{#1,colback=blue!5!white,
+colframe=blue!75!black}
+\definecolor{titleColor}{rgb}{0.0, 0.42, 0.24}
+
+\title{Geometría}
+\author{Ricardo Mateos}
+\institute[UHEI-IVED]{Departamento de Matemáticas \\ UHEI - IVED}
+\date{Matemáticas II}
+\begin{document}
+%\ECFJD
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\section{Ecuaciones de la recta}
+
+\begin{frame}[t]{Ecuaciones de la recta}
+\begin{exampleblock}{Ejemplo recta que pasa por dos puntos}
+Hallar las ecuaciones de la recta que pasa por los puntos $A(1,1,-1)$ y $B(0,2,3)$. Hallar otro punto de la recta. ¿Pertenece el punto $C(-1,-1,1)$ a dicha recta?. 
+\end{exampleblock}
+
+
+
+\textbf{Solución}
+
+Si la recta pasa por dos puntos, el vector que une los dos puntos será un vector director de la recta. 
+
+Por lo tanto, para calcular la recta utilizaremos uno de los puntos y el vector que une los dos puntos como vector director.
+
+Calculamos el vector $\vector{AB}=(-1,1,4)$.
+
+Hallamos las ecuaciones de la recta en todas sus formas:
+\end{frame}
+
+\begin{frame}{Ecuaciones de la recta}
+
+\textbf{\color{titleColor!70}Ecuación vectorial:}  $(x,y,z)=(1,1,-1)+(-1,1,4)\lambda$
+
+\textbf{\color{titleColor!70}Ecuaciones paramétricas:} $\begin{cases} x=1-\lambda \\ y=1+\lambda \\ z= -1+4 \lambda\end{cases}$
+
+\textbf{\color{titleColor!70}Ecuación continua:} $\dfrac{x-1}{-1}=\dfrac{y-1}{1}=\dfrac{z+1}{4}$ 
+
+Para hallar otro punto de la recta damos al parámetro un valor cualquiera, por ejemplo $\lambda=-2$ y obtenemos el punto $P(3,-1,-9)$
+
+Para saber si el punto $C$ pertenece a la recta miramos si cumple las ecuaciones de la recta:
+
+\[ \dfrac{-1-1}{-1} \neq \dfrac{-1-1}{1} \]
+
+por lo tanto el punto $C $ no pertenece a la recta.
+\end{frame}
+
+\begin{frame}[t]{Ecuaciones de la recta}
+\begin{exampleblock}{Ejemplo recta que pasa por un punto y es paralela a otra}
+Hallar las ecuaciones de la recta que pasa por el punto $A(1,2,-2)$ y es paralela a la recta $s \equiv  \dfrac{x-2}{1}=\dfrac{y}{-1}=\dfrac{z+2}{2}$. 
+\end{exampleblock}
+
+Si las rectas son paralelas tienen la misma dirección, por lo tanto, cualquier vector director de una de ellas es vector director de la otra.
+
+Hallamos el vector director de la recta $s$: $\vec{v}=(1,-1,2)$
+
+Con este vector y el punto hallamos las distintas ecuaciones de la recta buscada:
+
+\textbf{\color{titleColor!70}Ecuación vectorial:}  $(x,y,z)=(1,2,-2)+(1,-1,2)\lambda$
+
+\textbf{\color{titleColor!70}Ecuaciones paramétricas:} $\begin{cases} x=1+\lambda \\ y=2-\lambda \\ z= 2+2 \lambda\end{cases}$
+
+\textbf{\color{titleColor!70}Ecuación continua:} $\dfrac{x-1}{1}=\dfrac{y-2}{-1}=\dfrac{z+2}{2}$ 
+
+\end{frame}
+
+\section{Ecuaciones del plano}
+
+\begin{frame}[t]{Ecuaciones del plano}
+\begin{exampleblock}{Ecuaciones del plano que contiene a tres puntos}
+Hallar las ecuaciones del plano que contiene a los puntos $A(1,1,-1)$, $B(1,2,1)$ y $C(2,-1,3)$
+\end{exampleblock}
+
+Si el plano contiene a los tres puntos entonces los vectores que unen esos tres puntos son vectores directores del plano.
+
+Hallamos los vectores  $\vector{AB}$ y  $\vector{AC}$. 
+
+$\vector{AB}=(0,1,2)$, $\vector{AC}=(1,-2,4)$
+
+Con estos vectores y el punto $A$ hallamos la ecuación general del plano.
+
+$\begin{vmatrix}
+x-1 & 0 & 1 \\ y-1 & 1 & -2 \\ z+1 & 2 & 4 
+\end{vmatrix}=0 \Rightarrow 8x-8+2y-2-z-1=0$
+ \resultado{$\pi \equiv 8x+2y-z-11=0$}
+\end{frame}
+
+
+\begin{frame}[t]{Ecuaciones del plano}
+\begin{exampleblock}{Ecuaciones del plano que contiene a un punto y una recta}
+Hallar las ecuaciones del plano que contiene al punto $A(2,-1,0)$ y a la recta $r \equiv \begin{cases} x= 2 + 2 \lambda \\ y= 1+3\lambda \\ z= -2-\lambda \end{cases}$
+\end{exampleblock}
+
+Si un plano contiene a una recta y a un punto, el vector de la recta es un vector director del plano y el vector que une un punto de la recta con el punto también será vector director del plano.
+
+Calculamos un punto de la recta y un vector director de la misma:
+
+$B(2,1,-2)$, $\vec{v}=(2,3,-1)$
+
+Hallamos el vector que une los dos puntos: $\vec{AB}=(0,2,-2)$
+
+Con estos dos vectores y el punto $A$ hallamos la ecuación general del plano:
+
+$\begin{vmatrix}
+x-2 & 2 & 0 \\ y+1 & 3 & 2 \\ z & -1 & -2 
+\end{vmatrix}=0 \Rightarrow -4x+8+4y+4+4z=0$
+\resultado{$ \pi \equiv -4x+4y+4z+12=0$}
+\end{frame}
+
+\begin{frame}[t]{Ecuaciones del plano}
+\begin{exampleblock}{Pasar de unas ecuaciones del plano a otras}
+\begin{tasks}[label=\alph*)](1)
+\task Escribe la ecuación general del plano $\pi \equiv \begin{cases} x= 1-\lambda +2 \mu \\ y=2\lambda +\mu  \\ z= 2 +3\mu \end{cases}$
+\task Halla las ecuaciones paramétricas del plano $\pi \equiv x-3y+2z-4=0 $
+\end{tasks}
+\end{exampleblock}
+
+\begin{tasks}[label=\alph*)](1)
+\task Tomamos un punto y los vectores directores del plano para hallar la ecuación general del plano:
+
+$\begin{vmatrix}
+x-1 & -1 & 2 \\ y & 2 & 1 \\ z-2 & 0 & 3 
+\end{vmatrix}=0 \Rightarrow 6x-6+3y-5z+10=0$
+\resultado{$  \pi \equiv 6x+3y-5z+10=0$}
+Para hallar las ecuaciones paramétricas despejamos una de las incógnitas en función de las otras.
+\end{tasks}
+\end{frame}
+
+\begin{frame}[t]{Ecuaciones del plano}
+\begin{tasks}[label=\alph*),resume](1)
+\task Para hallar las ecuaciones paramétricas despejamos una de las incógnitas en función de las otras.
+
+\resultado{$\pi \equiv \begin{cases} x= 4+3\lambda -2\mu \\ y=\lambda \\ z= \mu \end{cases} $}
+\end{tasks}
+\end{frame}
+
+\section{Posición relativa de dos planos}
+
+\begin{frame}[t]{Posición relativa de dos planos}
+\begin{exampleblock}{Ejemplo posición relativa de dos planos}
+Hallar la posición relativa de los siguientes pares de planos:
+\begin{tasks}[label=\alph*)](1)
+\task $\pi_1 \equiv x-2y+2z -3=0 \qquad \pi_2 \equiv 2x-4y+4z-3=0$
+\task $\pi_1 \equiv 2x-y-z +2=0 \qquad \pi_2 \equiv x+4y-3z-2=0$
+\end{tasks}
+\end{exampleblock}
+
+\begin{tasks}[label=\alph*)](1)
+\task $\dfrac{1}{2}= \dfrac{-2}{-4}=\dfrac{2}{4}\neq \dfrac{-3}{-3} \Rightarrow $ 
+\resultado{Son paralelos.}
+
+\vspace{0.5cm}
+\task $\dfrac{2}{1}\neq \dfrac{-1}{-4} \Rightarrow $
+Son secantes.
+\end{tasks}
+
+\end{frame}
+
+\begin{frame}[t]{Recta determinada por la intersección de dos planos}
+\begin{exampleblock}{Ejemplo recta intersección de dos planos}
+Considere los planos de ecuaciones $\pi_1 \equiv x-y+z = 0$ y $\pi_2 \equiv x+y-z = 2$.
+\begin{tasks}[label=\alph*)](1)
+\task Compruebe que los planos se cortan y calcule la ecuación de la recta $r$ determinada por la intersección de ambos planos.
+\task Compruebe que el punto $A = (3,2,1)$ no está en $\pi_1$ ni en $\pi_2$ y calcule la
+ecuación del plano $\pi_3$ que contiene a la recta $r$ y pasa por el punto $A$.
+\end{tasks}
+\end{exampleblock}
+\begin{tasks}[label=\alph*)](1)
+\task $\dfrac{1}{1} \neq \dfrac{-1}{1} \Rightarrow $ Son secantes. 
+
+Resolviendo el sistema:
+\resultado{ $r \equiv \begin{cases} x= 1 \\ y = 1+\lambda \\ z=\lambda \end{cases}$}
+\end{tasks}
+\end{frame}
+
+\begin{frame}[t]{Recta determinada por la intersección de dos planos}
+\begin{tasks}[label=\alph*),resume](1)
+
+\task Comprobamos si el punto cumple las ecuaciones de los planos:
+
+$3-2+1 \neq 0 \qquad 3+2-1 \neq 2 $.
+
+El punto no pertenece a ninguno de los planos.
+
+Para calcular el plano tomamos el punto $A$, el vector director de la recta y el vector que une uno de los puntos de la recta con el punto $A$
+
+$\begin{vmatrix}
+x-3 & 0 & 2 \\ y-2 & 1 & 1 \\ z-1 & 1 & 1 
+\end{vmatrix}=0 \Rightarrow +2-2z+2=0$
+ \resultado{$ \pi \equiv y-z+2=0$}
+\end{tasks}
+
+\end{frame}
+
+\begin{frame}[t]{Ecuación implicita de la recta. Haz de planos.}
+\begin{exampleblock}{Ejemplo ecuación implicita de la recta y haz de planos.}
+Dada la recta $r \equiv \begin{cases} -x+y+2=0 \\ 2x-y+3z-1=0 \end{cases}$.
+\begin{tasks}[label=\alph*)](1)
+\task Hallar un punto y un vector director de la recta $r$.
+\task Escribir las ecuaciones paramétricas de la recta $r$.
+\task Determinar el haz de planos que contiene a dicha recta.
+\task Del haz de planos que contiene a la recta $r$ hallar el que contiene al punto $P(1,1,1)$
+\end{tasks}
+\end{exampleblock}
+
+\begin{tasks}[label=\alph*)](1)
+\task Resolvemos el sistema en función de un paramétro y tenemos la recta:
+
+\[ r \equiv \begin{cases} x= -1 -3\lambda \\ y=-3-3\lambda  \\ z= \lambda \end{cases} \]
+
+Luego un punto es $(-1,-3,0)$ y un vector director es $(-3,-3,1)$
+
+\task Las ecuaciones paramétricas son las expresadas en el apartado anterior.
+\end{tasks}
+\end{frame}
+
+\begin{frame}[t]{Ecuación implicita de la recta. Haz de planos.}
+
+\begin{tasks}[label=\alph*),resume](1)
+\task El haz de planos que contiene a la recta es:
+
+\[ -x+y+2+t (2x-y+3z-1)=0 \]
+\task Para calcular el plano que contiene al punto sustituimos los valores del punto en el haz de planos y calculamos el valor de $t$.
+
+\[ -1+1+2+t (2\cdot 1-1+3 \cdot 1-1)=0 \Rightarrow 2+3t=0 \Rightarrow t=-\frac{2}{3} \]
+
+El plano buscado es : 
+
+\[\pi \equiv -x+y+2-\frac{2}{3} (2x-y+3z-1)=0 \Rightarrow \pi \equiv -7x+5y-6z+8=0  \]
+\end{tasks}
+
+\end{frame}
+\section{Posición relativa de tres planos.}
+
+\begin{frame}{Posición relativa de tres planos}
+\begin{exampleblock}{Ejemplo posición relativa de tres planos}
+Estudia la posición relativa de los planos dados por las siguientes ecuaciones:
+\begin{tasks}[label=\alph*)](2)
+\task $\begin{cases} \pi_1 \equiv 2x+y-z-2=0 \\ \pi_2 \equiv 3x+2y-z-3=0 \\ \pi_3 \equiv 2x+3y+z-1=0 \end{cases} $
+\task $\begin{cases} \pi_1 \equiv x+3y-z+5=0 \\ \pi_2 \equiv 2x+5y+z+4=0 \\ \pi_3 \equiv x-y-5z+3=0 \end{cases} $
+\end{tasks}
+
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Posición relativa de tres planos}
+\begin{exampleblock}{Ejemplo posición relativa de tres planos}
+Se dan los planos \[ \begin{cases} \pi_1 \equiv  x + y + z = a - 1 \\ \pi_2 \equiv  2x + y + az = a \\\pi_3 \equiv  x + ay + z = 1 \end{cases} \]
+\begin{tasks}[label=\alph*)](1)
+\task Determinad la posición relativa de los tres planos en función del parámetro $a$. 
+\task  Para $a = 1$, calculad, si existe, la recta de corte entre los planos $\pi_1$ y $\pi_3$.
+\task  Para $a = 2$, calculad, si existe, la recta de corte entre los planos $\pi_1$ y $\pi_2$.
+\end{tasks}
+\end{exampleblock}
+
+\end{frame}
+
+\section{Posición relativa de dos rectas}
+
+\begin{frame}{Posición relativa de dos rectas}
+\begin{exampleblock}{Ejemplo}
+Hallar la posición relativa de las rectas:
+\[ r \equiv \dfrac{x-2}{1}=\dfrac{y+1}{1}=\dfrac{z+4}{-3} \qquad s \equiv \begin{cases} x+z=2 \\ -2x+y-2z = 1 \end{cases} \]
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Posición relativa de dos rectas}
+\begin{exampleblock}{Ejemplo}
+Calcular el valor del parámetro real $a$ para que las rectas $r$ y $s$ se corten y calcular este punto.
+\[ r \equiv \begin{cases} 4x+z=a \\ x+y = 2 \end{cases} \qquad s \equiv \begin{cases} x+y+z=0 \\ x+2z = 2a \end{cases} \]
+\end{exampleblock}
+\end{frame}
+
+
+\section{Posición relativa de recta y plano}
+
+\begin{frame}{Posición relativa de recta y plano}
+\begin{exampleblock}{Ejemplo posición relativa de recta y plano}
+Dadas la recta $r \equiv \dfrac{x-5}{-1}=\dfrac{y-3}{1}=\dfrac{z-5}{-1}$ y el plano $\pi \equiv 3x-4y-8z+35=0$, hallar su posición relativa. Calcula el punto de corte, si son secantes o el plano que contiene a la recta y es paralelo al plano, si son paralelos.  
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Posición relativa de recta y plano}
+\begin{exampleblock}{Ejemplo posición recta y plano}
+Dados el plano $\pi \equiv  kx + y - z = 0$ y la recta $r \equiv \dfrac{x-4}{2}=\dfrac{y-2}{1}=\dfrac{z+2}{-1}$.
+
+Determinar los valores del parámetro $k \in  \R$ para que el plano $\pi$ contenga a $r$.
+\end{exampleblock}
+\end{frame}
+\section{Proyecciones de puntos sobre rectas y planos}
+
+\begin{frame}{Proyección de un punto sobre una recta}
+\begin{exampleblock}{Ejemplo}
+Hallar la proyección del punto $P(0,-3,0)$ sobre:
+\begin{tasks}[label=\alph*)](1)
+\task la recta $\dfrac{x-1}{1}=\dfrac{y-2}{-3}=\dfrac{z}{2}$
+\task el plano $x+2y-z-6=0$
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+
+\section{Puntos simétricos}
+
+
+\subsection{Punto simétrico respecto a una recta}
+\begin{frame}{Punto simétrico respecto a una recta}
+\begin{exampleblock}{Ejemplo}
+Hallar el simétrico del punto $P(2,4,9)$ respecto de la recta $\begin{cases} x= 2-\lambda \\ y = 1+2\lambda \\ z= 3+2\lambda \end{cases} $
+\end{exampleblock}
+\end{frame}
+
+\subsection{Punto simétrico respecto a un plano}
+\begin{frame}{Punto simétrico respecto a un plano}
+\begin{exampleblock}{Ejemplo}
+Hallar el simétrico del punto $P(2,4,9)$ respecto del plano $3x-2y+z+7=0$
+\end{exampleblock}
+\end{frame}
+
+
+\section{Problemas geométricos}
+\begin{frame}{Recta que pasa por un punto y corta perpendicularmente a otra}
+\begin{exampleblock}{Ejemplo}
+Hallar las ecuaciones de la recta que pasa por el punto $P(2,-1,1)$ y corta perpendicularmente a la recta $r \equiv \dfrac{x-2}{2}=\dfrac{y-1}{2}=\dfrac{z}{1}$
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Perpendicular común a dos rectas que se cruzan}
+\begin{exampleblock}{Ejemplo}
+Dadas las rectas $r \equiv \begin{cases} x=1+\lambda \\ y=2-3\lambda \\ z=-8 \end{cases}$ y $s  \equiv \begin{cases} x+y+z=2 \\ x-y-z = 4 \end{cases}$:
+\begin{tasks}[label=\alph*)](1)
+\task Demostrar que se cruzan.
+\task Hallar la perpendicular común a ambas rectas.
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+\end{document}

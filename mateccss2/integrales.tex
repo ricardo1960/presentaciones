@@ -1,0 +1,158 @@
+\documentclass[8pt]{beamer}
+\input{../plantilla}
+\imagen{../imagenes/sarrus}
+\title{Integrales}
+\subtitle{Matemáticas CC.SS. II}
+\author{Departamento de Matemáticas}
+\date[UHEI-IVED]{ UHEI - IVED}
+%\date{Matemáticas II}
+\begin{document}
+%\ECFJD
+\titleframe
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\begin{frame}[t]{Primitiva de una función}
+\begin{alertblock}{Primitiva de una función}
+Una función $F(x)$ es primitiva de otra función $f(x)$ si y sólo si $F'(x)=f(x)$
+\end{alertblock}
+
+\pause
+La función $F(x)=x^5$ es una primitiva de $f(x)=5x^4$ ya que $F'(x)=5x^4=f(x)$
+
+\pause
+La función $G(x)=x^5+4$ también es una primitiva de $f(x)=5x^4$ ya que $G'(x)=5x^4=f(x)$
+
+
+\pause
+Lo mismo ocurrirá para cualquier función del tipo $H(x)=x^5+C$, siendo $C$ una constante, ya que la derivada de una constante es cero.
+
+\pause
+
+\begin{alertblock}{Primitivas de una función}
+Si la función $F(x)$ es una primitiva de otra función $f(x)$, cualquier otra función de la forma $F(x)+C$, donde $C \in \R$, es primitiva de $f(x)$.
+
+\pause
+Si la función $F(x)$ es una primitiva de otra función $f(x)$, cualquier otra función primitiva de $f(x)$ es de la forma $F(x)+C$, donde $C \in \R$
+\end{alertblock}
+
+\end{frame}
+
+\begin{frame}[t]{Integral de una función}
+\begin{alertblock}{Integral de una función}
+La integral de una función $f(x)$ es el conjunto de todas sus primitivas y se representa como $\int f(x) \, dx$.
+
+Esta expresión se lee de la siguiente forma: <<Integral de $f(x)$ diferencial de $x$>>
+
+\pause
+Por lo tanto, si $F(x)$ es una primitiva de $f(x)$ entonces:
+\[ \int f(x)\,dx= F(x)+C \]
+donde $C$ es la constante de integración.
+\end{alertblock}
+
+\textbf{Propiedades de la integral}
+
+\pause
+\begin{enumerate}
+\item $\displaystyle \int \left[f(x) \pm g(x) \right]\,  dx = \int f(x)\, dx \pm \int g(x)\, dx $
+\pause
+\item $\displaystyle \int \left[k \cdot f(x) \right]\,  dx = k\cdot \int f(x)\, dx $
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{Integrales}
+\begin{exampleblock}{Ejemplo}
+Resuelve las siguientes integrales
+\begin{tasks}[label=\alph*)](1)
+\task $\displaystyle \int \left( 5x^4 + 2x \right)\, dx$
+\task $\displaystyle \int 3e^x \, dx$
+\end{tasks}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[t]{Integrales de funciones elementales}
+\begin{alertblock}{Integral de la función constante}
+\[ \int k \, dx = kx+C \]
+\end{alertblock}
+\pause
+
+\begin{alertblock}{Integral funciones potenciales}
+\[ \int x^n \, dx = \dfrac{x^{n+1}}{n+1}+C \qquad \int f'(x)\cdot \left[f(x)\right]^n \, dx = \dfrac{\left[f(x)\right]^{n+1}}{n+1}+C \qquad n \neq -1  \]
+\end{alertblock}
+\pause
+\begin{alertblock}{Integral del tipo logarítmico}
+\[ \int \dfrac{1}{x} \, dx = \ln |x|+C \qquad \int \dfrac{f'(x)}{f(x)}\, dx = \ln | f(x) | +C   \]
+\end{alertblock}
+\pause
+\begin{alertblock}{Integral de las funciones exponenciales}
+\[ \int a^x \, dx = \dfrac{a^x}{\ln a} +C \qquad \int f'(x)\cdot a^{f(x)}\, dx = \dfrac{a^{f(x)}}{\ln a} +C   \]
+\[ \int e^{x} \, dx = e^x+C \qquad \int f'(x)\cdot e^{f(x)}\, dx = e^{f(x)} +C   \]
+\end{alertblock}
+\end{frame}
+\begin{frame}[t]{Integrales de funciones elementales}
+\begin{alertblock}{Integral de las funciones trigonométricas}
+\[ \int \sen x \, dx = -\cos x + C \qquad \int f'(x) \cdot \sen f(x) \, dx = -\cos f(x) +C \]
+\pause
+\[ \int \cos x \, dx = \sen x + C \qquad \int f'(x) \cdot \cos f(x) \, dx = \sen f(x) +C \]
+\pause
+\[ \int (1+\tg^2) x \, dx = \tg x + C \qquad \int f'(x) \cdot (1+\tg^2 f(x)) \, dx = \tg f(x) +C \]
+\pause
+\[ \int \dfrac{1}{\cos^2 x} \, dx = \tg x + C \qquad \int \dfrac{f'(x)}{\cos^2 f(x)} \, dx = \tg f(x) +C \]
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[t]{Integrales}
+\begin{exampleblock}{Ejemplo}
+Calcular las siguientes integrales:
+\begin{tasks}[label=\alph*)](2)
+\task $\displaystyle \int x^5 \, dx$
+\task $\displaystyle \int \sqrt[4]{x}\, dx$
+\task $\displaystyle \int \dfrac{1}{x^3}\, dx$
+\task $\displaystyle \int \left(x^2- \dfrac{1}{2x^2}\right)\, dx$
+\task $\displaystyle \int 6x\cdot (3x^2-5)^4 \, dx$
+\task $\displaystyle \int x^3 \cdot (3x^4-2)^3\, dx$
+\task $\displaystyle \int \dfrac{5x}{1-2x^2}\, dx$
+\task $\displaystyle \int \dfrac{5x}{(1-2x^2)^3}\, dx$
+\task $\displaystyle \int 2^x \, dx$
+\task $\displaystyle \int e^{2x} \, dx$
+\task $\displaystyle \int x^2 \cdot e^{x^3+2} \, dx$
+\task $\displaystyle \int 2^{\frac{x}{3}}\, dx$
+\task $\displaystyle \int \cos(5x+1) \, dx$
+\task $\displaystyle \int x^2\cdot \sen (2x^3+1) \, dx$
+\task $\displaystyle \int x\cdot (1+tg^2(1-x^2)) \, dx$
+\task $\displaystyle \int \sen^2x \cdot \cos x \, dx$
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Integral definida}
+\begin{alertblock}{Regla de Barrow}
+Si $f(x)$ es continua en el intervalo $[a,b]$, y $F(x)$ es una primitiva de $f(x)$, entonces:
+\[ \int_a^b f(x) \, dx = F(b)-F(a) \]
+\end{alertblock}
+
+\pause
+Para calcular $\displaystyle \int_a^b f(x) \, dx$, siendo $f(x)$ continua en el intervalo $[a,b]$ procederemos de la siguiente forma:
+
+\begin{enumerate}[<+-| alert@+>]
+\item Resolveremos la integral como una integral definida para calcular $F(x)$ que es una primitiva de $f(x)$.
+\item Calcularemos los valores de esta función en $a$ y $b$: $F(a)$ y $F(b)$.
+\item Hallaremos la diferencia entre estos dos valores que será el valor de la integral definida.
+\[ \int_a^b f(x) \, dx = \left[ F(x) \right]_a^b =  F(b)-F(a) \]
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{Integral definida}
+\begin{exampleblock}{Ejemplo}
+Calcular las siguiente integrales definidas:
+\begin{tasks}[label=\alph*)](1)
+\task  $ \displaystyle \int_1^5 (-2x^2+x-1) \, dx $.
+\task  $ \displaystyle \int_{-2}^2 (2x^3-4x+3) \, dx $.
+\task  $ \displaystyle \int_0^e \dfrac{3x}{x^2+1} \, dx $.
+\end{tasks}
+
+\end{exampleblock}
+\end{frame}
+\end{document}

@@ -1,0 +1,62 @@
+%\usetheme{CambridgeUS}
+%\logo{\includegraphics[scale=0.10]{../imagenes/logoa}}
+\usepackage[spanish]{babel}
+%\usecolortheme{seahorse}
+%\usepackage{beamerthemeblackboard}
+%\usepackage{graphics}
+%\usecolortheme[RGB={6,138,200}]{structure}
+%\usepackage[orientation=landscape, size=custom,
+ % width=16, height=9, scale=0.5]{beamerposter}
+%\usepackage[utf8]{inputenc}
+%\usetheme{metropolis}
+%\metroset{titleformat=smallcaps,block=fill}
+\setbeamercolor{frametitle}{bg=titleColor,fg= white}
+\newcommand{\imagen}[1]{\titlegraphic{\includegraphics[height=\paperheight]{../imagenes/#1}}}
+\usetheme[titleformat=smallcaps,block=fill,sectionstyle=style2]{trigon}
+
+% Define logos to use (comment if no logo)
+\biglogo{../imagenes/logoa.jpg} % Used on titlepage only
+%\smalllogo{../imagenes/logoaloratxoa.jpg} % Used on top right corner of regular frames
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{tikz} 
+\usetikzlibrary{matrix}
+\usetikzlibrary{calendar,decorations.markings} 
+\usetikzlibrary{shapes,positioning}
+
+\usepackage{tkz-tab,tkz-euclide,tkz-fct}
+\usetkzobj{all}  
+\usepackage{tcolorbox} 
+%\usepackage{enumitem} 
+\usepackage{tasks} 
+\usepackage{asymptote}  
+\usepackage{cancel}
+\usepackage{xfrac}
+
+\newcommand{\sen}{\mathop{\rm sen}\nolimits}
+
+\newcommand{\tg}{\mathop{\rm tg}\nolimits}
+\newcommand{\arcsen}{\mathop{\rm arcsen}\nolimits}
+\newcommand{\arctg}{\mathop{\rm arctg}\nolimits}
+\newcommand{\g}{{}^\circ}     
+        
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\limite}[2]{\displaystyle \lim_{x \rightarrow #1}{#2}}
+\renewcommand{\vector}[1]{\overrightarrow{#1}}
+
+\newtcbox{\resultado}[1][center]{#1,colback=red!5!white,
+colframe=red!75!black}
+
+\newtcbox{\resaltado}[1][center]{#1,colback=blue!5!white,
+colframe=blue!75!black}
+\definecolor{titleColor}{rgb}{0.0, 0.42, 0.24}

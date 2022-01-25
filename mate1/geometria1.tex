@@ -1,0 +1,181 @@
+\documentclass[8pt]{beamer}
+\input{../plantilla}
+
+\imagen{../imagenes/descartes.jpg}
+\title{Geometría 1}
+\author{Ricardo Mateos}
+\institute[UHEI-IVED]{Departamento de Matemáticas \\ UHEI - IVED}
+\date{Matemáticas I}
+\begin{document}
+%\ECFJD
+\titleframe
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\section{Ecuaciones de la recta}
+
+\begin{frame}[t]{Ecuaciones de la recta}
+Una recta $r$ está determinada por un punto $A(x_0,y_0)$  y  un vector director $\vec{v}=(v_1,v_2)$, que marca la dirección de la recta, es decir, es  paralelo a la recta. 
+
+Tomando cualquier otro punto $P(x,y)$ de la recta tendremos que el vector $\vector{AP}$ es paralelo al vector director de la recta $(\vec{v})$, es decir, $\vector{AP}=\lambda \vector{v}$.
+\begin{center}
+\begin{tikzpicture}[scale=0.65]
+\tkzInit[xmin=-2,xmax=7, ymin=-1,ymax=6]
+	\tkzDrawXY
+	\tkzDefPoints{2/3/A, 4/4/P}
+	\tkzDefPoints{-1/1.5/B, 7/5.5/C}
+	\tkzDefPoints{0/0/O, 2/1/V}
+	%\tkzDefPoints{-1/1/B3, -1/0/B4}
+	%\tkzDefPoints{0/-2/C1, 3.2/-2/C2}
+	%\tkzDefPoints{0/-1/C3, 2.4/-1/C4}
+	\tkzDrawSegment[line width=1.5pt](B,C)
+	\tkzDrawSegment[line width=1pt,-latex,color=blue](A,P)
+	\tkzDrawSegment[line width=1pt,-latex,color=blue](O,V)
+	\tkzDrawSegment[line width=1pt,-latex,color=red](O,P)
+	\tkzDrawSegment[line width=1pt,-latex,color=red](O,A)
+	%\tkzDrawPolygon[line width=2pt](A,C,D,B)
+	%\tkzDrawSegments[color=blue](A1,G A2,G)
+	%\tkzDrawSegments[color=blue](B1,E B2,A A1,B3)
+	%\tkzDrawSegments[color=blue,latex-latex](B1,B2)
+	%\tkzDrawSegments[color=blue,latex-latex](B3,B4)
+	%\tkzDrawSegments[color=blue](C2,F C1,A A2,C4)
+	%\tkzDrawSegments[color=blue,latex-latex](C1,C2)
+	%\tkzDrawSegments[color=blue,latex-latex](C3,C4)
+	\tkzDrawPoints(A,P)
+	\tkzLabelPoint[above](P){$P$}
+	\tkzLabelPoint[above](A){$A$}	
+	\tkzLabelSegment[above left](A,P){$\lambda \cdot \vec{v}$}
+	\tkzLabelSegment[below right](O,V){$\vec{v}$}
+	\tkzLabelSegment[left](O,A){$\vector{OA}$}
+	\tkzLabelSegment[right](O,P){$\vector{OP}$}
+	%\tkzFct[color=red,domain=0:7.3]{(x**2-2*x+13)/12)}
+	%\tkzFct[color=red,domain=0:4]{-x}
+\end{tikzpicture}
+\end{center}
+
+
+
+\end{frame}
+
+\begin{frame}{Ecuación vectorial de la recta}
+
+En la figura anterior observamos que:
+\[ \vector{OP} =  \vector{OA} +  \vector{AP} \]
+
+De este modo tendremos que:
+\[ \vector{OP}=\vector{OA}+\lambda \vec{v} \qquad (\lambda \in \R)\]
+
+La ecuación anterior recibe el nombre de \textbf{ecuación vectorial} de la recta.
+
+\pause
+Expresandola en forma de coordenadas tendremos:
+
+\resaltado{$(x,y)= (x_0,y_0)+\lambda (v_1,v_2)$ }
+\end{frame}
+
+\begin{frame}[t]{Ecuaciones paramétricas y continua de la recta}
+
+Si en la ecuación anterior igualamos las componentes de ambos miembros obtendremos las \textbf{ecuaciones paramétricas} de la recta.
+\resaltado{$\begin{cases} x= x_0 + \lambda \cdot v_1 \\ y= y_0 + \lambda \cdot v_2
+ \end{cases} $}
+\pause
+ Si despejamos $\lambda$ en cada una de las ecuaciones paramétricas 
+ \[ \lambda= \dfrac{x-x_0}{v_1} \qquad \lambda= \dfrac{y-y_0}{v_2} \]
+ e igualamos las dos expresiones obtendremos la \textbf{ecuación continua} de la recta:
+ \resaltado{$\dfrac{x-x_0}{v_1} = \dfrac{y-y_0}{v_2}$}
+\end{frame}
+
+\begin{frame}[t]{Ecuación general de la recta}
+
+Eliminando los denominadores y pasando todos los términos a un lado de la expresión obtenemos:
+\[ v_2(x-x_0) = v_1(y-y_0) \] 
+\[ v_2 \cdot x- v_2 \cdot x_0 - v_1\cdot y+ v_1 \cdot y_0 =0 \] 
+Tomando $A=v_2$, $B=-v_1$ y $C=v_1 \cdot y_0 - v_2 \cdot x_0$ obtenemos la \textbf{ecuación general } de la recta:
+\resaltado{$Ax+By+C=0 $ }
+\end{frame}
+\begin{frame}[t]{Ecuaciones de la recta}
+\begin{exampleblock}{Ejemplo}
+Hallar las ecuaciones vectorial, paramétricas, continua y general de la recta que pasa por el punto $A(2,-1)$ y tiene como dirección la del vector $\vec{v}=(1,-2)$
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Inclinación y pendiente de una recta}
+
+La \textbf{inclinación de una recta} es el ángulo que forma con la dirección positiva del eje $OX$.
+
+La \textbf{pendiente de una recta} el la tangente de su inclinación, es decir, la tangente del ángulo que forma con la dirección positiva del eje $OX$.
+
+\begin{columns}
+\column{0.5\textwidth}
+\begin{center}
+\begin{tikzpicture}[scale=0.35]
+\tkzInit[xmin=-3,xmax=4, ymin=-4,ymax=6]
+	\tkzDrawXY
+	\tkzDefPoints{-2/-3/A,2/5/P}
+	
+	%\tkzDrawSegment[line width=1.5pt](B,C)
+	\tkzDrawSegment[line width=1pt](A,P)
+	\tkzDefPoints{-0.5/0/O,2/0/B,0/1/C}
+	\tkzMarkAngle[size=1.5cm,mark=none](B,O,P)
+	%\tkzDrawSegment[line width=1pt,-latex,color=blue](O,V)
+	%\tkzDrawSegment[line width=1pt,-latex,color=red](O,P)
+	%\tkzDrawSegment[line width=1pt,-latex,color=red](O,A)
+	%\tkzDrawPolygon[line width=2pt](A,C,D,B)
+	%\tkzDrawSegments[color=blue](A1,G A2,G)
+	%\tkzDrawSegments[color=blue](B1,E B2,A A1,B3)
+	%\tkzDrawSegments[color=blue,latex-latex](B1,B2)
+	%\tkzDrawSegments[color=blue,latex-latex](B3,B4)
+	%\tkzDrawSegments[color=blue](C2,F C1,A A2,C4)
+	%\tkzDrawSegments[color=blue,latex-latex](C1,C2)
+	%\tkzDrawSegments[color=blue,latex-latex](C3,C4)
+	%\tkzDrawPoints(A,P)
+	%\tkzLabelPoint[above](P){$P$}
+	%\tkzLabelPoint[above](A){$A$}	
+	%\tkzLabelSegment[above left](A,P){$\lambda \cdot \vec{v}$}
+	%\tkzLabelSegment[below right](O,V){$\vec{v}$}
+	%\tkzLabelSegment[left](O,A){$\vector{OA}$}
+	%\tkzLabelSegment[right](O,P){$\vector{OP}$}
+	%\tkzFct[color=red,domain=0:7.3]{(x**2-2*x+13)/12)}
+	%\tkzFct[color=red,domain=0:4]{-x}
+\end{tikzpicture}
+\end{center}
+
+\column{0.5\textwidth}
+\begin{center}
+\begin{tikzpicture}[scale=0.35]
+\tkzInit[xmin=-3,xmax=4, ymin=-4,ymax=6]
+	\tkzDrawXY
+	\tkzDefPoints{-2/-3/A,2/5/P}
+	\tkzDefPoints{-0.5/0/O,2/0/B,0/1/C}
+	%\tkzDrawSegment[line width=1.5pt](B,C)
+	\tkzDrawSegment[line width=1pt](A,P)
+	\tkzMarkAngle[size=1.5cm,mark=none](B,O,P)
+	%\tkzDrawSegment[line width=1pt,-latex,color=blue](O,V)
+	%\tkzDrawSegment[line width=1pt,-latex,color=red](O,P)
+	%\tkzDrawSegment[line width=1pt,-latex,color=red](O,A)
+	%\tkzDrawPolygon[line width=2pt](A,C,D,B)
+	%\tkzDrawSegments[color=blue](A1,G A2,G)
+	%\tkzDrawSegments[color=blue](B1,E B2,A A1,B3)
+	%\tkzDrawSegments[color=blue,latex-latex](B1,B2)
+	%\tkzDrawSegments[color=blue,latex-latex](B3,B4)
+	%\tkzDrawSegments[color=blue](C2,F C1,A A2,C4)
+	%\tkzDrawSegments[color=blue,latex-latex](C1,C2)
+	%\tkzDrawSegments[color=blue,latex-latex](C3,C4)
+	%\tkzDrawPoints(A,P)
+	%\tkzLabelPoint[above](P){$P$}
+	%\tkzLabelPoint[above](A){$A$}	
+	%\tkzLabelSegment[above left](A,P){$\lambda \cdot \vec{v}$}
+	%\tkzLabelSegment[below right](O,V){$\vec{v}$}
+	%\tkzLabelSegment[left](O,A){$\vector{OA}$}
+	%\tkzLabelSegment[right](O,P){$\vector{OP}$}
+	%\tkzFct[color=red,domain=0:7.3]{(x**2-2*x+13)/12)}
+	%\tkzFct[color=red,domain=0:4]{-x}
+\end{tikzpicture}
+\end{center}
+
+\end{columns}
+
+\end{frame}
+\end{document}

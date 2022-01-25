@@ -1,0 +1,139 @@
+\documentclass[8pt]{beamer}
+%\usetheme{CambridgeUS}
+\logo{\includegraphics[scale=0.10]{../imagenes/logoa}}
+\usepackage[spanish]{babel}
+%\usecolortheme{seahorse}
+%\usepackage{beamerthemeblackboard}
+%\usepackage{graphics}
+%\usecolortheme[RGB={6,138,200}]{structure}
+%\usepackage[orientation=landscape, size=custom,
+ % width=16, height=9, scale=0.5]{beamerposter}
+%\usepackage[utf8]{inputenc}
+\usetheme{metropolis}
+\metroset{titleformat=smallcaps,block=fill}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{tikz} 
+\usetikzlibrary{matrix}
+\usetikzlibrary{calendar,decorations.markings} 
+\usetikzlibrary{shapes,positioning}
+
+\usepackage{tkz-tab,tkz-euclide,tkz-fct}
+\usetkzobj{all}  
+\usepackage{tcolorbox} 
+%\usepackage{enumitem} 
+\usepackage{tasks} 
+\usepackage{asymptote}  
+\newcommand{\sen}{\mathop{\rm sen}\nolimits}
+
+\newcommand{\tg}{\mathop{\rm tg}\nolimits}
+\newcommand{\arcsen}{\mathop{\rm arcsen}\nolimits}
+\newcommand{\arctg}{\mathop{\rm arctg}\nolimits}
+\newcommand{\g}{{}^\circ}     
+        
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\limite}[2]{\displaystyle \lim_{x \rightarrow #1}{#2}}
+\renewcommand{\vector}[1]{\overrightarrow{#1}}
+
+\newtcbox{\resultado}[1][center]{#1,colback=red!5!white,
+colframe=red!75!black}
+
+\newtcbox{\resaltado}[1][center]{#1,colback=blue!5!white,
+colframe=blue!75!black}
+\definecolor{titleColor}{rgb}{0.0, 0.42, 0.24}
+
+\title{Funciones}
+\author{Ricardo Mateos}
+\institute[UHEI-IVED]{Departamento de Matemáticas \\ UHEI - IVED}
+\date{Matemáticas CC.SS. I}
+\begin{document}
+%\ECFJD
+\begin{frame}
+\maketitle
+\end{frame}
+
+
+
+\begin{frame}{Dominio de una función}
+\begin{exampleblock}{Ejemplo dominio}
+Hallar el dominio de definición de las siguientes funciones:
+\begin{tasks}[label=\alph*)](2)
+\task $f(x)=x^3+3x^+x-2$
+\task $f(x)= \sqrt{x-2}$
+\task $f(x)= \dfrac{x^2-4}{x^2-1}$
+\task $f(x)=\dfrac{\sqrt{x-2}}{x^2 - 3x-4}$
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{tikzpicture}[scale=0.35]
+\tkzInit[xmin=-3,xmax=3,ymin=-5,ymax=6]
+\tkzDrawX
+\tkzDrawY
+%\tkzText[draw,color=blue,fill=orange!20](2,3){$f(x)=x^2-4$}
+\tkzFct[color=blue,domain=-3:3]{(x**2)-4}
+%\tkzFct[color=blue,domain=0:9]{-sqrt(x)}
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.45]
+\tkzInit[xmin=-5,xmax=2,ymin=-1,ymax=3]
+\tkzDrawX
+\tkzDrawY
+%\tkzText[draw,color=blue,fill=orange!20](2,3){$f(x)=xe^{x}$}
+\tkzFct[color=blue,domain=-5:1]{x*exp(x)}
+\end{tikzpicture}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{tikzpicture}[scale=0.35]
+\tkzInit[xmin=-3,xmax=3,ymin=-5,ymax=6]
+\tkzDrawX
+\tkzDrawY
+%\tkzText[draw,color=blue,fill=orange!20](2,3){$f(x)=x^2-4$}
+\tkzFct[color=blue,domain=-3:3]{(x**2)-4}
+%\tkzFct[color=blue,domain=0:9]{-sqrt(x)}
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.35]
+\tkzInit[xmin=-0.5,xmax=10,ymin=-5,ymax=5]
+\tkzDrawX
+\tkzDrawY
+%\tkzText[draw,color=blue,fill=orange!20](2,3){$f(x)=\sqrt{x}$}
+\tkzFct[color=blue,domain=0:9]{sqrt(x)}
+\tkzFct[color=blue,domain=0:9]{-sqrt(x)}
+\end{tikzpicture}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+
+\end{frame}
+
+\begin{frame}
+\begin{tikzpicture}
+\tkzInit[xmin=-5,xmax=2,ymin=-1,ymax=3]
+\tkzDrawX
+\tkzDrawY
+\tkzText[draw,color=blue,fill=orange!20](2,3){$f(x)=xe^{x}$}
+\tkzFct[color=blue,domain=-5:1]{x*exp(x)}
+%\tkzFct[color=blue,domain=0:9]{-sqrt(x)}
+\end{tikzpicture}
+\end{frame}
+
+\end{document}

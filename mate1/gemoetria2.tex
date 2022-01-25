@@ -1,0 +1,171 @@
+\documentclass[8pt]{beamer}
+\input{../plantilla}
+
+\imagen{../imagenes/descartes.jpg}
+\title{Geometría 2}
+\subtitle{Matemáticas I}
+\author{Departamento de Matemáticas}
+\date{ UHEI - IVED}
+\begin{document}
+%\ECFJD
+\titleframe
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\section{Distancias}
+\subsection{Distancia entre dos puntos}
+
+\begin{frame}[t]{Distancia entre dos puntos}
+\begin{alertblock}{Distancia entre dos puntos}
+La distancia entre dos puntos $P(x_1,y_1)$ y $Q(x_2,y_2$ es igual al módulo del vector que une estos dos puntos:
+\[ d(P,Q)= \left| \vector{PQ} \right| = \sqrt{(x_2-x_1)^2+(y_2-y_1)^2} \]
+\end{alertblock}
+
+\pause
+
+\begin{exampleblock}{Ejemplo}
+Hallar la distancia entre los puntos $P(1,-2)$ y $Q(-2,1)$.
+\end{exampleblock}
+
+\pause
+
+\[d(P,Q)=\sqrt{(-2-1)^2+ (1-(-2))^2}= \sqrt{18} \text{u} \]
+\end{frame}
+
+\subsection{Distancia de un punto a una recta}
+\begin{frame}[t]{Distancia de un punto a una recta}
+
+\begin{alertblock}{Distancia de un punto a una recta}
+La distancia del punto $P(x_1,y_1)$ a la recta $r : Ax+By+C=0$ se calcula mediante la siguiente expresión:
+\[ d(P,r)=\dfrac{|A\cdot x_1+B\cdot y_1+C|}{\sqrt{A^2+B^2}} \]
+\end{alertblock}
+\pause
+\begin{exampleblock}{Ejemplo}
+Hallar la distancia del punto $P(1,5)$ a la recta $r : \dfrac{x}{4}=\dfrac{y-1}{5}$.
+\end{exampleblock}
+\pause
+Escribimos la ecuación de la recta en forma general:
+\[ \dfrac{x}{4}=\dfrac{y-1}{5} \Rightarrow 5x=4y-4 \Rightarrow 5x-4y+4=0 \]
+
+\pause
+La distancia de $P$ a $r$ es:
+\[ d(P,r)=\dfrac{|5\cdot 1 -4\cdot 5 +4 | }{\sqrt{5^2+4^2}}= \dfrac{|-11|}{\sqrt{41}}= \dfrac{11\sqrt{41}}{41} \, \text{u} \]
+\end{frame}
+
+\subsection{Distancia entre dos rectas}
+\begin{frame}[t]{Distancia entre dos rectas}
+
+\begin{itemize}[<+->]
+\item Si las rectas son secantes o coincidentes la distancia entre ambas es cero.
+\item Si las rectas son paralelas la distancia entre ambas es igual a la distancia de cualquier punto de una de las rectas a la otra recta.
+\end{itemize}
+
+\pause
+\begin{exampleblock}{Ejemplo}
+Hallar la distancia entre las rectas $r: \dfrac{x}{3}= \dfrac{y-1}{-4}$ y $s:4x+3y + 2 = 0 $. 
+\end{exampleblock}
+
+\pause
+Hallamos la ecuación general de la recta $r$:
+\[ \dfrac{x}{3}=\dfrac{y-1}{-4} \Rightarrow -4x=3y-3 \Rightarrow -4x-3y+3=0 \]
+\pause
+Estudiamos su posición relativa.
+\[ \dfrac{-4}{4}=\dfrac{-3}{3} \neq \dfrac{3}{2} \]
+luego son paralelas.
+
+\pause
+Tomamos un punto de la recta $r$, por ejemplo, $R(0,1)$
+\pause
+
+Hallamos la distancia entre las dos rectas:
+\[ d(r,s)=d(R,s)=\dfrac{|4\cdot 0+3\cdot 1 +2|}{\sqrt{4^2+3^2}}= \dfrac{5}{5}= 1 \, u \]
+\end{frame}
+
+\section{Ángulo entre dos rectas}
+\begin{frame}[t]{Ángulo entre dos rectas}
+Se llama ángulo entre dos rectas al menor ángulo que forman las rectas al cortarse. Este ángulo coincide con el ángulo de sus vectores directores.
+\pause
+\begin{alertblock}{Cálculo a partir de sus vectores directores}
+\[ \cos \alpha = \dfrac{\left| \vec{v_r}\cdot \vec{v_s}\right|}{\left| \vec{v_r}\right|\left|\vec{v_s}\right|} \qquad 0 \leq \alpha \leq 90 \]
+\end{alertblock}
+\pause
+\begin{exampleblock}{Ejemplo}
+Hallar el ángulo que forman las rectas $\begin{cases} r: 3x-4y=0 \\ s: 2x+2y+3=0 \end{cases}$
+\end{exampleblock}
+\pause
+Hallamos los vectores directores de las dos rectas: $\begin{cases} \vec{v_r}=(4,3) \\ \vec{v_s}=(-2,2) \end{cases}$
+\pause
+
+Hallamos el ángulo:
+\pause
+\[ \cos \alpha = \dfrac{| 4 \cdot(-2) +3 \cdot 2 |}{\sqrt{4^2+3^2}\sqrt{(-2)^2+2^2}}= \dfrac{2}{5\sqrt{8}} \Rightarrow \alpha = 81,87 \g \]
+
+\end{frame}
+
+\begin{frame}[t]{Ángulo entre dos rectas}
+
+\begin{alertblock}{Cálculo a partir de sus pendientes}
+\[ \tg \alpha = \left| \dfrac{m_s - m_r}{1+m_s \cdot m_r }\right| \qquad 0 \leq \alpha \leq 90 \]
+\end{alertblock}
+\pause
+\begin{exampleblock}{Ejemplo}
+Hallar el ángulo que forman las rectas $\begin{cases} r: 3x-4y=0 \\ s: 2x+2y+3=0 \end{cases}$
+\end{exampleblock}
+\pause
+Hallamos las pendientes de las dos rectas: $\begin{cases} m_r= \dfrac{4}{3} \\ \\ m_s=\dfrac{2}{-2}=-1 \end{cases}$
+\pause
+
+Hallamos el ángulo:
+\pause
+\[ \tg \alpha =\left| \dfrac{-1-\dfrac{4}{3}}{1+(-1)\cdot \dfrac{4}{3}} \right|= 7  \Rightarrow \alpha = 81,87 \g \]
+
+\end{frame}
+
+\section{Puntos simétricos}
+\begin{frame}[t]{Punto simétrico respecto a un punto}
+\begin{alertblock}{Punto simétrico respecto a otro punto}
+Los puntos $A$ y $A'$ son simétricos respecto de otro punto $M$, si $M$ es el punto medio del segmento $\overline{AA'}$.
+\end{alertblock}
+
+\pause
+
+\begin{exampleblock}{Ejemplo}
+Hallar el punto simétrico de $P(1,2)$ respecto al punto $M(-1,6)$
+\end{exampleblock}
+\end{frame}
+
+
+\section{Puntos simétricos}
+\begin{frame}[t]{Punto simétrico respecto a una recta}
+\begin{alertblock}{Punto simétrico respecto a otro punto}
+Los puntos $A$ y $A'$ son simétricos respecto de la recta $r$ si el segmento $\overline{AA'}$ es perpendicular a $r$ y la corta en el punto medio del segmento.
+\end{alertblock}
+Para calcular el punto simétrico de $A$ respecto a una recta, $r$, realizaremos los siguientes pasos:
+\begin{itemize}[<+->]
+\item Hallaremos la recta perpendicular a la recta $r$ que pase por el punto $A$.
+\item Calcularemos el punto de corte de ambas rectas, $M$.
+\item Este punto será el punto medio entre $A$ y $A'$. Por lo tanto, $M=\dfrac{A+A'}{2} \Rightarrow A'=2M-A$.
+\end{itemize}
+\pause
+\begin{exampleblock}{Ejemplo}
+Hallar el punto simétrico del punto $P(2,1)$ respecto de la recta $r: x+2y-9=0$
+\end{exampleblock}
+\pause
+Hallamos el vector director de la recta $r$: $\vec{v_r}=(-2,1)$
+\pause
+
+Hallamos un vector perpendicular a $\vec{v_r}$: $v_s=(1,2)$
+
+\pause
+Con este vector y el punto $P$ calculamos la recta perpendicular a $r$ que pasa por $P$:
+\[ \dfrac{x-2}{1}=\dfrac{y-1}{2}  \Rightarrow 2x-4=y-1 \Rightarrow 2x-y-3=0 \]
+
+\pause
+Hallamos el punto de corte de las dos rectas resolviendo el sistema formado por ambas:
+\[  \begin{cases} x+2y-9=0 \\ 2x-y-3=0 \Rightarrow \begin{cases} x= \\ y = \end{cases} \]
+
+\end{frame}
+
+\end{document}

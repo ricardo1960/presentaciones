@@ -1,0 +1,168 @@
+\documentclass[8pt]{beamer}
+%\usetheme{CambridgeUS}
+\logo{\includegraphics[scale=0.10]{../imagenes/logoa}}
+\usepackage[spanish]{babel}
+%\usecolortheme{seahorse}
+%\usepackage{beamerthemeblackboard}
+%\usepackage{graphics}
+%\usecolortheme[RGB={6,138,200}]{structure}
+%\usepackage[orientation=landscape, size=custom,
+ % width=16, height=9, scale=0.5]{beamerposter}
+%\usepackage[utf8]{inputenc}
+\usetheme{metropolis}
+\metroset{titleformat=smallcaps,block=fill}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{tikz} 
+\usetikzlibrary{matrix}
+\usetikzlibrary{calendar,decorations.markings} 
+\usetikzlibrary{shapes,positioning}
+
+\usepackage{tkz-tab,tkz-euclide,tkz-fct}
+\usetkzobj{all}  
+\usepackage{tcolorbox} 
+%\usepackage{enumitem} 
+\usepackage{tasks} 
+\usepackage{asymptote}  
+\newcommand{\sen}{\mathop{\rm sen}\nolimits}
+
+\newcommand{\tg}{\mathop{\rm tg}\nolimits}
+\newcommand{\arcsen}{\mathop{\rm arcsen}\nolimits}
+\newcommand{\arctg}{\mathop{\rm arctg}\nolimits}
+\newcommand{\g}{{}^\circ}     
+        
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\limite}[2]{\displaystyle \lim_{x \rightarrow #1}{#2}}
+\renewcommand{\vector}[1]{\overrightarrow{#1}}
+
+\newtcbox{\resultado}[1][center]{#1,colback=red!5!white,
+colframe=red!75!black}
+
+\newtcbox{\resaltado}[1][center]{#1,colback=blue!5!white,
+colframe=blue!75!black}
+\definecolor{titleColor}{rgb}{0.0, 0.42, 0.24}
+
+\title{Aplicaciones de las derivadas 2}
+\author{Ricardo Mateos}
+\institute[UHEI-IVED]{Departamento de Matemáticas \\ UHEI - IVED}
+\date{Matemáticas Aplicadas a las CC.SS. II}
+\begin{document}
+%\ECFJD
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+
+
+\begin{frame}[t]{Monotonia y extremos relativos}
+\begin{exampleblock}{Ejemplo}
+Dada la función $f(x)=ax^3+bx+c$ , calcular el valor de $a$, $b$ y $c$ para
+que:
+\begin{tasks}[label=\alph*)](1)
+\task La función pase por el origen de coordenadas y tenga en el punto $(1,-1)$ un mínimo local.
+\task Para los valores obtenidos en el apartado anterior, determine los intervalos de crecimiento y decrecimiento de la función.
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Optimización}
+\begin{exampleblock}{Ejemplo}
+El coste de producción de $x$ unidades de un determinado producto viene dado por la función $C(x)=\dfrac{1}{4}x^2+35x+25$ y su precio de venta es $p=50-\dfrac{x}{4}$
+ euros. Hallar:
+
+\begin{tasks}[label=\alph*)](1)
+\task El número de unidades que debe venderse diariamente para que el beneficio sea máximo.
+\task El precio al que deben venderse las unidades obtenidas en el apartado a).
+\task El beneficio máximo.
+\end{tasks}
+
+\end{exampleblock}
+\end{frame}
+
+
+
+\begin{frame}[t]{Optimización}
+\begin{exampleblock}{Ejemplo}
+El crecimiento (en cm) de una variedad de trigo, $C(x)$, en función de la cantidad de fertilizante (en gramos por metro cuadrado) utilizada, $x$, viene dado por la función:
+\[ C(x)=2x^3-Ax^2+Bx+35 \qquad 0 \leq x \leq 4 \] 
+
+Determinar las constantes $A$ y $B$ sabiendo que el crecimiento alcanza su mínimo con una dosis de 3 gramos por metro cuadrado y que para esta dosis las plantas de trigo crecen 8 cm.
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}[t]{Optimización}
+\begin{exampleblock}{Ejemplo}
+Las ventas de un producto (en miles de euros), $V(t)$, en los 6 primeros años desde que se lanzó al mercado, evolucionan de acuerdo con la siguiente función:
+\[ V(t)=4t^3-24t^2 +36t+100 \qquad 0 \leq t \leq 6 \]
+Se pide determinar:
+\begin{tasks}[label=\alph*)](1)
+\task Estudiar el crecimiento y decrecimiento de las ventas a lo largo de los 6 años.
+\task ¿En qué año se produjeron las ventas máximas y las mínimas?.
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}[t]{Optimización}
+\begin{exampleblock}{Ejemplo}
+Un determinado vino tiene un tiempo de crianza en bodega de entre 1 y 4 años. La graduación del vino, $G(x)$, en términos del tiempo de crianza, $x$, viene dada por la función
+\[ G(x)= x^3-Ax^2+6Bx+2 \qquad 1 \leq x \leq 4 \]
+Determinar, justificando la respuesta, las constantes $A$ y $B$ sabiendo que la máxima graduación se consigue exactamente a los 2 años, edad en que el vino alcanza los 22 grados.
+
+
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Curvatura y puntos de inflexión}
+\begin{exampleblock}{Ejemplo}
+El diámetro de cierta variedad de manzana oscila entre los $2$y los $5$ cm. El precio (en céntimos de euro), $P(x)$, que se le paga al agricultor por un kilogramo de estas manzanas viene determinado por su diámetro, x, de acuerdo con la siguiente función:
+\[ P(x)=-2x^3+15x^2-24x+30 \qquad 2 \leq x \leq 5 \]
+\begin{tasks}[label=\alph*)](1)
+\task Determinar para qué diámetros se alcanzan los precios máximo y mínimo de las manzanas. 
+\task ¿Cuáles son estos precios máximo y mínimo?.
+\end{tasks}
+
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Calculo de los máximos y mínimos en un intervalo}
+\begin{exampleblock}{Ejemplo}
+Dada la función $f(x)=\dfrac{x}{x^2+1}$, calcula:
+\begin{tasks}[label=\alph*)](1)
+\task Intervalos de crecimiento y decrecimiento.
+\task Extremos relativos.
+\task Asíntotas.
+\task Haz una representación aproximada.
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Optimización}
+\begin{exampleblock}{Ejemplo}
+El número de vehículos que ha pasado cierto día por el peaje de una autopista viene dado por la función: 
+\[ N8t)=\begin{cases}  \left( \dfrac{t-3}{3} \right)^2+2 & \text{si} \quad 0<t \leq 9 \\ 10-\left( \dfrac{t-15}{3} \right)^2 & \text{si} \quad 9<t \leq 24 \end{cases}  \]
+donde $N$ indica el número de vehículos y $t$ el tiempo transcurrido en horas desde las $0:00$ h.
+\begin{tasks}[label=\alph*)](1)
+\task ¿Es continua esta función? Justificar la respuesta.
+\task ¿Entre qué horas aumentó el número de vehículos que pasaba por el peaje? Justificar la respuesta.
+\task ¿A qué hora pasó el mayor número de vehículos? ¿Cuántos fueron?
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+\end{document}

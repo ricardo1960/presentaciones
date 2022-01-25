@@ -1,0 +1,89 @@
+\documentclass[9pt]{beamer}
+\usetheme{metropolis}
+%\usetheme{Warsaw}
+\metroset{titleformat=smallcaps,block=fill}
+\usecolortheme{seahorse}
+%\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz} 
+\usetikzlibrary{matrix}
+\usetikzlibrary{calendar,decorations.markings} 
+\usetikzlibrary{shapes,positioning}
+
+\usepackage{tkz-tab,tkz-euclide,tkz-fct}
+\usetkzobj{all}
+
+\usepackage{tcolorbox}
+\usepackage{varwidth}
+\newtcbox{\resultado}{colback=red!5!white,
+colframe=red!75!black,varwidth upper}
+
+\newtcbox{\resaltado}{colback=blue!5!white,
+colframe=blue!75!black,varwidth upper}
+
+\usepackage{polynom}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newenvironment{gaussjordandos}{\left( \begin{array}{cc|cc}}{\end{array}\right)}
+\newenvironment{gaussjordantres}{\left( \begin{array}{ccc|ccc}}{\end{array}\right)}
+
+\author{Departamento de Matemáticas}
+\title{Ecuaciones matriciales}
+%\subtitle{Definición y cálculo}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{\includegraphics[scale=0.05]{../../images/logoa.jpg}} 
+%\institute{UHEI - IVED} 
+\date{\includegraphics[scale=0.15]{imagenes/logoa.jpg}} 
+%\subject{} 
+\begin{document}
+\begin{frame}{Ecuaciones matriciales}
+Una ecuación matricial es una igualdad en la que intervienen matrices, siendo una de ellas o varias desconocidas.
+
+Las ecuaciones matriciales se pueden resolver de forma directa o con la ayuda de la matriz inversa.
+\end{frame}
+
+
+\begin{frame}{Resolución de una ecuación matricial directamente}
+\begin{exampleblock}{Ejemplo}
+Resuelve la siguiente ecuación matricial $X \cdot A -B=C$, siendo:
+\[ A= \begin{pmatrix} 1 & -2 \\ 2 & 3 \end{pmatrix} \qquad B=\begin{pmatrix} 0 & -2 \\ -2 & 4 \end{pmatrix} \qquad C= \begin{pmatrix} -1 & -10 \\ 3 & -6 \end{pmatrix} \] 
+\end{exampleblock}
+
+\pause
+La matriz $X$ tiene que ser una matriz cuadrada de orden 2. Es decir $X=\begin{pmatrix} x & y \\ z & t \end{pmatrix}$
+
+\pause
+Planteamos la ecuación $X\cdot A -B = C$ y operamos:
+
+\pause
+$\begin{pmatrix} x & y \\ z & t \end{pmatrix} \begin{pmatrix} 1 & -2 \\ 2 & 3 \end{pmatrix} - \begin{pmatrix} 0 & -2 \\ -2 & 4 \end{pmatrix} = \begin{pmatrix} -1 & -10 \\ 3 & -6 \end{pmatrix}$
+
+\pause
+$\begin{pmatrix} x+2y & -2x+3y \\ z+2t & -2z+3t \end{pmatrix}- \begin{pmatrix} 0 & -2 \\ -2 & 4 \end{pmatrix} = \begin{pmatrix} -1 & -10 \\ 3 & -6 \end{pmatrix}$
+
+\pause
+$\begin{pmatrix} x+2y & -2x+3y+2 \\ z+2t+2 & -2z+3t-4 \end{pmatrix} = \begin{pmatrix} -1 & -10 \\ 3 & -6 \end{pmatrix}$
+
+\pause
+Igualamos las dos matrices y conseguimos el siguiente sistema de ecuaciones:
+
+$\begin{cases} x+2y = -1 \\ -2x+3y+2=-10  \\ z+2t+2= 3 \\ -2z+3t-4=-6 \end{cases}$
+
+\pause
+Resolvemos el sistema:
+
+$\begin{cases} x= 3 \\ y = -2 \\ z=1 \\ t =0 \end{cases}$
+
+\pause
+La matriz $X$ es: 
+
+\resultado{$X= \begin{pmatrix} 3 & -2 \\ 1 & 0 \end{pmatrix}$}
+
+\end{frame}
+\end{document}

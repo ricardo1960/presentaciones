@@ -1,0 +1,284 @@
+\documentclass[8pt,handout]{beamer}
+%\usetheme{CambridgeUS}
+\logo{\includegraphics[scale=0.10]{../imagenes/logoa}}
+\usepackage[spanish]{babel}
+%\usecolortheme{seahorse}
+%\usepackage{beamerthemeblackboard}
+%\usepackage{graphics}
+%\usecolortheme[RGB={6,138,200}]{structure}
+%\usepackage[orientation=landscape, size=custom,
+ % width=16, height=9, scale=0.5]{beamerposter}
+%\usepackage[utf8]{inputenc}
+\usetheme{metropolis}
+\metroset{titleformat=smallcaps,block=fill}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{tikz} 
+\usetikzlibrary{matrix}
+\usetikzlibrary{calendar,decorations.markings} 
+\usetikzlibrary{shapes,positioning}
+
+\usepackage{tkz-tab,tkz-euclide,tkz-fct}
+\usetkzobj{all}  
+\usepackage{tcolorbox} 
+%\usepackage{enumitem} 
+\usepackage{tasks} 
+\usepackage{asymptote}           
+
+\newcommand{\limite}[2]{\displaystyle \lim_{x \rightarrow #1}{#2}}
+\renewcommand{\vector}[1]{\overrightarrow{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\g}{{}^\circ}
+\newcommand{\sen}{\mathop{\rm sen}\nolimits}
+\newcommand{\arcsen}{\mathop{\rm arcsen}\nolimits}
+
+\newtcbox{\resultado}[1][center]{#1,colback=red!5!white,
+colframe=red!75!black}
+
+\newtcbox{\resaltado}[1][center]{#1,colback=blue!5!white,
+colframe=blue!75!black}
+\definecolor{titleColor}{rgb}{0.0, 0.42, 0.24}
+
+\title{Geometría Métrica}
+\author{Ricardo Mateos}
+\institute[UHEI-IVED]{Departamento de Matemáticas \\ UHEI - IVED}
+\date{Matemáticas II}
+\begin{document}
+%\ECFJD
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\section{Ángulos}
+
+\begin{frame}{Ángulos entre dos rectas}
+\begin{exampleblock}{Ejemplo ángulo entre dos rectas}
+Calcula el ángulo que forman las rectas $r$ y $s$.
+\[ r \equiv \dfrac{x+2}{5}= \dfrac{y-1}{2}=z \qquad s \equiv \begin{cases} x+y+2z=3 \\ x-y-z= 1 \end{cases} \]
+\end{exampleblock}
+\onslide*<2->{
+Hallamos un vector director de la recta $r$ y otro de la $s$.
+}
+\onslide*<3->{
+\[ \vector{v_r}=(5,2,1) \qquad \visible<5-> {\vector{v_s}=(1,3,-2)} \]
+}
+\onslide*<4>{
+\[ \vector{v_s}= \begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+1 & 1 & 2 \\
+1 & -1 & -1
+\end{vmatrix}= \vec{i}+3\vec{j}-2\vec{k} \] 
+}
+\onslide*<5->{Aplicamos la fórmula para hallar el ángulo entre las dos rectas.}
+\onslide*<6->{
+\[ \alpha = \arccos \left( \dfrac{|5\cdot 1 +2 \cdot 3 +1 \cdot (-2)|}{\sqrt{5^2+2^2+1^2}\sqrt{1^2+3^2+(-2)^2}} \right)= \arccos \left(\dfrac{9}{\sqrt{30}\sqrt{14}}\right) \Rightarrow \]
+}
+\onslide*<7->{ \resultado{ $\alpha =  63,95\g$}}
+
+\end{frame}
+
+\begin{frame}{Ángulo entre dos planos}
+\begin{exampleblock}{Ejemplo ángulo entre dos planos}
+Calcula el ángulo que forman los planos $\pi_1$ y $\pi_2$.
+\[ \pi_1 \equiv 3x-y+2z+1=0 \qquad \pi_2 \equiv  2x+y-5z-1=0 \]
+\end{exampleblock}
+\onslide*<2->{
+Hallamos un vector normal de cada uno de los planos.
+}
+\onslide*<3->{
+\[ \vector{n_1}=(3,-1,2) \qquad \vector{n_2}=(2,1,-5) \]
+}
+\onslide*<4->{Aplicamos la fórmula para hallar el ángulo entre los dos planos.}
+\onslide*<5->{
+\[ \alpha = \arccos \left( \dfrac{|3\cdot 2 +(-1) \cdot 1 +2 \cdot (-5)|}{\sqrt{3^2+(-1)^2+2^2}\sqrt{2^2+1^2+(-5)^2}} \right)= \arccos \left(\dfrac{5}{\sqrt{14}\sqrt{30}}\right) \Rightarrow \]
+}
+\onslide*<6->{ \resultado{ $\alpha =  75,88\g$}}
+\end{frame}
+
+\begin{frame}{Ángulo entre recta y plano}
+\begin{exampleblock}{Ejemplo ángulo entre recta y plano}
+Calcula el ángulo que forma la recta $r$ y el plano $\pi$
+\[ r \equiv \begin{cases} x= 3+\lambda \\ y = -2+\lambda \\ z= 5 \end{cases} \qquad \pi \equiv 3x-4y+5z-1=0 \] 
+\end{exampleblock}
+\onslide*<2->{
+Hallamos un vector director de la recta y un vector normal del plano.
+}
+\onslide*<3->{
+\[ \vector{v}=(1,1,0) \qquad \vector{n}=(3,-4,5) \]
+}
+\onslide*<4->{Aplicamos la fórmula para hallar el ángulo entre los dos planos.}
+\onslide*<5->{
+\[ \alpha = \arcsen \left( \dfrac{|1\cdot 3 +1 \cdot (-4) +0 \cdot 5|}{\sqrt{1^2+1^2+0^2}\sqrt{3^2+(-4)^2+5^2}} \right)= \arcsen \left(\dfrac{1}{\sqrt{2}\sqrt{50}}\right) \Rightarrow \]
+}
+\onslide*<6->{ \resultado{ $\alpha =  5,74\g$}}
+
+\end{frame}
+
+\section{Distancias}
+
+\begin{frame}{Distancias entre dos puntos}
+\begin{exampleblock}{Ejemplo distancia entre dos puntos}
+Dada la recta $r \equiv x-1=\dfrac{y-5}{-3}=\dfrac{z-7}{-4}$, hallar los puntos de esta recta situados a una distancia de 3 unidades del punto $A(1,0,1)$.
+\end{exampleblock}
+\pause
+
+Escibimos las ecuaciones paramétricas de la recta.
+\pause
+$r \equiv \begin{cases} x=1+\lambda \\ y = 5-3\lambda \\ z= 7-4\lambda \end{cases}$
+\pause
+
+Tomamos un punto genérico de la recta:
+\pause
+\[ R (1+\lambda, 5-3\lambda, 7-4\lambda) \]
+\pause
+Imponemos la condición de que la distancia al punto $A$ sea 3 unidades.
+\pause
+\[ \sqrt{[(1+\lambda)-1]^2+[( 5-3\lambda)-0]^2+[(7-4\lambda)-1]^2}=3 \]
+\pause
+Elevando al cuadrado, desarrollando y resolviendo la ecuación hallamos $\lambda$
+\pause
+\[ \lambda^2+25-30\lambda+9\lambda^2+36-48\lambda+16\lambda^2=9 \Rightarrow \]
+\[ \Rightarrow 26\lambda^2-78\lambda+52=0 \Rightarrow \lambda^2-\lambda+2=0 \Rightarrow \lambda_1 = 2 \quad \lambda_2= 1 \]
+\pause
+Sustituyendo estos valores de $\lambda$ en $R$ obtenemos los puntos que buscamos. 
+\resultado{$ R_ 1(3,-1,-1) \qquad R_2(2,2,3)$}
+\end{frame}
+
+\begin{frame}{Distancia de un punto a una recta}
+\begin{exampleblock}{Ejemplo}
+Sea el triángulo determinado por los puntos $A(1,4,-1)$, $B(0,0,1)$ y $C(1,3,1)$. Halla la distancia del punto $B$ a la recta determinada por los puntos $A$ y $C$. Calcula el perímetro y el área del triángulo.
+\end{exampleblock}
+\onslide*<2-4>{
+Hallamos la recta que pasa por los puntos $A$ y $C$. 
+
+Para ello tomamos el punto $A$ y el vector $\vector{AC}=(0,-1,2)$
+}
+\onslide*<3-4>{
+\[ r_{AC} \equiv \begin{cases} x= 1 \\ y = 4-\lambda \\ z= -1 +2 \lambda \end{cases} \]
+}
+\onslide*<4-4>{
+Para calcular la distancia del punto $B$ a la recta aplicamos la fórmula de la distancia de un punto a una recta.
+\[ \text{d}(P,r)= \dfrac{\left| \vector{AB} \times \vector{v} \right|}{\left| \vec{v} \right|} \]
+}
+\onslide*<5->{
+Hallamos el vector $\vector{AB}=(-1,-4,2) $
+}
+\onslide*<6->{
+Hallamos el producto vectorial del vector $\vector{AB}$ por el vector director de la recta $\vec{v}=(0,-,1,2)$
+}
+\onslide*<7->{
+\[ \vector{AB} \times \vector{v}
+=\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+-1 & -4 & 2 \\
+0 & -1 & -2 \end{vmatrix}= -6\vec{i}+2\vec{j}+\vec{k}\]
+}
+\onslide*<8->{
+Sustituimos en la fórmula y calculamos la distancia:
+}
+\onslide*<9->{
+\[ \text{d}(B,r_{AC})= \dfrac{ \sqrt{(-6)^2+2^2+1^2}}{ \sqrt{0^2+(-1)^2+2^2} } = \dfrac{\sqrt{41}}{\sqrt{5}} \Rightarrow \]
+}
+\onslide*<10->{
+\resultado{$\text{d}(B,r_{AC})= \dfrac{\sqrt{205}}{5} u$}
+}
+\end{frame}
+
+
+
+\begin{frame}{Distancia de un punto a un plano}
+\begin{exampleblock}{Ejemplo}
+Hallar la ecuación del plano que corta a los ejes de coordenadas en los puntos $A(1,0,0)$, $B(0,2,0)$ y $C(0,0,3)$. Halla los puntos de la recta $x=y=z$ cuya distancia a este plano es  $\dfrac{1}{7}$ unidades.
+\end{exampleblock}
+
+\pause
+\onslide*<2-5>{
+Hallamos los vectores $\vector{AB}$ y $\vector{AC}$ que son vectores directores del plano.
+}
+\onslide*<3-5>{
+\[ \vector{AB}=(-1,2,0)\qquad \vector{AC}=(-1,0,3) \]
+}
+\onslide*<4-5>{
+
+Con estos vectores directores y uno de los puntos hallamos el plano:
+}
+\onslide*<5-5>{
+\[ \pi \equiv \begin{vmatrix}
+x-1 & y & z \\
+-1 & 2 & 0 \\
+-1 & 0 & 3
+\end{vmatrix}=0 \Rightarrow \pi \equiv 6x+3y+2z-6=0 \]
+}
+\onslide*<6->{
+Hallamos las ecuaciones paramétricas de la recta: 
+$r\equiv \begin{cases} x= \lambda \\ y=\lambda \\ z=\lambda \end{cases}$
+}
+
+\onslide*<7->{
+Tomamos un punto genérico de la recta: 
+}
+\onslide*<8->{
+$R(\lambda, \lambda, \lambda)$
+}
+
+\onslide*<9->{
+Imponemos que la condición de que la distancia de este punto al plano sea $\frac{1}{7}$ y hallamos $\lambda$
+}
+\onslide*<10->{
+\[ d(P,\pi)= \dfrac{|6\lambda+3\lambda+2\lambda-6|}{\sqrt{6^2+3^2+2^2}}=\dfrac{1}{7} \Rightarrow  \Rightarrow \dfrac{|11\lambda-6|}{7}= \dfrac{1}{7} \Rightarrow \begin{cases} 11\lambda-6= 1 \Rightarrow \lambda= \dfrac{7}{11}\\ \\ 11\lambda-6= -1 \Rightarrow \lambda= \dfrac{5}{11} \end{cases} \]
+}
+\onslide*<11->{
+Con estos valores hallamos los puntos:
+}
+\onslide*<12->{
+\resultado{$ R_1 \left( \dfrac{7}{11},\dfrac{7}{11},\dfrac{7}{11} \right)  \qquad  R_1 \left( \dfrac{5}{11},\dfrac{5}{11},\dfrac{5}{11} \right)$}
+}
+\end{frame}
+
+
+
+\begin{frame}{Distancia entre dos rectas}
+\begin{exampleblock}{Ejemplo}
+Sabiendo que las rectas 
+\[ r \equiv x=y=z \qquad s \equiv \begin{cases} x= 1 + \lambda \\ y = 3+\lambda \\ z= -\lambda \end{cases}\]
+se cruzan, calcular su distancia mínima. Calcular también la perpendicular común a ambas.
+\end{exampleblock}
+\pause
+Ponemos la recta $r$ en forma parámetrica: \pause $r \equiv \begin{cases} x=  \mu \\ y = \mu \\ z= \mu \end{cases}$
+\end{frame}
+
+\begin{frame}{Distancia entre dos planos}
+\begin{exampleblock}{Ejemplo}
+Determina todos los planos paralelos cuya distancia al plano $\pi \equiv 2x-3y+z-1=0$ sea igual a $3\sqrt{2}$ unidades.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Distancia de  una recta a un plano}
+\begin{exampleblock}{Ejemplo}
+Determina la distancia de la recta $r$ al plano $\pi$.
+\[ r \equiv \begin{cases} x+y+3=0 \\ 2x-z= 0 \end{cases} \qquad \pi \equiv 3x+y-z+4=0 \]
+se cruzan, calcular su distancia mínima.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Problemas en general}
+\begin{exampleblock}{Ejemplo}
+Determina la ecuación del plano que contiene a la recta $r \equiv x=y=z$ y su distancia al punto $P(3,2,-1)$ es $\dfrac{3\sqrt{2}}{2}$
+\end{exampleblock}
+
+\end{frame}
+\end{document}

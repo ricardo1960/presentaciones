@@ -1,0 +1,328 @@
+\documentclass[8pt]{beamer}
+\input{../plantilla}
+\imagen{../imagenes/sarrus}
+\title{Aplicaciones de las derivadas}
+\subtitle{Matemáticas II}
+\author{Departamento de Matemáticas}
+\date[UHEI-IVED]{ UHEI - IVED}
+%\date{Matemáticas II}
+\begin{document}
+%\ECFJD
+\titleframe
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\begin{frame}[t]{Recta tangente}
+Sabemos que la derivada de una función en un punto coincide con la pendiente de la recta tangente a la gráfica de la función en ese punto. 
+
+Teniendo en cuenta esto y que la función pasa por el punto $a,f(a)$, podemos calcular la ecuación de la recta tangente a la gráfica de la función en ese punto utilizando la ecuación punto-pendiente de una recta.
+\pause
+\begin{alertblock}{Recta tangente}
+
+La ecuación de la recta tangente a la gráfica de la función $f(x)$ en el punto $x=a$ es:
+
+\[ y-f(a) = f'(a)(x-a) \Rightarrow y=f(a)+f'(a)(x-a) \]
+
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[t]{Recta tangente}
+\begin{exampleblock}{Ejemplo}
+Hallar la recta tangente a la gráfica de la función $f(x)=\dfrac{2x}{x^2+1}$ en el punto $x=0$.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Recta tangente}
+\begin{exampleblock}{Ejemplo}
+Dada la función real de variable real definida por:
+\[ f(x)= \begin{cases} x^2-x-1 & x \leq 3 \\ \\ \dfrac{3a}{x} & x>3 \end{cases} \]
+\begin{tasks}[label=\alph*)](1)
+\task Determine el valor del parámetro real $a$ para que la función $f(x)$ sea continua en todo su dominio. ¿Para ese valor de $a$ es $f(x)$ derivable?
+\task Para $a = 1$, calcule la ecuación de la recta tangente a la gráfica de la función en el punto de abscisa $x = 1$.
+\end{tasks}
+
+\end{exampleblock}
+\end{frame}
+
+\section{Monotonía y extremos relativos}
+
+\subsection{Crecimiento y decrecimiento de una función}
+
+\begin{frame}[t]{Crecimiento y decrecimiento}
+\begin{alertblock}{Crecimiento y decrecimiento}
+
+Una función es creciente en un punto si su derivada en este punto es positiva.
+
+Una función es decreciente en un punto si su derivada en este punto es negativa.
+
+\[ \begin{cases} f'(x_0)> 0 \rightarrow f(x) \text{ es creciente en } x=x_0 \\ f'(x_0)< 0 \rightarrow f(x) \text{ es decreciente en } x=x_0 \end{cases} \]
+\end{alertblock}
+
+\pause
+Para determinar los intervalos de crecimiento y decrecimiento de la función podemos proceder de la siguiente forma.
+
+\pause
+\begin{enumerate}[<+-| alert@+>]
+\item Calculamos la derivada $f'(x)$ de la función y hallamos los puntos donde esta derivada es $0$ resolviendo la ecuación: $f'(x)=0$. 
+
+Determinamos también los puntos de discontinuidad de la derivada.
+\item Tomamos los intervalos determinados por estos puntos.
+\item Hallamos el signo de la derivada en estos intervalos calculando su signo con uno de los puntos de este intervalo.
+\end{enumerate}
+\end{frame}
+
+\subsection{Máximos y mínimos locales}
+
+\begin{frame}[t]{Extremos relativos}
+\begin{alertblock}{Extremos relativos}
+Si una función tiene un máximo o un mínimo local en un punto $x=x_0$ la derivada de la función, si existe, es igual a cero en ese punto. $f'(x_0)=0 $
+\end{alertblock}
+
+\pause
+Para saber si en los puntos donde la derivada es cero hay un máximo o un mínimo podemos aplicar dos criterios:
+
+\pause
+\textbf{Criterio de la primera derivada:}
+
+\pause
+Si a la izquierda del punto la función es creciente y a la derecha decreciente en ese punto hay un máximo.
+
+\pause
+Si a la izquierda del punto la función es decreciente y a la derecha creciente en ese punto hay un mínimo.
+
+\pause
+\textbf{Criterio de la segunda derivada:}
+
+\pause
+Si en el punto la segunda derivada es positiva en ese punto hay un mínimo.
+
+\pause
+Si en el punto la segunda derivada es negativa en ese punto hay un máximo.
+\end{frame}
+
+\begin{frame}[t]{Monotonia y extremos relativos}
+\begin{exampleblock}{Ejemplo}
+Hallar los intervalos de crecimiento y los extremos relativos de la función: $f(x)=4x^3-24x^2+36x+100$
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Monotonia y extremos relativos}
+\begin{exampleblock}{Ejemplo}
+Hallar los intervalos de crecimiento y los extremos relativos de la función: $f(x)=\dfrac{1-x^2}{x^2-4}$
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}[t]{Monotonía}
+\begin{exampleblock}{Ejemplo}
+Hallar los intervalos de crecimiento y decrecimiento y los extremos relativos de la función: $f(x)=x^2 \cdot e^{-x}$.
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}[t]{Curvatura y puntos de inflexión}
+\begin{exampleblock}{Ejemplo}
+Hallar la curvatura y los puntos de inflexión de la función: $f(x)=x^4-6x^2$
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Curvatura y puntos de inflexión}
+\begin{exampleblock}{Ejemplo}
+Hallar la curvatura y los puntos de inflexión de la función: $f(x)=\dfrac{6}{x^2+3}$
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Monotonia y extremos relativos}
+\begin{exampleblock}{Ejemplo}
+Dada la función $f(x)=ax^3+bx+c$ , calcular el valor de $a$, $b$ y $c$ para
+que:
+\begin{tasks}[label=\alph*)](1)
+\task La función pase por el origen de coordenadas y tenga en el punto $(1,-1)$ un mínimo local.
+\task Para los valores obtenidos en el apartado anterior, determine los intervalos de crecimiento y decrecimiento de la función.
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Monotonía y extremos relativos}
+\begin{exampleblock}{Ejemplo}
+Obtenga una función polinómica de tercer grado $f(x) = ax^3 + bx^2 + cx + d$ tal que tenga un mínimo en el punto $(1,1)$ y un punto de inflexión en el punto $(0,3)$.
+\end{exampleblock}
+\end{frame}
+
+
+\section{Regla de L'Hopital}
+
+\begin{frame}[t]{Regla de L'Hopital}
+\begin{alertblock}{Regla de L'Hopital}
+Cuando
+	\[\left. \begin{array}{c} \limite{a}{\dfrac{f(x)}{g(x)}}=\dfrac{0}{0}  \\ \text{ó}  \\ \limite{a}{\dfrac{f(x)}{g(x)}}=\dfrac{\infty}{\infty} \end{array} \right\rbrace \Rightarrow  \lim_{x \to a}\dfrac{f(x)}{g(x)}=\lim_{x \to a}\dfrac{f'(x)}{g'(x)}	\]
+	
+	Siendo $a$ cualquier número real o $\pm\infty$ y las funciones derivables.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[t]{Regla de L`Hopital}
+\begin{exampleblock}{Ejemplo}
+Calcular los siguientes límites:
+\begin{tasks}[label=\alph*)](2)
+\task $\limite{0}{\dfrac{e^x - \cos x}{\ln(1+x)}}$
+\task $\limite{0}{\dfrac{e^x-x-\cos(3x)}{\sin^2x}}$
+\task $\limite{0}{\dfrac{1-\cos x}{\left( e^x-1 \right)^2}}$
+\task $\limite{0}{\dfrac{e^{x^2}-1}{\cos x-1}}$
+\task $\limite{\frac{\pi}{2}}{\left( \sen x \right)^{\tg x}}$
+\task $\limite{0}{\left( \cos x \right)^{\sfrac{1}{\sen^2 x}}}$
+\end{tasks}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Regla de L'Hopital}
+\begin{exampleblock}{Ejemplo}
+Sabiendo que $\limite{0}{\dfrac{a\cdot \sen x-x\cdot e^x}{x^2}}$ es finito, calcula el valor de $a$ y el de dicho límite.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Regla de L'Hopital}
+\begin{exampleblock}{Ejemplo}
+Hallar el valor de $k$ para que \[\limite{0}{\dfrac{e^x-e^{-x}+kx}{x -\sen x}}=2 \].
+\end{exampleblock}
+\end{frame}
+
+\section{Optimizacion}
+
+\begin{frame}[t]{Optimización}
+\begin{exampleblock}{Ejemplo}
+Sean tres números reales positivos cuya suma es 90 y uno de ellos es la media de los
+otros dos. Determina los números de forma que el producto entre ellos sea máximo.
+\end{exampleblock}
+\pause
+
+\end{frame}
+
+
+\begin{frame}[t]{Optimización}
+\begin{exampleblock}{Ejemplo}
+Descomponer el número 12 en dos sumandos positivos de forma que el producto
+del primero por el cuadrado del segundo sea máximo.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Optimización}
+\begin{exampleblock}{Ejemplo}
+Halle el rectángulo de mayor área inscrito en una circunferencia de radio 3.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[t]{Optimización}
+\begin{exampleblock}{Ejemplo}
+Un espejo plano, cuadrado, de 80 cm de lado, se ha roto por una esquina siguiendo una línea recta. El trozo desprendido tiene forma de triángulo rectángulo de catetos 32 cm y 40 cm respectivamente. En el espejo roto recortamos una pieza rectangular $R$, uno de cuyos vértices es el punto $(x,y)$ (véase la figura).
+\begin{tasks}[label=\alph*)](1)
+\task Hallad el área de la pieza rectangular obtenida como función de $x$, cuando \\ $0 \leq x \leq 32$.
+\task Calculad las dimensiones que tendrá $R$ para que su área sea máxima. 
+\task Calculad el valor de dicha área máxima.
+\end{tasks}
+\end{exampleblock}
+\begin{center}
+\begin{tikzpicture}[scale=0.3]
+	\tkzInit[xmin=-1,xmax=9, ymin=-1,ymax=9]
+	\tkzDefPoints{0/0/A, 0/8/B, 8/0/C, 8/8/D, 0/4/E, 3.2/0/F, 2.4/1/G, 2.4/8/H, 8/1/I}
+	\tkzDefPoints{0/1/A1, 2.4/0/A2}
+	\tkzDefPoints{-2/4/B1, -2/0/B2}
+	\tkzDefPoints{-1/1/B3, -1/0/B4}
+	\tkzDefPoints{0/-2/C1, 3.2/-2/C2}
+	\tkzDefPoints{0/-1/C3, 2.4/-1/C4}
+	\tkzDrawSegments[line width=2pt](E,F G,H G,I)
+	\tkzDrawPolygon[line width=2pt](A,C,D,B)
+	\tkzDrawSegments[color=blue](A1,G A2,G)
+	\tkzDrawSegments[color=blue](B1,E B2,A A1,B3)
+	\tkzDrawSegments[color=blue,latex-latex](B1,B2)
+	\tkzDrawSegments[color=blue,latex-latex](B3,B4)
+	\tkzDrawSegments[color=blue](C2,F C1,A A2,C4)
+	\tkzDrawSegments[color=blue,latex-latex](C1,C2)
+	\tkzDrawSegments[color=blue,latex-latex](C3,C4)
+	%\tkzDrawPoint(G)
+	%\tkzLabelPoint[above left](G){$P_1$}	
+	\tkzLabelSegment[left](B1,B2){$40$}
+	\tkzLabelSegment[right](B3,B4){$y$}
+	\tkzLabelSegment[below](C1,C2){$32$}
+	\tkzLabelSegment[above](C3,C4){$x$}
+	%\tkzFct[color=red,domain=0:7.3]{(x**2-2*x+13)/12)}
+	%\tkzFct[color=red,domain=0:4]{-x}
+\end{tikzpicture} 
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Optimización}
+\begin{exampleblock}{Ejemplo}
+
+
+En una nave industrial se quiere instalar una pantalla de cine (ver figura). La forma de la nave es la descrita por la gráfica de la función $f(x) = 12 - \dfrac{x^2}{3} \geq 0$. Calcula los valores positivos $(x,y)$ que hacen máxima el área de la pantalla.\end{exampleblock}
+\begin{center}
+\begin{tikzpicture}[scale=0.25]
+	\tkzInit[xmin=-7,xmax=7, ymin=-1,ymax=13]
+	\tkzDefPoints{-7/0/A, 7/0/B, 0/-1/C, 0/13/D, -3/0/E, 3/0/F, -3/9/G, 3/9/H}
+	\tkzDrawSegments[line width=1pt](A,B C,D)
+	\tkzDrawPolygon[line width=1pt,fill=gray](E,G,H,F)
+	\tkzFct[color=red,domain=-6:6]{12-x**2/3}
+	\tkzDrawPoint(H)
+	\tkzLabelPoint[above right](H){$(x,y)$}
+	\tkzLabelPoint[above left,color=red](G){$y=f(x)$}
+\end{tikzpicture} 
+\end{center}
+
+\end{frame}
+
+\begin{frame}[t]{Optimización}
+\begin{exampleblock}{Ejemplo}
+Se desea construir una caja sin tapa superior (ver Figura 1). Para ello, se usa una lámina de cartón de 15 cm de ancho por 24 cm de largo, doblándola convenientemente después de recortar un cuadrado de iguales dimensiones en cada una de sus esquinas (ver Figura 2). Se determina como requisito que la caja a construir contenga el mayor volumen posible. Indicar cuáles son las dimensiones de la caja y su volumen máximo.
+\end{exampleblock}
+\begin{columns}
+\begin{column}{0.3\textwidth}
+\begin{center}
+\begin{figure}
+\begin{tikzpicture}[scale=0.30]
+	\tkzInit[xmin=-7,xmax=7, ymin=-1,ymax=13]
+	\tkzDefPoints{0/4/A, 0/6/B, 8/2/C, 8/0/D, 2/9/E, 2/11/F, 10/5/G, 10/7/H}
+	\tkzDrawSegments[line width=1pt](A,E B,F F,E F,H E,G H,G)
+	\tkzDrawPolygon[fill=gray](A,B,C,D)
+	\tkzDrawPolygon[fill=gray](C,D,G,H)
+	%\tkzFct[color=red,domain=-6:6]{12-x**2/3}
+	%\tkzDrawPoint(H)
+	%\tkzLabelPoint[above right](H){$(x,y)$}
+	%\tkzLabelPoint[above left,color=red](G){$y=f(x)$}
+\end{tikzpicture}
+\caption{\label{tab:fig-caja}Caja}
+\end{figure}
+\end{center}
+\end{column}
+\begin{column}{0.55\textwidth}
+\begin{center}
+\begin{figure}
+\begin{tikzpicture}[scale=0.25]
+	\tkzInit[xmin=-7,xmax=7, ymin=-1,ymax=13]
+	\tkzDefPoints{0/0/A, 0/10/B, 16/10/C, 16/0/D}
+	\tkzDefPoints{-1/0/A4, -1/10/B4, 16/11/C4, 0/11/D4}
+	\tkzDefPoints{0/2/A1, 2/2/A2, 2/0/A3, 0/8/B1, 2/8/B2, 2/10/B3}
+	\tkzDefPoints{16/8/C1, 14/8/C2, 14/10/C3, 16/2/D1, 14/2/D2, 14/0/D3}
+	\tkzDrawPolygon[line width=1pt](A,B,C,D)
+	\tkzDrawPolygon[line width=1pt,dotted](A2,B2,C2,D2)
+	\tkzDrawSegments[line width=1pt,latex-latex](A4,B4 C4,D4)
+	\tkzDrawPolygon[line width=1pt,fill=gray](A,A1,A2,A3)
+	\tkzDrawPolygon[line width=1pt,fill=gray](B,B1,B2,B3)
+	\tkzDrawPolygon[line width=1pt,fill=gray](C,C1,C2,C3)
+	\tkzDrawPolygon[line width=1pt,fill=gray](D,D1,D2,D3)
+	\tkzLabelSegment[left](A4,B4){$12$}	
+	\tkzLabelSegment[above](C4,D4){$24$}
+	%\tkzFct[color=red,domain=-6:6]{12-x**2/3}
+	%\tkzDrawPoint(H)
+	%\tkzLabelPoint[above right](H){$(x,y)$}
+	%\tkzLabelPoint[above left,color=red](G){$y=f(x)$}
+\end{tikzpicture}
+\caption{\label{tab:fig-papel}Lámina cartón}
+\end{figure}
+\end{center}
+
+\end{column}
+\end{columns}
+\end{frame}
+\end{document}
